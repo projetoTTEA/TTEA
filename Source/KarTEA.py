@@ -59,17 +59,17 @@ def update():
     mainClock.tick(FPS)
 
 
+def main():
+    # Loop ------------------------------------------------------------ #
+    while True:
 
-# Loop ------------------------------------------------------------ #
-while True:
+        # Buttons ----------------------------------------------------- #
+        user_events()
 
-    # Buttons ----------------------------------------------------- #
-    user_events()
+        # Update ------------------------------------------------------ #
+        update()
 
-    # Update ------------------------------------------------------ #
-    update()
-
-    # FPS
-    if DRAW_FPS:
-        fps_label = fps_font.render(f"FPS: {int(mainClock.get_fps())}", 1, (255, 200, 20))
-        SCREEN.blit(fps_label, (5, 5))
+        # FPS
+        if DRAW_FPS:
+            fps_label = fps_font.render(f"FPS: {int(mainClock.get_fps())}", 1, (255, 200, 20))
+            SCREEN.blit(fps_label, (5, 5))
