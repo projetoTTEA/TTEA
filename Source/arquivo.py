@@ -45,11 +45,13 @@ def CadastrarJogador(Nome, Nasc, Obs):
         csvwriter = csv.writer(csvfile, dialect='mydialect')
         csvwriter.writerow(fields)
 
+"""
 Nome = 'Gabriel'
 Nasc = '20/01/1997'
 Obs = ''
 
 CadastrarJogador(Nome, Nasc, Obs)
+"""
 
 def gravaDados(filename, Dados):# Dados é um vetor com os dados para gravar no arquivo 'filename'
     with open(filename, 'a') as csvfile:

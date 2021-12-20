@@ -46,31 +46,4 @@ FONTS["small"] = pygame.font.Font(None, 40)
 FONTS["medium"] = pygame.font.Font(None, 72)
 FONTS["big"] = pygame.font.Font(None, 120)
 
-# Player
-PLAYER = "Jogadores/Gabriel"
-PLAYER_ARQ = PLAYER + "_KarTEA.csv"
-PLAYER_ARQ_DET = PLAYER + "_KarTEA_detalhado.csv"
-
-CONFIGS = []
-"""
-['Fase Atual', '1', 'Nivel Atual', '1', 'Tempo de Nivel', '120', 'Carro', 'carro.png', 'Ambiente', 'ambiente.png', 'Paleta', '0', 'Alvo', 'alvo.png', 'Obstaculo', 'obstaculo.png',
- 'Imagem Feedback Positivo', 'feedPos.png', 'Imagem Feed back Neutro', 'feedNeut.png', 'Imagem Feedback Negativo', 'feedNeg.png', 'Som Feedback Positivo', 'feedPos.mp3'
-'Som Feedback Neutro', 'feedNeut.mp3', 'Som Feedback Negativo', 'feedNeg.mp3']
-"""
-CONFIGS = arquivo.lerConfigs(PLAYER_ARQ)
-
-FASE = CONFIGS[1]
-NIVEL = CONFIGS[3]
-TEMPO_NIVEL = CONFIGS[5]
-CARRO = CONFIGS[7]
-AMBIENTE = CONFIGS[9]
-PALETA = CONFIGS[11]
-ALVO = CONFIGS[13]
-OBSTACULO = CONFIGS[15]
-IMG_FEED_POS = CONFIGS[17]
-IMG_FEED_NEU = CONFIGS[19]
-IMG_FEED_NEG = CONFIGS[21]
-SOM_FEED_POS = CONFIGS[23]
-SOM_FEED_NEU = CONFIGS[25]
-SOM_FEED_NEG = CONFIGS[27]
 

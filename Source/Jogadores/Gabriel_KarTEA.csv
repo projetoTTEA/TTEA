@@ -1,3 +1,3 @@
 Nome,Gabriel,Data de Nasc.,20/01/1997,Observacoes,
-Fase Atual,1,Nivel Atual,1,Tempo de Nivel,120,Carro,carro.png,Ambiente,ambiente.png,Paleta,0,Alvo,alvo.png,Obstaculo,obstaculo.png,Imagem Feedback Positivo,feedPos.png,Imagem Feedback Neutro,feedNeut.png,Imagem Feedback Negativo,feedNeg.png,Som Feedback Positivo,feedPos.mp3,Som Feedback Neutro,feedNeut.mp3,Som Feedback Negativo,feedNeg.mp3,HUD,True,Som,True
+Fase Atual,2,Nivel Atual,3,Tempo de Nivel,120,Carro,carro.png,Ambiente,ambiente.png,Paleta,0,Alvo,alvo.png,Obstaculo,obstaculo.png,Imagem Feedback Positivo,feedPos.png,Imagem Feedback Neutro,feedNeut.png,Imagem Feedback Negativo,feedNeg.png,Som Feedback Positivo,feedPos.mp3,Som Feedback Neutro,feedNeut.mp3,Som Feedback Negativo,feedNeg.mp3,HUD,True,Som,True
 Sessao,Data da Sessao,Hora Inicio,Fase Alcancada,Nivel Alcancado,Pontuacao Geral,Q Movimentos,Q Alvos Colididos,Q Alvos Desviados,Q Obstaculos Colididos,Q Obstaculos Desviados
