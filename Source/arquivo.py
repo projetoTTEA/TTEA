@@ -76,28 +76,29 @@ def lerConfigs(filename): #Apenas para os arquivos gerais, nos detalhados retorn
 print(lerConfigs('Jogadores/Gabriel_Kartea.csv'))
 print(lerConfigs('Jogadores/Gabriel_RepeTEA.csv'))
 
-# reading csv file
-with open(filename, 'r') as csvfile:
-    csvreader = csv.reader(csvfile, dialect='mydialect')
-    fields = next(csvreader)#Dados do jogador
-    fields = next(csvreader)#Configuracoes
-    fields = next(csvreader)#Campos de Dados
-  
-    # extracting each data row one by one
-    for row in csvreader:
-        rows.append(row)
-  
-    # get total number of rows
-    print("Total no. of data rows: %d"%(csvreader.line_num-3))
+Array de Configs do KARTEA
+CONFIGS = arquivo.lerConfigs(PLAYER_ARQ)
 
-# printing the field names
-print('Field names are:' + ', '.join(field for field in fields))
-  
-#  printing first 5 rows
-print('\nFirst 5 rows are:\n')
-for row in rows[:5]:
-    # parsing each column of a row
-    for col in row:
-        print("%10s "%col)
-    print('\n')
+FASE = CONFIGS[1]
+NIVEL = CONFIGS[3]
+TEMPO_NIVEL = CONFIGS[5]
+CARRO = CONFIGS[7]
+AMBIENTE = CONFIGS[9]
+PALETA = CONFIGS[11]
+ALVO = CONFIGS[13]
+OBSTACULO = CONFIGS[15]
+IMG_FEED_POS = CONFIGS[17]
+IMG_FEED_NEU = CONFIGS[19]
+IMG_FEED_NEG = CONFIGS[21]
+SOM_FEED_POS = CONFIGS[23]
+SOM_FEED_NEU = CONFIGS[25]
+SOM_FEED_NEG = CONFIGS[27]
+
+Array de Configs do REPETEA
+CONFIGS = arquivo.lerConfigs(PLAYER_ARQ)
+
+FASE = CONFIGS[1]
+NIVEL = CONFIGS[3]
+TEMPO_NIVEL = CONFIGS[5]
+
 """

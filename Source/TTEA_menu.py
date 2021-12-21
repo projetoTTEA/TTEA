@@ -80,6 +80,11 @@ def game_changed(event):
     global game
     game = selected_game.get()
     jogador_cb['state'] = 'readonly'
+    jogador_cb.set('')
+    fase_cb['state'] = 'disabled'
+    fase_cb.set('')
+    nivel_cb['state'] = 'disabled'
+    nivel_cb.set('')
 
 game_cb.bind('<<ComboboxSelected>>', game_changed)
 
