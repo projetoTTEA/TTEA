@@ -1,11 +1,10 @@
 import tkinter as tk
 from tkinter import ttk
-from tkinter.messagebox import showinfo
-import numpy
 from PIL import Image, ImageTk
 import os
 import arquivo
 import settings
+
 
 def center_window_on_screen(width, height):
     screen_width = root.winfo_screenwidth()
@@ -226,6 +225,7 @@ nivel_cb.bind('<<ComboboxSelected>>', nivel_changed)
 
 
 def JogarCallback():
+    #settings.set_jogador(jogador_cb.get())
     if game == 'KARTEA':
         import KarTEA
         KarTEA.main()

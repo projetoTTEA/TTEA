@@ -1,4 +1,3 @@
-import pygame
 import image
 from settings import *
 
@@ -9,4 +8,4 @@ class Background:
 
 
     def draw(self, surface):
-        image.draw(surface, self.image, (SCREEN_WIDTH//2, SCREEN_HEIGHT//2), pos_mode="center")
+        image.draw(surface, self.image, (SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2), pos_mode="center")

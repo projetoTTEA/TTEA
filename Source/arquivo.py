@@ -71,34 +71,31 @@ def lerConfigs(filename): #Apenas para os arquivos gerais, nos detalhados retorn
         fields = next(csvreader)  # Configuracoes
         return fields
 
-
 """
-print(lerConfigs('Jogadores/Gabriel_Kartea.csv'))
+#Array de Configs do KARTEA
+print(lerConfigs('Jogadores/Gabriel_KarTEA.csv'))
+CONFIGS = arquivo.lerConfigs(PLAYER_ARQ)
+
+K_FASE = CONFIGS[1]
+K_NIVEL = CONFIGS[3]
+K_TEMPO_NIVEL = CONFIGS[5]
+K_CARRO = CONFIGS[7]
+K_AMBIENTE = CONFIGS[9]
+K_PALETA = CONFIGS[11]
+K_ALVO = CONFIGS[13]
+K_OBSTACULO = CONFIGS[15]
+K_IMG_FEED_POS = CONFIGS[17]
+K_IMG_FEED_NEU = CONFIGS[19]
+K_IMG_FEED_NEG = CONFIGS[21]
+K_SOM_FEED_POS = CONFIGS[23]
+K_SOM_FEED_NEU = CONFIGS[25]
+K_SOM_FEED_NEG = CONFIGS[27]
+
+#Array de Configs do REPETEA
 print(lerConfigs('Jogadores/Gabriel_RepeTEA.csv'))
-
-Array de Configs do KARTEA
 CONFIGS = arquivo.lerConfigs(PLAYER_ARQ)
 
-FASE = CONFIGS[1]
-NIVEL = CONFIGS[3]
-TEMPO_NIVEL = CONFIGS[5]
-CARRO = CONFIGS[7]
-AMBIENTE = CONFIGS[9]
-PALETA = CONFIGS[11]
-ALVO = CONFIGS[13]
-OBSTACULO = CONFIGS[15]
-IMG_FEED_POS = CONFIGS[17]
-IMG_FEED_NEU = CONFIGS[19]
-IMG_FEED_NEG = CONFIGS[21]
-SOM_FEED_POS = CONFIGS[23]
-SOM_FEED_NEU = CONFIGS[25]
-SOM_FEED_NEG = CONFIGS[27]
-
-Array de Configs do REPETEA
-CONFIGS = arquivo.lerConfigs(PLAYER_ARQ)
-
-FASE = CONFIGS[1]
-NIVEL = CONFIGS[3]
-TEMPO_NIVEL = CONFIGS[5]
-
+R_FASE = CONFIGS[1]
+R_NIVEL = CONFIGS[3]
+R_TEMPO_NIVEL = CONFIGS[5]
 """
