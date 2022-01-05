@@ -5,6 +5,8 @@ import os
 import arquivo
 import settings
 
+from tkinter import messagebox
+
 
 def center_window_on_screen(width, height):
     screen_width = root.winfo_screenwidth()
@@ -23,6 +25,14 @@ def show_menu():
     center_window_on_screen(width, height)
     menu_frame.pack()
     cad_frame.forget()
+    game_cb['state'] = 'readonly'
+    game_cb.set('')
+    jogador_cb['state'] = 'disabled'
+    jogador_cb.set('')
+    fase_cb['state'] = 'disabled'
+    fase_cb.set('')
+    nivel_cb['state'] = 'disabled'
+    nivel_cb.set('')
 
 
 def show_cad():
@@ -110,8 +120,10 @@ def ler_nome_jogadores():
 
     for a in Jogadores:
         a = a.replace('_KarTEA.csv','')
+        a = a.replace('_KarTEA_config.csv','')
         a = a.replace('_KarTEA_detalhado.csv','')
         a = a.replace('_RepeTEA.csv','')
+        a = a.replace('_RepeTEA_config.csv','')
         a = a.replace('_RepeTEA_detalhado.csv','')
         if a != b:
             arr.append(a)
@@ -141,21 +153,20 @@ def jogador_changed(event):
     PLAYER = "Jogadores/" + jogador
     if game == 'KARTEA':
         PLAYER_ARQ = PLAYER + "_KarTEA.csv"
+        PLAYER_ARQ_CONFIG = PLAYER + "_KarTEA_config.csv"
         PLAYER_ARQ_DET = PLAYER + "_KarTEA_detalhado.csv"
     elif game == 'REPETEA':
         PLAYER_ARQ = PLAYER + "_RepeTEA.csv"
+        PLAYER_ARQ = PLAYER + "_RepeTEA_config.csv"
         PLAYER_ARQ_DET = PLAYER + "_RepeTEA_detalhado.csv"
 
-    CONFIGS = []
-    CONFIGS = arquivo.lerConfigs(PLAYER_ARQ)
-
     global FASE, NIVEL
-    FASE = CONFIGS[1]
-    NIVEL = CONFIGS[3]
+    FASE = arquivo.get_K_FASE(PLAYER_ARQ_CONFIG)
+    NIVEL = arquivo.get_K_NIVEL(PLAYER_ARQ_CONFIG)
     fase_cb['state'] = 'readonly'
-    fase_cb.current(int(FASE)-1)
+    fase_cb.current(FASE-1)
     nivel_cb['state'] = 'readonly'
-    nivel_cb.current(int(NIVEL)-1)
+    nivel_cb.current(NIVEL-1)
 
 
 jogador_cb.bind('<<ComboboxSelected>>', jogador_changed)
@@ -225,7 +236,8 @@ nivel_cb.bind('<<ComboboxSelected>>', nivel_changed)
 
 
 def JogarCallback():
-    #settings.set_jogador(jogador_cb.get())
+    arquivo.set_Player(jogador)
+    print(arquivo.get_Player(), " = ", jogador)
     if game == 'KARTEA':
         import KarTEA
         KarTEA.main()

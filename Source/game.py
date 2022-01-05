@@ -1,6 +1,8 @@
 import pygame
 import time
 import random
+
+import arquivo
 from settings import *
 from background import Background
 from hand import Hand
@@ -94,6 +96,7 @@ class Game:
             (x, y) = self.hand_tracking.get_hand_center()
             self.hand.rect.center = (x, y)
             self.hand.left_click = self.hand_tracking.hand_closed
+            print(arquivo.get_Player())
             print("Hand closed", self.hand.left_click)
             if self.hand.left_click:
                 self.hand.image = self.hand.image_smaller.copy()

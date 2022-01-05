@@ -1,5 +1,4 @@
 import pygame
-import arquivo
 
 WINDOW_NAME = "KARTEA"
 GAME_TITLE = WINDOW_NAME
@@ -45,5 +44,4 @@ FONTS = {}
 FONTS["small"] = pygame.font.Font(None, 40)
 FONTS["medium"] = pygame.font.Font(None, 72)
 FONTS["big"] = pygame.font.Font(None, 120)
-
 
