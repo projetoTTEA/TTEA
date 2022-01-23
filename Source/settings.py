@@ -10,18 +10,20 @@ DRAW_FPS = True
 
 # sizes
 BUTTONS_SIZES = (240, 90)
-HAND_SIZE = 200
-HAND_HITBOX_SIZE = (60, 80)
-TARGETS_SIZES = (50, 38)
+HAND_SIZE = 350
+HAND_HITBOX_SIZE = (200, 200)
+TARGETS_SIZES = (50, 50)
 TARGETS_SIZE_RANDOMIZE = (1,2) # for each new mosquito, it will multiply the size with an random value beteewn X and Y
 OBSTACLE_SIZES = (50, 50)
 OBSTACLE_SIZE_RANDOMIZE = (1.2, 1.5)
 
+OBJ_POS = [((SCREEN_WIDTH/2)-200, -SCREEN_HEIGHT), ((SCREEN_WIDTH/2)-25, -SCREEN_HEIGHT),((SCREEN_WIDTH/2)+200, -SCREEN_HEIGHT)]
+
 # drawing
-DRAW_HITBOX = False  # will draw all the hitbox
+DRAW_HITBOX = True  # will draw all the hitbox
 
 # animation
-ANIMATION_SPEED = 0.2 # the frame of the insects will change every X sec
+ANIMATION_SPEED = 0.1 # the frame of the insects will change every X sec
 
 # difficulty
 GAME_DURATION = 120  # the game will last X sec

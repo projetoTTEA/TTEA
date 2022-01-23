@@ -146,10 +146,12 @@ jogador_cb.pack(fill=tk.X, padx=100, pady=5)
 jogador = ''
 FASE = 0
 NIVEL = 0
+PLAYER_ARQ_CONFIG = ''
+
 def jogador_changed(event):
     global jogador
     jogador = selected_jogador.get()
-
+    global PLAYER_ARQ_CONFIG
     PLAYER = "Jogadores/" + jogador
     if game == 'KARTEA':
         PLAYER_ARQ = PLAYER + "_KarTEA.csv"
@@ -157,7 +159,7 @@ def jogador_changed(event):
         PLAYER_ARQ_DET = PLAYER + "_KarTEA_detalhado.csv"
     elif game == 'REPETEA':
         PLAYER_ARQ = PLAYER + "_RepeTEA.csv"
-        PLAYER_ARQ = PLAYER + "_RepeTEA_config.csv"
+        PLAYER_ARQ_CONFIG = PLAYER + "_RepeTEA_config.csv"
         PLAYER_ARQ_DET = PLAYER + "_RepeTEA_detalhado.csv"
 
     global FASE, NIVEL
@@ -199,11 +201,9 @@ fase_cb['state'] = 'disabled'
 # place the widget
 fase_cb.pack(fill=tk.X, padx=100, pady=5)
 
-fase = ''
 # bind the selected value changes
 def fase_changed(event):
-    global fase
-    fase = selected_fase.get()
+    arquivo.set_K_FASE(PLAYER_ARQ_CONFIG, int(selected_fase.get()))
 
 fase_cb.bind('<<ComboboxSelected>>', fase_changed)
 
@@ -228,8 +228,7 @@ nivel_cb.pack(fill=tk.X, padx=100, pady=5)
 nivel = ''
 # bind the selected value changes
 def nivel_changed(event):
-    global nivel
-    nivel = selected_nivel.get()
+    arquivo.set_K_NIVEL(PLAYER_ARQ_CONFIG, int(selected_nivel.get()))
 
 nivel_cb.bind('<<ComboboxSelected>>', nivel_changed)
 

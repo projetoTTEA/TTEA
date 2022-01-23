@@ -1,14 +1,16 @@
 import pygame
+
+import arquivo
 import image
 from settings import *
 from hand_tracking import HandTracking
 import cv2
 
-class Hand:
+class Car:
     def __init__(self):
         self.orig_image = image.load("Assets/Carro.png", size=(HAND_SIZE, HAND_SIZE))
         self.image = self.orig_image.copy()
-        self.image_smaller = image.load("Assets/Carro.png", size=(HAND_SIZE - 50, HAND_SIZE - 50))
+        self.image_smaller = image.load("Assets/Carro.png", size=(HAND_SIZE - 5, HAND_SIZE - 5))
         self.rect = pygame.Rect(SCREEN_WIDTH//2, SCREEN_HEIGHT//2, HAND_HITBOX_SIZE[0], HAND_HITBOX_SIZE[1])
         self.left_click = False
         #self.hand_tracking = HandTracking()
@@ -32,18 +34,15 @@ class Hand:
             self.draw_hitbox(surface)
 
 
-    def on_insect(self, insects): # return a list with all insects that collide with the hand hitbox
-        return [insect for insect in insects if self.rect.colliderect(insect.rect)]
+    def on_target(self, targets): # return a list with all targets that collide with the hand hitbox
+        return [target for target in targets if self.rect.colliderect(target.rect)]
 
 
-    def kill_insects(self, insects, score, sounds): # will kill the insects that collide with the hand when the left mouse button is pressed
-        if self.left_click: # if left click
-            for insect in self.on_insect(insects):
-                insect_score = insect.kill(insects)
-                score += insect_score
+    def kill_targets(self, targets, score, sounds): # will kill the targets that collide with the hand when the left mouse button is pressed
+        for target in self.on_target(targets):
+                target_score = target.kill(targets)
+                score += target_score
                 sounds["slap"].play()
-                if insect_score < 0:
+                if target_score < 0:
                     sounds["screaming"].play()
-        else:
-            self.left_click = False
         return score

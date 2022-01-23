@@ -5,7 +5,7 @@ import random
 import arquivo
 from settings import *
 from background import Background
-from hand import Hand
+from car import Car
 from hand_tracking import HandTracking
 from target import Target
 from obstacle import Obstacle
@@ -29,28 +29,35 @@ class Game:
 
     def reset(self): # reset all the needed variables
         self.hand_tracking = HandTracking()
-        self.hand = Hand()
-        self.insects = []
-        self.insects_spawn_timer = 0
+        self.car = Car()
+        self.targets = []
+        self.targets_spawn_timer = 0
         self.score = 0
         self.game_start_time = time.time()
 
 
-    def spawn_insects(self):
+    def spawn_targets(self):
         t = time.time()
-        if t > self.insects_spawn_timer:
-            self.insects_spawn_timer = t + TARGETS_SPAWN_TIME
+        if t > self.targets_spawn_timer:
+            self.targets_spawn_timer = t + TARGETS_SPAWN_TIME
 
             # increase the probability that the insect will be a bee over time
             nb = (GAME_DURATION-self.time_left)/GAME_DURATION * 100  / 2  # increase from 0 to 50 during all  the game (linear)
-            if random.randint(0, 100) < nb:
-                self.insects.append(Obstacle())
+            fase = arquivo.get_K_FASE('Jogadores/' + arquivo.get_Player() + '_KarTEA_config.csv')
+            print(fase)
+            if fase == 1:
+                self.targets.append(Target())
+            elif fase == 2:
+                self.targets.append(Obstacle())
             else:
-                self.insects.append(Target())
+                if random.randint(0, 100) < nb:
+                    self.targets.append(Obstacle())
+                else:
+                    self.targets.append(Target())
 
             # spawn a other mosquito after the half of the game
             if self.time_left < GAME_DURATION/2:
-                self.insects.append(Target())
+                self.targets.append(Target())
 
     def load_camera(self):
         _, self.frame = self.cap.read()
@@ -59,16 +66,25 @@ class Game:
     def set_hand_position(self):
         self.frame = self.hand_tracking.scan_hands(self.frame)
         (x, y) = self.hand_tracking.get_hand_center()
-        self.hand.rect.center = (x, y)
+        self.car.rect.center = (x, 850)
+        """
+        print("x: ", x ," y: ", y)
+        if x < SCREEN_WIDTH/3:
+            self.car.rect.center = (480, 850)
+        elif x >= SCREEN_WIDTH/3 and x <= 2*SCREEN_WIDTH/3:
+            self.car.rect.center = (960, 850)
+        else:
+            self.car.rect.center = (1440, 850)
+        """
 
     def draw(self):
         # draw the background
         self.background.draw(self.surface)
-        # draw the insects
-        for insect in self.insects:
+        # draw the targets
+        for insect in self.targets:
             insect.draw(self.surface)
-        # draw the hand
-        self.hand.draw(self.surface)
+        # draw the car
+        self.car.draw(self.surface)
         # draw the score
         ui.draw_text(self.surface, f"Pontuação : {self.score}", (5, 5), COLORS["score"], font=FONTS["medium"],
                      shadow=True, shadow_color=(255,255,255))
@@ -92,18 +108,18 @@ class Game:
         self.draw()
 
         if self.time_left > 0:
-            self.spawn_insects()
+            self.spawn_targets()
             (x, y) = self.hand_tracking.get_hand_center()
-            self.hand.rect.center = (x, y)
-            self.hand.left_click = self.hand_tracking.hand_closed
-            print(arquivo.get_Player())
-            print("Hand closed", self.hand.left_click)
-            if self.hand.left_click:
-                self.hand.image = self.hand.image_smaller.copy()
+            self.car.rect.center = (x, y)
+            self.car.left_click = self.hand_tracking.hand_closed
+            #print(arquivo.get_Player()) #checando qual é o jogador selecionado
+            #print("Hand closed", self.car.left_click)
+            if self.car.left_click:
+                self.car.image = self.car.image_smaller.copy()
             else:
-                self.hand.image = self.hand.orig_image.copy()
-            self.score = self.hand.kill_insects(self.insects, self.score, self.sounds)
-            for insect in self.insects:
+                self.car.image = self.car.orig_image.copy()
+            self.score = self.car.kill_targets(self.targets, self.score, self.sounds)
+            for insect in self.targets:
                 insect.move()
 
         else: # when the game is over

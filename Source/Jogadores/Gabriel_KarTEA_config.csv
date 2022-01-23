@@ -1,0 +1,2 @@
+Nome,Data de Nasc.,Observacoes,Fase Atual,Nivel Atual,Tempo de Nivel,Carro,Ambiente,Paleta,Alvo,Obstaculo,Imagem Feedback Positivo,Imagem Feedback Neutro,Imagem Feedback Negativo,Som Feedback Positivo,Som Feedback Neutro,Som Feedback Negativo,HUD,Som
+Gabriel,,,1,1,120,carro.png,ambiente.png,0,alvo.png,obstaculo.png,feedPos.png,feedNeut.pngfeedNeg.png,feedPos.mp3,feedNeut.mp3,feedNeg.mp3,True,True,

@@ -21,7 +21,7 @@ class Target:
     def define_spawn_pos(self, size): # define the start pos and moving vel of the mosquito
         vel = random.uniform(TARGETS_MOVE_SPEED["min"], TARGETS_MOVE_SPEED["max"])
         moving_direction = "down"
-        start_pos = (random.randint(size[0], SCREEN_WIDTH-size[0]), -size[1])
+        start_pos = OBJ_POS[random.randint(0,2)]
         self.vel = [0, vel]
         return moving_direction, start_pos
 
@@ -51,6 +51,6 @@ class Target:
             self.draw_hitbox(surface)
 
 
-    def kill(self, mosquitos): # remove the mosquito from the list
-        mosquitos.remove(self)
+    def kill(self, targets): # remove the mosquito from the list
+        targets.remove(self)
         return 1
