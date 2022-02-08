@@ -13,7 +13,7 @@ from menu import Menu
 os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (100, 32) # windows position
 pygame.init()
 pygame.display.set_caption(WINDOW_NAME)
-SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
+SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 0)
 
 mainClock = pygame.time.Clock()
 
@@ -35,15 +35,16 @@ menu = Menu(SCREEN)
 
 # Functions ------------------------------------------------------ #
 def user_events():
+    global state
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             pygame.quit()
-            sys.exit()
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 pygame.quit()
-                sys.exit()
+            if event.key == pygame.K_SPACE:
+                state = "menu"
 
 
 def update():
@@ -52,9 +53,31 @@ def update():
         if menu.update() == "game":
             game.reset() # reset the game to start a new game
             state = "game"
+        '''
+        elif game.update() == "next":
+            game.reset()  # reset the game to start a new game next level
+            state = "game"
+        elif game.update() == "restart":
+            game.reset()  # reset the game to start a new game
+            state = "game"
+        elif game.update() == "prev":
+            game.reset()  # reset the game to start a new game prev level
+            state = "game"
+        #'''
     elif state == "game":
         if game.update() == "menu":
             state = "menu"
+        '''
+        elif game.update() == "next":
+            game.reset()  # reset the game to start a new game
+            state = "game"
+        elif game.update() == "restart":
+            game.reset()  # reset the game to start a new game
+            state = "game"
+        elif game.update() == "prev":
+            game.reset()  # reset the game to start a new game
+            state = "game"
+        #'''
     pygame.display.update()
     mainClock.tick(FPS)
 

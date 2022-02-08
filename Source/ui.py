@@ -18,8 +18,13 @@ def draw_text(surface, text, pos, color, font=FONTS["medium"], pos_mode="top_lef
 
 
 
-def button(surface, pos_y, text=None, click_sound=None):
-    rect = pygame.Rect((SCREEN_WIDTH//2 - BUTTONS_SIZES[0]//2, pos_y), BUTTONS_SIZES)
+def button(surface, pos_x,  pos_y, text=None, click_sound=None):
+    if pos_x == 1 : #esqueda
+        rect = pygame.Rect((SCREEN_WIDTH//4 - BUTTONS_SIZES[0]//2, pos_y), BUTTONS_SIZES)
+    elif pos_x == 2: #direita
+        rect = pygame.Rect((3*SCREEN_WIDTH//4 - BUTTONS_SIZES[0] // 2, pos_y), BUTTONS_SIZES)
+    else: #meio
+        rect = pygame.Rect((SCREEN_WIDTH // 2 - BUTTONS_SIZES[0] // 2, pos_y), BUTTONS_SIZES)
 
     on_button = False
     if rect.collidepoint(pygame.mouse.get_pos()):

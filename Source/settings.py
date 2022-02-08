@@ -9,26 +9,26 @@ FPS = 60
 DRAW_FPS = True
 
 # sizes
-BUTTONS_SIZES = (240, 90)
+BUTTONS_SIZES = (300, 90)
 HAND_SIZE = 350
 HAND_HITBOX_SIZE = (200, 200)
-TARGETS_SIZES = (50, 50)
-TARGETS_SIZE_RANDOMIZE = (1,2) # for each new mosquito, it will multiply the size with an random value beteewn X and Y
-OBSTACLE_SIZES = (50, 50)
+TARGETS_SIZES = (300, 300)
+TARGETS_SIZE_RANDOMIZE = (1,2)
+OBSTACLE_SIZES = (300, 300)
 OBSTACLE_SIZE_RANDOMIZE = (1.2, 1.5)
 
-OBJ_POS = [((SCREEN_WIDTH/2)-200, -SCREEN_HEIGHT), ((SCREEN_WIDTH/2)-25, -SCREEN_HEIGHT),((SCREEN_WIDTH/2)+200, -SCREEN_HEIGHT)]
+OBJ_POS = [((SCREEN_WIDTH/4)-150, -SCREEN_HEIGHT), ((SCREEN_WIDTH/2)-150, -SCREEN_HEIGHT),(3*(SCREEN_WIDTH/4)-150, -SCREEN_HEIGHT)]
 
 # drawing
-DRAW_HITBOX = True  # will draw all the hitbox
+DRAW_HITBOX = False  # will draw all the hitbox
 
 # animation
-ANIMATION_SPEED = 0.1 # the frame of the insects will change every X sec
+ANIMATION_SPEED = 0.01 # the frame of the insects will change every X sec
 
 # difficulty
 GAME_DURATION = 120  # the game will last X sec
-TARGETS_SPAWN_TIME = 1
-TARGETS_MOVE_SPEED = {"min": 1, "max": 5}
+TARGETS_SPAWN_TIME = 10
+TARGETS_MOVE_SPEED = {"min": 2, "max": 2}
 OBSTACLE_PENALITY = 0  # will remove X of the score of the player (if he kills a bee)
 
 # colors
@@ -38,7 +38,7 @@ COLORS = {"title": (38, 61, 39), "score": (38, 61, 39), "timer": (38, 61, 39),
 
 # sounds / music
 MUSIC_VOLUME = 0  # value between 0 and 1
-SOUNDS_VOLUME = 1
+SOUNDS_VOLUME = 0
 
 # fonts
 pygame.font.init()

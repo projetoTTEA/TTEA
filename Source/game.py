@@ -7,6 +7,7 @@ from settings import *
 from background import Background
 from car import Car
 from hand_tracking import HandTracking
+from pose_tracking import PoseTracking
 from target import Target
 from obstacle import Obstacle
 import cv2
@@ -28,7 +29,7 @@ class Game:
 
 
     def reset(self): # reset all the needed variables
-        self.hand_tracking = HandTracking()
+        self.pose_tracking = PoseTracking()
         self.car = Car()
         self.targets = []
         self.targets_spawn_timer = 0
@@ -44,7 +45,7 @@ class Game:
             # increase the probability that the insect will be a bee over time
             nb = (GAME_DURATION-self.time_left)/GAME_DURATION * 100  / 2  # increase from 0 to 50 during all  the game (linear)
             fase = arquivo.get_K_FASE('Jogadores/' + arquivo.get_Player() + '_KarTEA_config.csv')
-            print(fase)
+            #print(fase)
             if fase == 1:
                 self.targets.append(Target())
             elif fase == 2:
@@ -62,10 +63,9 @@ class Game:
     def load_camera(self):
         _, self.frame = self.cap.read()
 
-
-    def set_hand_position(self):
-        self.frame = self.hand_tracking.scan_hands(self.frame)
-        (x, y) = self.hand_tracking.get_hand_center()
+    def set_feet_position(self):
+        self.frame = self.pose_tracking.scan_feets(self.frame)
+        (x, y) = self.pose_tracking.get_feet_center()
         self.car.rect.center = (x, 850)
         """
         print("x: ", x ," y: ", y)
@@ -102,25 +102,24 @@ class Game:
     def update(self):
 
         self.load_camera()
-        self.set_hand_position()
+        self.set_feet_position()
         self.game_time_update()
 
         self.draw()
 
         if self.time_left > 0:
             self.spawn_targets()
-            (x, y) = self.hand_tracking.get_hand_center()
+            (x, y) = self.pose_tracking.get_feet_center()
             self.car.rect.center = (x, y)
-            self.car.left_click = self.hand_tracking.hand_closed
+            self.car.left_click = self.pose_tracking.feet_closed
             #print(arquivo.get_Player()) #checando qual é o jogador selecionado
-            #print("Hand closed", self.car.left_click)
             if self.car.left_click:
                 self.car.image = self.car.image_smaller.copy()
             else:
                 self.car.image = self.car.orig_image.copy()
             self.score = self.car.kill_targets(self.targets, self.score, self.sounds)
-            for insect in self.targets:
-                insect.move()
+            for carro in self.targets:
+                carro.move()
 
         else: # when the game is over
             if ui.button(self.surface, 540, "Continue", click_sound=self.sounds["slap"]):
