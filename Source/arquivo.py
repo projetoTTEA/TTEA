@@ -6,6 +6,8 @@ Funções que interagem com os arquivos csv
 """
 
 Player = ''
+Fase = 1
+Nivel = 1
 
 def set_Player(A):
     global Player
@@ -14,6 +16,23 @@ def set_Player(A):
 def get_Player():
     global Player
     return Player
+
+def set_Fase(A):
+    global Fase
+    Fase = A
+
+def get_Fase():
+    global Fase
+    return Fase
+
+def set_Nivel(A):
+    global Nivel
+    Nivel = A
+
+def get_Nivel():
+    global Nivel
+    return Nivel
+
 
 
 csv.register_dialect(
@@ -63,10 +82,19 @@ def gravaDados(filename, Dados):# Dados é um vetor com os dados para gravar no 
 
 def lerConfigs(filename): #Apenas para os arquivos gerais, nos detalhados retorna a primeira linha de dados
     """
-    Configs = ['Nome', 'Data de Nasc.', 'Observacoes', 'Fase Atual', 'Nivel Atual', 'Tempo de Nivel', 'Carro',
-              'Ambiente', 'Paleta', 'Alvo', 'Obstaculo', 'Imagem Feedback Positivo', 'Imagem Feedback Neutro',
-              'Imagem Feedback Negativo', 'Som Feedback Positivo', 'Som Feedback Neutro', 'Som Feedback Negativo',
-              'HUD', 'Som']
+    Player_Kartea.csv = ['Sessao', 'Data da Sessao', 'Hora Inicio', 'Fase Alcancada', 'Nivel Alcancado', 'Pontuacao Geral', 
+                         'Q Movimentos', 'Q Alvos Colididos', 'Q Alvos Desviados', 'Q Obstaculos Colididos', 
+                         'Q Obstaculos Desviados']
+
+    Player_Kartea_config.csv = ['Nome', 'Data de Nasc.', 'Observacoes', 'Fase Atual', 'Nivel Atual', 'Tempo de Nivel', 'Carro',
+                                  'Ambiente', 'Paleta', 'Alvo', 'Obstaculo', 'Imagem Feedback Positivo', 'Imagem Feedback Neutro',
+                                  'Imagem Feedback Negativo', 'Som Feedback Positivo', 'Som Feedback Neutro', 'Som Feedback Negativo',
+                                  'HUD', 'Som']
+
+    Player_Kartea_detalhado = ['ID', 'Sessao', 'Hora do Evento', 'Fase', 'Nivel', 'Posicao jogador', 'Posicao Evento', 'Tipo de Evento']
+
+    Fases = ['', ]
+
     """
     with open(filename, 'r') as csvfile:
         csvreader = csv.reader(csvfile, dialect='mydialect')

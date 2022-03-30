@@ -35,11 +35,19 @@ class PoseTracking:
         self.feet_closed = False
 
         if self.results.pose_landmarks:
-            x, y = self.results.pose_landmarks.landmark[30].x, self.results.pose_landmarks.landmark[30].y
-            x1, y1 = self.results.pose_landmarks.landmark[29].x, self.results.pose_landmarks.landmark[29].y
+            """
+            x1, y1 = self.results.pose_landmarks.landmark[30].x, self.results.pose_landmarks.landmark[30].y # left_heel
+            x2, y2 = self.results.pose_landmarks.landmark[29].x, self.results.pose_landmarks.landmark[29].y # right_heel
 
-            self.feet_x = int(((x+x1)/2) * SCREEN_WIDTH)
-            self.feet_y = int(((y+y1)/2) * SCREEN_HEIGHT)
+            #Ponto medio entre os pes
+            x = int((x1+x2)/2)
+            y = int((y+y1)/2)
+            x, y
+            """
+            x, y = self.results.pose_landmarks.landmark[0].x, self.results.pose_landmarks.landmark[0].y  # nose
+
+            self.feet_x = int(x * SCREEN_WIDTH)
+            self.feet_y = int(y * SCREEN_HEIGHT)
 
             mp_drawing.draw_landmarks(
                 image,

@@ -1,0 +1,5 @@
+Nivel - Indice do nível
+Intervalo - Intervalo de tempo entre objetos
+Num Obj - Numero de objetos a serem apresentados
+Tipo Obj - (Apenas Fase 3) Qual tipo de objeto é apresentado (0 alvo, 1 obstaculo)
+

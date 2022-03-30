@@ -6,7 +6,6 @@ import arquivo
 from settings import *
 from background import Background
 from car import Car
-from hand_tracking import HandTracking
 from pose_tracking import PoseTracking
 from target import Target
 from obstacle import Obstacle
@@ -22,9 +21,9 @@ class Game:
         self.cap = cv2.VideoCapture(0)
 
         self.sounds = {}
-        self.sounds["slap"] = pygame.mixer.Sound(f"Assets/Sounds/slap.wav")
+        self.sounds["slap"] = pygame.mixer.Sound(f"Assets/Sounds/point.wav")
         self.sounds["slap"].set_volume(SOUNDS_VOLUME)
-        self.sounds["screaming"] = pygame.mixer.Sound(f"Assets/Sounds/screaming.wav")
+        self.sounds["screaming"] = pygame.mixer.Sound(f"Assets/Sounds/crash.wav")
         self.sounds["screaming"].set_volume(SOUNDS_VOLUME)
 
 
@@ -66,7 +65,7 @@ class Game:
     def set_feet_position(self):
         self.frame = self.pose_tracking.scan_feets(self.frame)
         (x, y) = self.pose_tracking.get_feet_center()
-        self.car.rect.center = (x, 850)
+        self.car.rect.center = (x, 550)
         """
         print("x: ", x ," y: ", y)
         if x < SCREEN_WIDTH/3:

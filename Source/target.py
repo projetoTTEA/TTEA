@@ -10,24 +10,46 @@ class Target:
         #random_size_value = random.uniform(MOSQUITO_SIZE_RANDOMIZE[0], MOSQUITO_SIZE_RANDOMIZE[1])
         size = (int(TARGETS_SIZES[0]), int(TARGETS_SIZES[1]))
         # moving
-        moving_direction, start_pos = self.define_spawn_pos(size)
+        road ,start_pos = self.define_spawn_pos(size)
+
         # sprite
         self.rect = pygame.Rect(start_pos[0], start_pos[1], size[0]//1.4, size[1]//1.4)
-        self.images = [image.load("Assets/Star.png", size=size, flip=moving_direction == "right")]
+        self.images = [image.load("Assets/Star.png", size=size)]
         self.current_frame = 0
+        self.current_pos = start_pos
+        self.current_road = road
         self.animation_timer = 0
 
 
     def define_spawn_pos(self, size): # define the start pos and moving vel of the mosquito
-        vel = random.uniform(TARGETS_MOVE_SPEED["min"], TARGETS_MOVE_SPEED["max"])
-        moving_direction = "down"
-        start_pos = OBJ_POS[random.randint(0,2)]
-        self.vel = [0, vel]
-        return moving_direction, start_pos
+        road = random.randint(0,2) # 0 esq, 1 meio, 2 dir
+        start_pos = OBJ_POS[road]
+        return road, start_pos
 
 
     def move(self):
-        self.rect.move_ip(self.vel)
+        ve = TARGETS_MOVE_SPEED
+        vel = [0, ve]
+        print('Road: ', self.current_road, ', Pos:', self.current_pos)
+        if self.current_pos[1] % 10 == 0:
+            if self.current_road == 0:
+                vel = [-2, ve]
+            elif self.current_road == 1:
+                vel = [-1, ve]
+            elif self.current_road == 2:
+                vel = [2, ve]
+        elif self.current_pos[1] % 5 == 0:
+            self.rect.inflate_ip(1, 1)
+            if self.current_road == 0:
+                    vel = [-2,ve]
+            elif self.current_road == 2:
+                    vel = [2,ve]
+        else:
+            vel = [0,ve]
+        self.rect.move_ip(vel)
+
+        self.current_pos = (self.current_pos[0] + vel[0], self.current_pos[1] + vel[1])
+
 
 
     def animate(self): # change the frame of the insect when needed

@@ -156,7 +156,7 @@ def jogador_changed(event):
     if game == 'KARTEA':
         PLAYER_ARQ = PLAYER + "_KarTEA.csv"
         PLAYER_ARQ_CONFIG = PLAYER + "_KarTEA_config.csv"
-        PLAYER_ARQ_DET = PLAYER + "_KarTEA_detalhado.csv"
+        PLAYER_ARQ_DET = PLAYER + "_KarTEA_detalhadocsv"
     elif game == 'REPETEA':
         PLAYER_ARQ = PLAYER + "_RepeTEA.csv"
         PLAYER_ARQ_CONFIG = PLAYER + "_RepeTEA_config.csv"
@@ -276,6 +276,7 @@ def cadastrarcallback():
     SData = DataString.get()
     SObs = ObsString.get()
     #print(SNome, SData, SObs)
+
 
     if SNome not in arr_Jogadores:
         arquivo.CadastrarJogador(SNome, SData, SObs)

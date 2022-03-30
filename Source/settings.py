@@ -1,40 +1,45 @@
 import pygame
+import arquivo
 
 WINDOW_NAME = "KARTEA"
 GAME_TITLE = WINDOW_NAME
 
-SCREEN_WIDTH, SCREEN_HEIGHT = 1920, 1000
+SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
 
 FPS = 60
 DRAW_FPS = True
 
 # sizes
 BUTTONS_SIZES = (300, 90)
-HAND_SIZE = 350
-HAND_HITBOX_SIZE = (200, 200)
-TARGETS_SIZES = (300, 300)
-TARGETS_SIZE_RANDOMIZE = (1,2)
-OBSTACLE_SIZES = (300, 300)
-OBSTACLE_SIZE_RANDOMIZE = (1.2, 1.5)
+CAR_SIZE = 150
+CAR_HITBOX_SIZE = (100, 100)
+TARGETS_SIZES = (12, 12)
+OBSTACLE_SIZES = (12, 12)
 
-OBJ_POS = [((SCREEN_WIDTH/4)-150, -SCREEN_HEIGHT), ((SCREEN_WIDTH/2)-150, -SCREEN_HEIGHT),(3*(SCREEN_WIDTH/4)-150, -SCREEN_HEIGHT)]
+OBJ_POS = [(368, 80), (393, 80),(419, 80)]
+"""
+OBJ_POS_F = [(104, 600), (337, 600),(570, 600)]
+
+264, 56, 151
+0.5, 0.1, 0.3
+"""
 
 # drawing
-DRAW_HITBOX = False  # will draw all the hitbox
+DRAW_HITBOX = True  # will draw all the hitbox
 
 # animation
 ANIMATION_SPEED = 0.01 # the frame of the insects will change every X sec
 
 # difficulty
 GAME_DURATION = 120  # the game will last X sec
+
 TARGETS_SPAWN_TIME = 10
-TARGETS_MOVE_SPEED = {"min": 2, "max": 2}
+TARGETS_MOVE_SPEED = 1
 OBSTACLE_PENALITY = 0  # will remove X of the score of the player (if he kills a bee)
 
 # colors
-COLORS = {"title": (38, 61, 39), "score": (38, 61, 39), "timer": (38, 61, 39),
-            "buttons": {"default": (56, 67, 209), "second":  (87, 99, 255),
-                        "text": (255, 255, 255), "shadow": (46, 54, 163)}}  # second is the color when the mouse is on the button
+COLORS = {"title": (38, 61, 39), "score": (38, 61, 39),
+          "timer": (38, 61, 39), "buttons": {"default": (56, 67, 209), "second":  (87, 99, 255), "text": (255, 255, 255), "shadow": (46, 54, 163)}}  # second is the color when the mouse is on the button
 
 # sounds / music
 MUSIC_VOLUME = 0  # value between 0 and 1

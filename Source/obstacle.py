@@ -7,8 +7,7 @@ from target import Target
 class Obstacle(Target):
     def __init__(self):
         #size
-        random_size_value = random.uniform(OBSTACLE_SIZE_RANDOMIZE[0], OBSTACLE_SIZE_RANDOMIZE[1])
-        size = (int(OBSTACLE_SIZES[0] * random_size_value), int(OBSTACLE_SIZES[1] * random_size_value))
+        size = OBSTACLE_SIZES
         # moving
         moving_direction, start_pos = self.define_spawn_pos(size)
         # sprite
@@ -18,6 +17,6 @@ class Obstacle(Target):
         self.animation_timer = 0
         
 
-    def kill(self, mosquitos): # remove the mosquito from the list
-        mosquitos.remove(self)
+    def kill(self, objects): # remove the mosquito from the list
+        objects.remove(self)
         return -OBSTACLE_PENALITY

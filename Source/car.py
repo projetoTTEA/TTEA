@@ -3,15 +3,14 @@ import pygame
 import arquivo
 import image
 from settings import *
-from hand_tracking import HandTracking
 import cv2
 
 class Car:
     def __init__(self):
-        self.orig_image = image.load("Assets/Carro.png", size=(HAND_SIZE, HAND_SIZE))
+        self.orig_image = image.load("Assets/Carro.png", size=(CAR_SIZE, CAR_SIZE))
         self.image = self.orig_image.copy()
-        self.image_smaller = image.load("Assets/Carro.png", size=(HAND_SIZE - 5, HAND_SIZE - 5))
-        self.rect = pygame.Rect(SCREEN_WIDTH//2, SCREEN_HEIGHT//2, HAND_HITBOX_SIZE[0], HAND_HITBOX_SIZE[1])
+        self.image_smaller = image.load("Assets/Carro.png", size=(CAR_SIZE, CAR_SIZE))
+        self.rect = pygame.Rect(SCREEN_WIDTH//2, SCREEN_HEIGHT//2, CAR_HITBOX_SIZE[0], CAR_HITBOX_SIZE[1])
         self.left_click = False
         #self.hand_tracking = HandTracking()
 

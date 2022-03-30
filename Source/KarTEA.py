@@ -19,11 +19,12 @@ mainClock = pygame.time.Clock()
 
 # Fonts ----------------------------------------------------------- #
 fps_font = pygame.font.SysFont("coopbl", 22)
-
+"""
 # Music ----------------------------------------------------------- #
 pygame.mixer.music.load("Assets/Sounds/Komiku_-_12_-_Bicycle.mp3")
 pygame.mixer.music.set_volume(MUSIC_VOLUME)
 pygame.mixer.music.play(-1)
+"""
 # Variables ------------------------------------------------------- #
 state = "menu"
 

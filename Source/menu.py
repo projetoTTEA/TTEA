@@ -9,7 +9,7 @@ class Menu:
     def __init__(self, surface):
         self.surface = surface
         self.background = Background()
-        self.click_sound = pygame.mixer.Sound(f"Assets/Sounds/slap.wav")
+        self.click_sound = pygame.mixer.Sound(f"Assets/Sounds/point.wav")
 
 
     def draw(self):
