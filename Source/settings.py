@@ -10,7 +10,7 @@ FPS = 60
 DRAW_FPS = True
 
 # sizes
-BUTTONS_SIZES = (300, 90)
+BUTTONS_SIZES = (150, 45)
 CAR_SIZE = 150
 CAR_HITBOX_SIZE = (100, 100)
 TARGETS_SIZES = (12, 12)
@@ -25,7 +25,7 @@ OBJ_POS_F = [(104, 600), (337, 600),(570, 600)]
 """
 
 # drawing
-DRAW_HITBOX = True  # will draw all the hitbox
+DRAW_HITBOX = False  # will draw all the hitbox
 
 # animation
 ANIMATION_SPEED = 0.01 # the frame of the insects will change every X sec
@@ -48,7 +48,7 @@ SOUNDS_VOLUME = 0
 # fonts
 pygame.font.init()
 FONTS = {}
-FONTS["small"] = pygame.font.Font(None, 40)
-FONTS["medium"] = pygame.font.Font(None, 72)
-FONTS["big"] = pygame.font.Font(None, 120)
+FONTS["small"] = pygame.font.Font(None, 10)
+FONTS["medium"] = pygame.font.Font(None, 25)
+FONTS["big"] = pygame.font.Font(None, 50)
 

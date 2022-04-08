@@ -13,6 +13,7 @@ class Target:
         road ,start_pos = self.define_spawn_pos(size)
 
         # sprite
+        self.tam = size
         self.rect = pygame.Rect(start_pos[0], start_pos[1], size[0]//1.4, size[1]//1.4)
         self.images = [image.load("Assets/Star.png", size=size)]
         self.current_frame = 0
@@ -34,12 +35,12 @@ class Target:
         if self.current_pos[1] % 10 == 0:
             if self.current_road == 0:
                 vel = [-2, ve]
-            elif self.current_road == 1:
-                vel = [-1, ve]
             elif self.current_road == 2:
                 vel = [2, ve]
         elif self.current_pos[1] % 5 == 0:
-            self.rect.inflate_ip(1, 1)
+            self.rect.inflate_ip(3, 3)
+            self.tam = (int(self.tam[0] + 3), int(self.tam[1] + 3))
+            self.images = [image.load("Assets/Star.png", size=self.tam)]
             if self.current_road == 0:
                     vel = [-2,ve]
             elif self.current_road == 2:

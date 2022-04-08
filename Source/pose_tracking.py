@@ -47,7 +47,8 @@ class PoseTracking:
             x, y = self.results.pose_landmarks.landmark[0].x, self.results.pose_landmarks.landmark[0].y  # nose
 
             self.feet_x = int(x * SCREEN_WIDTH)
-            self.feet_y = int(y * SCREEN_HEIGHT)
+            #self.feet_y = int(y * SCREEN_HEIGHT) # Caso o jogador mova-se por toda a tela
+            self.feet_y = 550 # Jogador deve se mover apenas lateralmente
 
             mp_drawing.draw_landmarks(
                 image,

@@ -55,26 +55,20 @@ class Game:
                 else:
                     self.targets.append(Target())
 
-            # spawn a other mosquito after the half of the game
-            if self.time_left < GAME_DURATION/2:
-                self.targets.append(Target())
-
     def load_camera(self):
         _, self.frame = self.cap.read()
 
     def set_feet_position(self):
         self.frame = self.pose_tracking.scan_feets(self.frame)
         (x, y) = self.pose_tracking.get_feet_center()
-        self.car.rect.center = (x, 550)
-        """
+        self.car.rect.center = (x, y)
         print("x: ", x ," y: ", y)
         if x < SCREEN_WIDTH/3:
-            self.car.rect.center = (480, 850)
+            self.car.rect.center = (200, 550)
         elif x >= SCREEN_WIDTH/3 and x <= 2*SCREEN_WIDTH/3:
-            self.car.rect.center = (960, 850)
+            self.car.rect.center = (400, 550)
         else:
-            self.car.rect.center = (1440, 850)
-        """
+            self.car.rect.center = (600, 550)
 
     def draw(self):
         # draw the background
@@ -89,7 +83,7 @@ class Game:
                      shadow=True, shadow_color=(255,255,255))
         # draw the time left
         timer_text_color = (160, 40, 0) if self.time_left < 5 else COLORS["timer"] # change the text color if less than 5 s left
-        ui.draw_text(self.surface, f"Tempo : {self.time_left}", (SCREEN_WIDTH // 2, 5), timer_text_color, font=FONTS["medium"],
+        ui.draw_text(self.surface, f"Tempo : {self.time_left}", (500, 5), timer_text_color, font=FONTS["medium"],
                      shadow=True, shadow_color=(255,255,255))
 
 
@@ -112,10 +106,6 @@ class Game:
             self.car.rect.center = (x, y)
             self.car.left_click = self.pose_tracking.feet_closed
             #print(arquivo.get_Player()) #checando qual é o jogador selecionado
-            if self.car.left_click:
-                self.car.image = self.car.image_smaller.copy()
-            else:
-                self.car.image = self.car.orig_image.copy()
             self.score = self.car.kill_targets(self.targets, self.score, self.sounds)
             for carro in self.targets:
                 carro.move()
