@@ -7,8 +7,7 @@ from settings import *
 class Target:
     def __init__(self):
         #size
-        #random_size_value = random.uniform(MOSQUITO_SIZE_RANDOMIZE[0], MOSQUITO_SIZE_RANDOMIZE[1])
-        size = (int(TARGETS_SIZES[0]), int(TARGETS_SIZES[1]))
+        size = TARGETS_SIZES
         # moving
         road ,start_pos = self.define_spawn_pos(size)
 
@@ -34,17 +33,17 @@ class Target:
         print('Road: ', self.current_road, ', Pos:', self.current_pos)
         if self.current_pos[1] % 10 == 0:
             if self.current_road == 0:
-                vel = [-2, ve]
+                vel = [-3, ve]
             elif self.current_road == 2:
-                vel = [2, ve]
+                vel = [3, ve]
         elif self.current_pos[1] % 5 == 0:
             self.rect.inflate_ip(3, 3)
             self.tam = (int(self.tam[0] + 3), int(self.tam[1] + 3))
             self.images = [image.load("Assets/Star.png", size=self.tam)]
             if self.current_road == 0:
-                    vel = [-2,ve]
+                    vel = [-3,ve]
             elif self.current_road == 2:
-                    vel = [2,ve]
+                    vel = [3,ve]
         else:
             vel = [0,ve]
         self.rect.move_ip(vel)

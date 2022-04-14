@@ -9,6 +9,7 @@ class Menu:
     def __init__(self, surface):
         self.surface = surface
         self.background = Background()
+        self.background.background_menu()
         self.click_sound = pygame.mixer.Sound(f"Assets/Sounds/point.wav")
 
 
@@ -17,7 +18,6 @@ class Menu:
         # draw title
         ui.draw_text(self.surface, GAME_TITLE, (SCREEN_WIDTH // 2, 120), COLORS["title"], font=FONTS["big"],
                      shadow=True, shadow_color=(255,255,255), pos_mode="center")
-
 
     def update(self):
         self.draw()
