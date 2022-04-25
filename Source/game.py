@@ -61,14 +61,17 @@ class Game:
     def set_feet_position(self):
         self.frame = self.pose_tracking.scan_feets(self.frame)
         (x, y) = self.pose_tracking.get_feet_center()
-        self.car.rect.center = (x, y)
+        Y = SCREEN_HEIGHT - CAR_SIZE/2
+        self.car.rect.center = (x, Y)
         print("x: ", x ," y: ", y)
+        """
         if x < SCREEN_WIDTH/3:
             self.car.rect.center = (200, 550)
         elif x >= SCREEN_WIDTH/3 and x <= 2*SCREEN_WIDTH/3:
             self.car.rect.center = (400, 550)
         else:
             self.car.rect.center = (600, 550)
+        """
 
     def draw(self):
         # draw the background
@@ -107,8 +110,10 @@ class Game:
             self.car.left_click = self.pose_tracking.feet_closed
             #print(arquivo.get_Player()) #checando qual é o jogador selecionado
             self.score = self.car.kill_targets(self.targets, self.score, self.sounds)
-            for carro in self.targets:
-                carro.move()
+            for alvo in self.targets:
+                alvo.move()
+                if alvo.current_pos[1] > 600:
+                    self.score += alvo.kill(self.targets)
 
         else: # when the game is over
             if ui.button(self.surface, 540, "Continue", click_sound=self.sounds["slap"]):

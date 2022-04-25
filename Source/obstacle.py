@@ -46,7 +46,7 @@ class Obstacle(Target):
     def kill(self, objects): # remove the mosquito from the list
         if self.current_pos[1] > 600:
             objects.remove(self)
-            return 1
+            return 10
         else:
             objects.remove(self)
             return 0

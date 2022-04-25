@@ -74,5 +74,9 @@ class Target:
 
 
     def kill(self, targets): # remove the mosquito from the list
-        targets.remove(self)
-        return 1
+        if self.current_pos[1] > 600:
+            targets.remove(self)
+            return 0
+        else:
+            targets.remove(self)
+            return 10
