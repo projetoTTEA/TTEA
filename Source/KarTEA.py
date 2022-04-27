@@ -21,7 +21,7 @@ mainClock = pygame.time.Clock()
 fps_font = pygame.font.SysFont("coopbl", 22)
 """
 # Music ----------------------------------------------------------- #
-pygame.mixer.music.load("Assets/Sounds/Komiku_-_12_-_Bicycle.mp3")
+pygame.mixer.music.load("Assets/Kartea/Sounds/Komiku_-_12_-_Bicycle.mp3")
 pygame.mixer.music.set_volume(MUSIC_VOLUME)
 pygame.mixer.music.play(-1)
 """

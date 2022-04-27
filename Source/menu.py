@@ -10,7 +10,7 @@ class Menu:
         self.surface = surface
         self.background = Background()
         self.background.background_menu()
-        self.click_sound = pygame.mixer.Sound(f"Assets/Sounds/point.wav")
+        self.click_sound = pygame.mixer.Sound(f"Assets/Kartea/Sounds/point.wav")
 
 
     def draw(self):
@@ -23,15 +23,6 @@ class Menu:
         self.draw()
 
         if ui.button(self.surface, 0, 300, "Jogar", click_sound=self.click_sound):
-            return "game"
-
-        if ui.button(self.surface, 1, 300 + BUTTONS_SIZES[1] * 2, "Retroceder", click_sound=self.click_sound):
-            return "game"
-
-        if ui.button(self.surface, 0, 300 + BUTTONS_SIZES[1] * 2, "Reiniciar", click_sound=self.click_sound):
-            return "game"
-
-        if ui.button(self.surface, 2, 300 + BUTTONS_SIZES[1] * 2, "Avançar", click_sound=self.click_sound):
             return "game"
 
         if ui.button(self.surface, 0, 300 + BUTTONS_SIZES[1] * 4, "Sair", click_sound=self.click_sound):

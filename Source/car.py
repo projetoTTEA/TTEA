@@ -7,9 +7,9 @@ import cv2
 
 class Car:
     def __init__(self):
-        self.orig_image = image.load("Assets/Carro.png", size=(CAR_SIZE, CAR_SIZE))
+        self.orig_image = image.load("Assets/Kartea/Carro.png", size=(CAR_SIZE, CAR_SIZE))
         self.image = self.orig_image.copy()
-        self.image_smaller = image.load("Assets/Carro.png", size=(CAR_SIZE, CAR_SIZE))
+        self.image_smaller = image.load("Assets/Kartea/Carro.png", size=(CAR_SIZE, CAR_SIZE))
         self.rect = pygame.Rect(SCREEN_WIDTH//2, SCREEN_HEIGHT//2, CAR_HITBOX_SIZE[0], CAR_HITBOX_SIZE[1])
         self.left_click = False
         #self.hand_tracking = HandTracking()
@@ -37,11 +37,8 @@ class Car:
         return [target for target in targets if self.rect.colliderect(target.rect)]
 
 
-    def kill_targets(self, targets, score, sounds): # will kill the targets that collide with the hand when the left mouse button is pressed
+    def kill_targets(self, surface, targets, score, sounds): # will kill the targets that collide with the hand when the left mouse button is pressed
         for target in self.on_target(targets):
-                target_score = target.kill(targets)
+                target_score = target.kill(surface,targets,sounds)
                 score += target_score
-                sounds["slap"].play()
-                if target_score < 0:
-                    sounds["screaming"].play()
         return score

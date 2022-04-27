@@ -1,6 +1,7 @@
 import pygame
 import random
 import image
+import time
 from settings import *
 from target import Target
 
@@ -14,7 +15,7 @@ class Obstacle(Target):
         # sprite
         self.tam = size
         self.rect = pygame.Rect(start_pos[0], start_pos[1], size[0]//1.4, size[1]//1.4)
-        self.images = [image.load("Assets/Obstaculo.png", size=size)]
+        self.images = [image.load("Assets/Kartea/Obstaculo.png", size=size)]
         self.current_frame = 0
         self.current_pos = start_pos
         self.current_road = road
@@ -32,7 +33,7 @@ class Obstacle(Target):
         elif self.current_pos[1] % 5 == 0:
             self.rect.inflate_ip(3, 3)
             self.tam = (int(self.tam[0] + 3), int(self.tam[1] + 3))
-            self.images = [image.load("Assets/Obstaculo.png", size=self.tam)]
+            self.images = [image.load("Assets/Kartea/Obstaculo.png", size=self.tam)]
             if self.current_road == 0:
                     vel = [-3,ve]
             elif self.current_road == 2:
@@ -43,12 +44,18 @@ class Obstacle(Target):
 
         self.current_pos = (self.current_pos[0] + vel[0], self.current_pos[1] + vel[1])
 
-    def kill(self, objects): # remove the mosquito from the list
+    def kill(self, surface, objects, sounds): # remove the mosquito from the list
+        triste_fig = image.load('Assets/Kartea/triste.png')
+        feliz_fig = image.load('Assets/Kartea/feliz.png')
         if self.current_pos[1] > 600:
             objects.remove(self)
+            sounds["slap"].play()
+            image.draw(surface, feliz_fig, (0, 0))
             return 10
         else:
             objects.remove(self)
+            sounds["screaming"].play()
+            image.draw(surface,triste_fig,(0,0))
             return 0
 
 

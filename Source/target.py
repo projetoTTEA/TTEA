@@ -14,7 +14,7 @@ class Target:
         # sprite
         self.tam = size
         self.rect = pygame.Rect(start_pos[0], start_pos[1], size[0]//1.4, size[1]//1.4)
-        self.images = [image.load("Assets/Star.png", size=size)]
+        self.images = [image.load("Assets/Kartea/Star.png", size=size)]
         self.current_frame = 0
         self.current_pos = start_pos
         self.current_road = road
@@ -39,7 +39,7 @@ class Target:
         elif self.current_pos[1] % 5 == 0:
             self.rect.inflate_ip(3, 3)
             self.tam = (int(self.tam[0] + 3), int(self.tam[1] + 3))
-            self.images = [image.load("Assets/Star.png", size=self.tam)]
+            self.images = [image.load("Assets/Kartea/Star.png", size=self.tam)]
             if self.current_road == 0:
                     vel = [-3,ve]
             elif self.current_road == 2:
@@ -73,10 +73,16 @@ class Target:
             self.draw_hitbox(surface)
 
 
-    def kill(self, targets): # remove the mosquito from the list
+    def kill(self, surface, targets, sounds): # remove the mosquito from the list
+        triste_fig = image.load('Assets/Kartea/triste.png')
+        feliz_fig = image.load('Assets/Kartea/feliz.png')
         if self.current_pos[1] > 600:
             targets.remove(self)
+            sounds["screaming"].play()
+            image.draw(surface,triste_fig,(0,0))
             return 0
         else:
             targets.remove(self)
+            sounds["slap"].play()
+            image.draw(surface, feliz_fig, (0, 0))
             return 10

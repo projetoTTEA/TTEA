@@ -3,11 +3,11 @@ from settings import *
 
 class Background:
     def __init__(self):
-        self.image = image.load("Assets/Background.png", size=(SCREEN_WIDTH, SCREEN_HEIGHT),
+        self.image = image.load("Assets/Kartea/Background.png", size=(SCREEN_WIDTH, SCREEN_HEIGHT),
                                 convert="default")
 
     def background_menu(self):
-        self.image = image.load("Assets/Background_Menu.png", size=(SCREEN_WIDTH, SCREEN_HEIGHT),
+        self.image = image.load("Assets/Kartea/Background_Menu.png", size=(SCREEN_WIDTH, SCREEN_HEIGHT),
                                 convert="default")
 
     def draw(self, surface):

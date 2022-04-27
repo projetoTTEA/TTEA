@@ -21,9 +21,9 @@ class Game:
         self.cap = cv2.VideoCapture(0)
 
         self.sounds = {}
-        self.sounds["slap"] = pygame.mixer.Sound(f"Assets/Sounds/point.wav")
+        self.sounds["slap"] = pygame.mixer.Sound(f"Assets/Kartea/Sounds/point.wav")
         self.sounds["slap"].set_volume(SOUNDS_VOLUME)
-        self.sounds["screaming"] = pygame.mixer.Sound(f"Assets/Sounds/crash.wav")
+        self.sounds["screaming"] = pygame.mixer.Sound(f"Assets/Kartea/Sounds/miss.wav")
         self.sounds["screaming"].set_volume(SOUNDS_VOLUME)
 
 
@@ -82,11 +82,11 @@ class Game:
         # draw the car
         self.car.draw(self.surface)
         # draw the score
-        ui.draw_text(self.surface, f"Pontuação : {self.score}", (5, 5), COLORS["score"], font=FONTS["medium"],
+        ui.draw_text(self.surface, f"Pontuação : {self.score}", (650, 5), COLORS["score"], font=FONTS["medium"],
                      shadow=True, shadow_color=(255,255,255))
         # draw the time left
         timer_text_color = (160, 40, 0) if self.time_left < 5 else COLORS["timer"] # change the text color if less than 5 s left
-        ui.draw_text(self.surface, f"Tempo : {self.time_left}", (500, 5), timer_text_color, font=FONTS["medium"],
+        ui.draw_text(self.surface, f"Tempo : {self.time_left}", (5, 5), timer_text_color, font=FONTS["medium"],
                      shadow=True, shadow_color=(255,255,255))
 
 
@@ -109,11 +109,11 @@ class Game:
             self.car.rect.center = (x, y)
             self.car.left_click = self.pose_tracking.feet_closed
             #print(arquivo.get_Player()) #checando qual é o jogador selecionado
-            self.score = self.car.kill_targets(self.targets, self.score, self.sounds)
+            self.score = self.car.kill_targets(self.surface, self.targets, self.score, self.sounds)
             for alvo in self.targets:
                 alvo.move()
                 if alvo.current_pos[1] > 600:
-                    self.score += alvo.kill(self.targets)
+                    self.score += alvo.kill(self.surface, self.targets, self.sounds)
 
         else: # when the game is over
             if ui.button(self.surface, 540, "Continue", click_sound=self.sounds["slap"]):
