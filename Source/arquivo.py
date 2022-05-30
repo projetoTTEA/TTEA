@@ -1,5 +1,6 @@
 import csv
 import pandas as pd
+import numpy as np
 
 """
 Funções que interagem com os arquivos csv
@@ -101,6 +102,22 @@ def lerConfigs(filename): #Apenas para os arquivos gerais, nos detalhados retorn
         fields = next(csvreader)  # Dados do jogador
         fields = next(csvreader)  # Configuracoes
         return fields
+
+def lerCalibracao():
+    pontos_calibracao = np.zeros((4, 2), int)
+    df = pd.read_csv('calibracao.csv')
+
+    # getting value/data
+    pontos_calibracao[0][0] = df["Ponto 1 x"].values[0]
+    pontos_calibracao[0][1] = df["Ponto 1 y"].values[0]
+    pontos_calibracao[1][0] = df["Ponto 2 x"].values[0]
+    pontos_calibracao[1][1] = df["Ponto 2 y"].values[0]
+    pontos_calibracao[2][0] = df["Ponto 3 x"].values[0]
+    pontos_calibracao[2][1] = df["Ponto 3 y"].values[0]
+    pontos_calibracao[3][0] = df["Ponto 4 x"].values[0]
+    pontos_calibracao[3][1] = df["Ponto 4 y"].values[0]
+
+    return pontos_calibracao
 
 
 def get_K_NOME(filename):

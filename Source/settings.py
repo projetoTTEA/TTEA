@@ -1,6 +1,5 @@
 import pygame
 import numpy as np
-import mediapipe as mp
 import cv2
 import arquivo
 
@@ -8,6 +7,9 @@ WINDOW_NAME = "KARTEA"
 GAME_TITLE = WINDOW_NAME
 
 SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
+
+CONTADOR = 0
+pontos_calibracao = np.zeros((4, 2), int)
 
 FPS = 60
 DRAW_FPS = True
@@ -79,46 +81,7 @@ largura_tela_controle = 640  # Esta tela é usada pelo terapeuta/operador. Alter
 altura_tela_controle = 480  # Esta tela é usada pelo terapeuta/operador. Altere o valor caso necessário.
 relacao_largura = (largura_projetor / largura_tela_controle)  # Esta relação é usada na correção de perspectiva.
 relacao_altura = (altura_projetor / altura_tela_controle)  # Esta relação é usada na correção de perspectiva.
+tela_de_calibracao = np.zeros((altura_projetor, largura_projetor, 3),
+                              np.uint8)  # Tela que será usada para o projetar o jogo.
 tela_de_controle = np.zeros((altura_tela_controle, largura_tela_controle, 3),
                             np.uint8)  # Tela que será usada para o projetar o jogo.
-
-
-#################################################################################
-############################# VARIÁVEIS DE PROGRAMA #############################
-#################################################################################
-mp_drawing = mp.solutions.drawing_utils  # Configuração do MediaPipe. Ver https://google.github.io/mediapipe/solutions/pose.html para maiores detalhes.
-mp_pose = mp.solutions.pose  # Configuração do MediaPipe. Ver https://google.github.io/mediapipe/solutions/pose.html para maiores detalhes.
-pontos_calibracao = np.zeros((4, 2), int)  # Matriz para os pontos de calibração de perspectiva - 4 linhas/ 2 colunas
-contador = 0  # Contador utilizado nos 4 pontos de calibração
-game_start=False # Coloca na tela iniciar
-gameExit=False # Sai do completamente do jogo
-figura_selecionada=False # Usada para evitar que o usuário apenas selecione uma vez a figura e não ficar piscando
-lista_sorteio=[] #São as figuras sorteadas pelo computador e colocadas nesta lista, para depois fazer a comparação com as escolhas do usuário
-pontuacao=0 # Pontos conseguidos em durante a rodada
-tempo_ajuda=5 # Tempo até a ajuda aparecer
-tempo_total=10 # Tempo máximo da jogada
-atencao_memorizar=False
-hud_switch=True
-pausa_switch=False
-tempo_ajuda_switch=False
-tentativa=1
-
-#################################################################################
-################################## SPRITES ######################################
-#################################################################################
-icone_fig=pygame.image.load('Assets/Kartea/icone.png')
-avisos_fig=pygame.image.load('Assets/Kartea/avisos.png')
-ajuda_f1_fig=pygame.image.load('Assets/Kartea/ajuda_F1.png')
-instrucao_calibrar_fig=pygame.image.load('Assets/Kartea/calibrar.png')
-sem_sinal_fig=pygame.image.load('Assets/Kartea/sem_sinal.png')
-triste_fig=pygame.image.load('Assets/Kartea/triste.png')
-feliz_fig=pygame.image.load('Assets/Kartea/feliz.png')
-som_fig=pygame.image.load('Assets/Kartea/som.png')
-hud_on_fig=pygame.image.load('Assets/Kartea/hud_on.png')
-hud_off_fig=pygame.image.load('Assets/Kartea/hud_off.png')
-fase_abaixo_fig=pygame.image.load('Assets/Kartea/fase_abaixo.png')
-fase_acima_fig=pygame.image.load('Assets/Kartea/fase_acima.png')
-trofeu_fig=pygame.image.load('Assets/Kartea/trofeu.png')
-trofeu_25_fig=pygame.image.load('Assets/Kartea/trofeu_25.png')
-trofeu_50_fig=pygame.image.load('Assets/Kartea/trofeu_50.png')
-trofeu_75_fig=pygame.image.load('Assets/Kartea/trofeu_75.png')

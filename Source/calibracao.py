@@ -222,8 +222,8 @@ def tela_update():
     pygame.display.update()
 
 def grava_calibracao():
-    Config = ['Ponto 1', 'Ponto 2', 'Ponto 3', 'Ponto 4']
-    Dados =  [pontos_calibracao[0], pontos_calibracao[1], pontos_calibracao[2], pontos_calibracao[3]]
+    Config = ['Ponto 1 x', 'Ponto 1 y', 'Ponto 2 x', 'Ponto 2 y', 'Ponto 3 x', 'Ponto 3 y', 'Ponto 4 x', 'Ponto 4 y']
+    Dados =  [pontos_calibracao[0][0], pontos_calibracao[0][1], pontos_calibracao[1][0], pontos_calibracao[1][1], pontos_calibracao[2][0], pontos_calibracao[2][1], pontos_calibracao[3][0], pontos_calibracao[3][1]]
     file = 'calibracao.csv'
 
     with open(file, 'w') as csvfile:

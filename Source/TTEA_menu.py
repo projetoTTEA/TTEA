@@ -249,6 +249,7 @@ def JogarCallback():
     print(arquivo.get_Player(), " = ", jogador)
     if game == 'KARTEA':
         import KarTEA
+        KarTEA.main()
     else:
         print('REPETEA')
 

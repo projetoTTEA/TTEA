@@ -17,6 +17,42 @@ class PoseTracking:
         self.results = None
         self.pose_closed = False
 
+
+    def mousePoints(event, x, y, flags, params):
+        # Função para capturar cliques do Mouse:
+        if event == cv2.EVENT_LBUTTONDOWN:
+            st.pontos_calibracao[st.CONTADOR] = x, y
+            st.CONTADOR = st.CONTADOR + 1
+
+    def calibracao():
+        # Função com os passos para determinar a área de projeçao capturada pela câmera:
+        tela_de_calibracao = np.zeros((SCREEN_WIDTH, SCREEN_HEIGHT, 3), np.uint8)
+        cv2.putText(tela_de_calibracao, ' CLIQUE', (int(SCREEN_HEIGHT / 4), (int(SCREEN_WIDTH / 2) - 20)), fonte,
+                    3,
+                    verde, 2, cv2.LINE_AA)
+        cv2.circle(tela_de_controle, (st.pontos_calibracao[0]), 5, azul, 3)
+        cv2.circle(tela_de_controle, (st.pontos_calibracao[1]), 5, azul, 3)
+        cv2.circle(tela_de_controle, (st.pontos_calibracao[2]), 5, azul, 3)
+        cv2.circle(tela_de_controle, (st.pontos_calibracao[3]), 5, azul, 3)
+
+        if st.CONTADOR == 0:
+            cv2.arrowedLine(tela_de_calibracao, (int(SCREEN_HEIGHT / 2), int(SCREEN_WIDTH / 3)), (0, 0), azul, 20)
+
+        if st.CONTADOR == 1:
+            cv2.arrowedLine(tela_de_calibracao, (int(SCREEN_HEIGHT / 2), int(SCREEN_WIDTH / 3)),
+                            (SCREEN_HEIGHT, 0), azul, 20)
+
+        if st.CONTADOR == 2:
+            cv2.arrowedLine(tela_de_calibracao, (int(SCREEN_HEIGHT / 2), int(SCREEN_WIDTH / 2)),
+                            (0, SCREEN_WIDTH),
+                            azul, 20)
+
+        if st.CONTADOR == 3:
+            cv2.arrowedLine(tela_de_calibracao, (int(SCREEN_HEIGHT / 2), int(SCREEN_WIDTH / 2)),
+                            (SCREEN_HEIGHT, SCREEN_WIDTH), azul, 20)
+
+        cv2.imshow("TELA DE CALIBRACAO", tela_de_calibracao)
+
     def posicao(self, x, y):
         # Função para determinar a posição do jogador na área de projeçao:
         # Transformação de Perspectiva:
@@ -68,7 +104,7 @@ class PoseTracking:
 
             self.feet_x = int(x * SCREEN_WIDTH)
             #self.feet_y = int(y * SCREEN_HEIGHT) # Caso o jogador mova-se por toda a tela
-            self.feet_y = SCREEN_HEIGHT - 50 # Jogador deve se mover apenas lateralmente
+            self.feet_y = 550 # Jogador deve se mover apenas lateralmente
 
             mp_drawing.draw_landmarks(
                 image,

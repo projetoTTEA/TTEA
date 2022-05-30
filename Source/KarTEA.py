@@ -85,11 +85,14 @@ def update():
 
 def main():
     # Loop ------------------------------------------------------------ #
-    with True:
+    while True:
+
         # Buttons ----------------------------------------------------- #
         user_events()
+
         # Update ------------------------------------------------------ #
         update()
+
         # FPS
         if DRAW_FPS:
             fps_label = fps_font.render(f"FPS: {int(mainClock.get_fps())}", 1, (255, 200, 20))
