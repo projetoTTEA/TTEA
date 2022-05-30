@@ -3,7 +3,12 @@ from tkinter import ttk
 from PIL import Image, ImageTk
 import os
 import arquivo
+from settings import *
+import cv2
+import numpy as np
 import settings
+import pygame
+import subprocess
 
 from tkinter import messagebox
 
@@ -97,7 +102,14 @@ def game_changed(event):
 
 game_cb.bind('<<ComboboxSelected>>', game_changed)
 
+# Calibrar Button
+def CalibrarCallback():
+    import calibracao
 
+
+B = tk.Button(menu_frame, text ="Calibrar", command = CalibrarCallback)
+
+B.pack()
 
 # label
 label = ttk.Label(menu_frame, text="Jogador:")
@@ -183,7 +195,6 @@ B = tk.Button(menu_frame, text ="Cadastrar Novo Jogador", command = cadastrarCal
 
 B.pack(fill=tk.X, padx=100, pady=10)
 
-
 # label
 label = ttk.Label(menu_frame, text="Fase:")
 label.pack(fill=tk.X, padx=100, pady=5)
@@ -233,13 +244,11 @@ def nivel_changed(event):
 nivel_cb.bind('<<ComboboxSelected>>', nivel_changed)
 
 
-
 def JogarCallback():
     arquivo.set_Player(jogador)
     print(arquivo.get_Player(), " = ", jogador)
     if game == 'KARTEA':
         import KarTEA
-        KarTEA.main()
     else:
         print('REPETEA')
 

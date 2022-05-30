@@ -169,6 +169,7 @@ def trofeu_75(): #Trofeu quando usuário atinge acima de 75% do total
 
 def vez_do_jogador_perto_1():
     gameDisplay.blit(vez_do_jogador_verde_1_fig, (0, 0))
+
 def vez_do_jogador_perto_2():
     gameDisplay.blit(vez_do_jogador_verde_2_fig, (0, 0))
 

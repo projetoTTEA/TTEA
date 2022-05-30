@@ -49,7 +49,7 @@ def CadastrarJogador(Nome, Nasc, Obs):
               'Ambiente', 'Paleta', 'Alvo', 'Obstaculo', 'Imagem Feedback Positivo', 'Imagem Feedback Neutro',
               'Imagem Feedback Negativo', 'Som Feedback Positivo', 'Som Feedback Neutro', 'Som Feedback Negativo',
               'HUD', 'Som']
-    Configs = [Nome, Nasc, Obs, '1', '1', '120', 'carro.png', 'ambiente.png', '0', 'alvo.png', 'obstaculo.png',
+    Dados = [Nome, Nasc, Obs, '1', '1', '120', 'carro.png', 'ambiente.png', '0', 'alvo.png', 'obstaculo.png',
                'feedPos.png', 'feedNeut.png' 'feedNeg.png', 'feedPos.mp3','feedNeut.mp3', 'feedNeg.mp3',
                True, True]
     file = 'Jogadores/' + Nome + '_KarTEA_config.csv'
@@ -57,7 +57,7 @@ def CadastrarJogador(Nome, Nasc, Obs):
     with open(file, 'w') as csvfile:
         csvwriter = csv.writer(csvfile, dialect='mydialect')
         csvwriter.writerow(Config)
-        csvwriter.writerow(Configs)
+        csvwriter.writerow(Dados)
 
     fields = ['Sessao', 'Data da Sessao', 'Hora Inicio', 'Fase Alcancada', 'Nivel Alcancado', 'Pontuacao Geral',
               'Q Movimentos', 'Q Alvos Colididos', 'Q Alvos Desviados', 'Q Obstaculos Colididos',
