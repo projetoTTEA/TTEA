@@ -70,6 +70,16 @@ imagem = tk.Label(menu_frame, text = "TTEA Logo", image = photo)
 imagem.image = photo
 imagem.pack()
 
+
+# Calibrar Button
+def CalibrarCallback():
+    import calibracao
+
+
+B = tk.Button(menu_frame, text ="Calibrar", command = CalibrarCallback)
+
+B.pack()
+
 # label
 label = ttk.Label(menu_frame, text="Jogos:")
 label.pack(fill=tk.X, padx=100, pady=5)
@@ -102,14 +112,6 @@ def game_changed(event):
 
 game_cb.bind('<<ComboboxSelected>>', game_changed)
 
-# Calibrar Button
-def CalibrarCallback():
-    import calibracao
-
-
-B = tk.Button(menu_frame, text ="Calibrar", command = CalibrarCallback)
-
-B.pack()
 
 # label
 label = ttk.Label(menu_frame, text="Jogador:")
@@ -247,6 +249,9 @@ nivel_cb.bind('<<ComboboxSelected>>', nivel_changed)
 def JogarCallback():
     arquivo.set_Player(jogador)
     print(arquivo.get_Player(), " = ", jogador)
+    settings.pontos_calibracao = arquivo.lerCalibracao()
+    print("Pontos de Calibracao: ", settings.pontos_calibracao)
+
     if game == 'KARTEA':
         import KarTEA
         KarTEA.main()

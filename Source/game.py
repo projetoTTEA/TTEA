@@ -50,7 +50,7 @@ class Game:
             elif fase == 2:
                 self.targets.append(Obstacle())
             else:
-                if random.randint(0, 100) < nb:
+                if random.randint(0, 100) < 50:
                     self.targets.append(Obstacle())
                 else:
                     self.targets.append(Target())
@@ -119,6 +119,15 @@ class Game:
             if ui.button(self.surface, 540, "Continue", click_sound=self.sounds["slap"]):
                 return "menu"
 
+        cv2.line(self.frame, (pontos_calibracao[0]), (pontos_calibracao[1]), (verde), 2)
+        cv2.line(self.frame, (pontos_calibracao[1]), (pontos_calibracao[3]), (verde), 2)
+        cv2.line(self.frame, (pontos_calibracao[2]), (pontos_calibracao[0]), (verde), 2)
+        cv2.line(self.frame, (pontos_calibracao[2]), (pontos_calibracao[3]), (verde), 2)
 
-        cv2.imshow("Frame", self.frame)
+        cv2.circle(self.frame, (pontos_calibracao[0]), 5, azul, 3)
+        cv2.circle(self.frame, (pontos_calibracao[1]), 5, azul, 3)
+        cv2.circle(self.frame, (pontos_calibracao[2]), 5, azul, 3)
+        cv2.circle(self.frame, (pontos_calibracao[3]), 5, azul, 3)
+
+        cv2.imshow("Tela de Captura", self.frame)
         cv2.waitKey(1)

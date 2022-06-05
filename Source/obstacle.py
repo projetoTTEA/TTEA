@@ -24,7 +24,7 @@ class Obstacle(Target):
     def move(self):
         ve = TARGETS_MOVE_SPEED
         vel = [0, ve]
-        print('Road: ', self.current_road, ', Pos:', self.current_pos)
+        #print('Road: ', self.current_road, ', Pos:', self.current_pos)
         if self.current_pos[1] % 10 == 0:
             if self.current_road == 0:
                 vel = [-3, ve]

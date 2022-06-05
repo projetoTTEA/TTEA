@@ -77,8 +77,8 @@ font = pygame.font.SysFont(None, 25)
 # Tamanho das Telas:
 largura_projetor = SCREEN_WIDTH  # A ltere este valor de acordo com a resolução da projeção do jogo.
 altura_projetor = SCREEN_HEIGHT  # A ltere este valor de acordo com a resolução da projeção do jogo.
-largura_tela_controle = 640  # Esta tela é usada pelo terapeuta/operador. Altere o valor caso necessário.
-altura_tela_controle = 480  # Esta tela é usada pelo terapeuta/operador. Altere o valor caso necessário.
+largura_tela_controle = largura_projetor  # Esta tela é usada pelo terapeuta/operador. Altere o valor caso necessário.
+altura_tela_controle = altura_projetor  # Esta tela é usada pelo terapeuta/operador. Altere o valor caso necessário.
 relacao_largura = (largura_projetor / largura_tela_controle)  # Esta relação é usada na correção de perspectiva.
 relacao_altura = (altura_projetor / altura_tela_controle)  # Esta relação é usada na correção de perspectiva.
 tela_de_calibracao = np.zeros((altura_projetor, largura_projetor, 3),
