@@ -268,7 +268,7 @@ while not gameExit:
             ret, frame = camera.read()
 
             # Tela de Controle para RGB.
-            tela_de_controle = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            tela_de_controle = cv2.cvtColor(cv2.flip(frame,1), cv2.COLOR_BGR2RGB)
             tela_de_controle.flags.writeable = False
 
             # Detecção.

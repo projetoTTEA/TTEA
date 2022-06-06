@@ -34,8 +34,6 @@ def get_Nivel():
     global Nivel
     return Nivel
 
-
-
 csv.register_dialect(
     'mydialect',
     delimiter = ',',

@@ -25,6 +25,7 @@ class Game:
         self.sounds["slap"].set_volume(SOUNDS_VOLUME)
         self.sounds["screaming"] = pygame.mixer.Sound(f"Assets/Kartea/Sounds/miss.wav")
         self.sounds["screaming"].set_volume(SOUNDS_VOLUME)
+        TARGETS_MOVE_SPEED = arquivo.get_Nivel()
 
 
     def reset(self): # reset all the needed variables
@@ -63,7 +64,7 @@ class Game:
         (x, y) = self.pose_tracking.get_feet_center()
         Y = SCREEN_HEIGHT - CAR_SIZE/2
         self.car.rect.center = (x, Y)
-        print("x: ", x ," y: ", y)
+        #print("x: ", x ," y: ", y)
         """
         if x < SCREEN_WIDTH/3:
             self.car.rect.center = (200, 550)

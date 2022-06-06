@@ -23,7 +23,7 @@ def posicao(x, y):
     position_y = (matrix[1][0] * p[0] + matrix[1][1] * p[1] + matrix[1][2]) / (
         (matrix[2][0] * p[0] + matrix[2][1] * p[1] + matrix[2][2]))
     p_after = (int((position_x) * (relacao_largura)), int((position_y) * (relacao_altura)))
-    print("p_after: ",p_after)
+    #print("p_after: ",p_after)
     return p_after
 
 
@@ -42,7 +42,7 @@ class PoseTracking:
 
         # Flip the image horizontally for a later selfie-view display, and convert
         # the BGR image to RGB.
-        image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
+        image = cv2.cvtColor(cv2.flip(cv2.flip(image, 0), 1), cv2.COLOR_BGR2RGB)
         # To improve performance, optionally mark the image as not writeable to
         # pass by reference.
         image.flags.writeable = False
@@ -55,21 +55,17 @@ class PoseTracking:
         self.feet_closed = False
 
         if self.results.pose_landmarks:
-            x, y = self.results.pose_landmarks.landmark[0].x, self.results.pose_landmarks.landmark[0].y  # nose
-
-            """
+                        
             x1, y1 = self.results.pose_landmarks.landmark[30].x, self.results.pose_landmarks.landmark[30].y # left_heel
             x2, y2 = self.results.pose_landmarks.landmark[29].x, self.results.pose_landmarks.landmark[29].y # right_heel
 
             #Ponto medio entre os pes
-            x = int((x1+x2)/2)
-            y = int((y+y1)/2)
-            x, y
-            """
+            x = (x1+x2)/2
+            y = (y1+y2)/2
 
 
             self.feet_x, self.feet_y  = posicao(x,y)
-            print("x: ",x,", y: ",y,", feet_x: ",self.feet_x,", feet_y: ",self.feet_y)
+            #print("x: ",x,", y: ",y,", feet_x: ",self.feet_x,", feet_y: ",self.feet_y)
             self.feet_y = 550  # Jogador deve se mover apenas lateralmente
 
             mp_drawing.draw_landmarks(

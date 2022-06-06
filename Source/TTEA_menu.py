@@ -248,9 +248,13 @@ nivel_cb.bind('<<ComboboxSelected>>', nivel_changed)
 
 def JogarCallback():
     arquivo.set_Player(jogador)
-    print(arquivo.get_Player(), " = ", jogador)
+    arquivo.set_Fase(arquivo.get_K_FASE(PLAYER_ARQ_CONFIG))
+    arquivo.set_Nivel(arquivo.get_K_NIVEL(PLAYER_ARQ_CONFIG))
+    print("Jogador: ", arquivo.get_Player(), " Fase: ", arquivo.get_Fase(), " Nivel: ", arquivo.get_Nivel())
     settings.pontos_calibracao = arquivo.lerCalibracao()
     print("Pontos de Calibracao: ", settings.pontos_calibracao)
+
+    TARGETS_MOVE_SPEED = arquivo.get_Nivel()
 
     if game == 'KARTEA':
         import KarTEA
