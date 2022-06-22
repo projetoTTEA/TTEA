@@ -233,7 +233,7 @@ def grava_calibracao():
 
 
 gameWarning = pygame.display.set_mode((largura_projetor, altura_projetor))
-pygame.display.set_caption('RepeTEA')
+pygame.display.set_caption('T-TEA')
 pygame.display.set_icon(icone_fig)
 gameWarning.blit(avisos_fig,(0, 0))
 pygame.display.update()
@@ -245,7 +245,7 @@ while not gameWarning:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_c:
                 gameDisplay = pygame.display.set_mode((largura_projetor, altura_projetor))
-                pygame.display.set_caption('RepeTEA')
+                pygame.display.set_caption('T-TEA')
                 pygame.display.set_icon(icone_fig)
                 instrucao_calibrar()
                 pygame.display.update()
@@ -256,6 +256,7 @@ while not gameWarning:
                 pygame.quit()
                 camera.release()
                 exit()
+                gameWarning = True
 
 
 #################################################################################

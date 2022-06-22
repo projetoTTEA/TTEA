@@ -42,8 +42,8 @@ class PoseTracking:
 
         # Flip the image horizontally for a later selfie-view display, and convert
         # the BGR image to RGB.
-        image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
-        #image = cv2.cvtColor(cv2.flip(cv2.flip(image, 0), 1), cv2.COLOR_BGR2RGB)
+        #image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
+        image = cv2.cvtColor(cv2.flip(image, -1), cv2.COLOR_BGR2RGB)
         # To improve performance, optionally mark the image as not writeable to
         # pass by reference.
         image.flags.writeable = False
@@ -65,7 +65,7 @@ class PoseTracking:
             y = (y1+y2)/2
 
             #Usando o nariz
-            x, y = self.results.pose_landmarks.landmark[30].x, self.results.pose_landmarks.landmark[0].y  # nose
+            #x, y = self.results.pose_landmarks.landmark[30].x, self.results.pose_landmarks.landmark[0].y  # nose
 
             self.feet_x, self.feet_y  = posicao(x,y)
             print("x: ",x,", y: ",y,", feet_x: ",self.feet_x,", feet_y: ",self.feet_y)

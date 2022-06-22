@@ -140,7 +140,7 @@ class Target:
     def kill(self, surface, targets, sounds): # remove the mosquito from the list
         triste_fig = image.load('Assets/Kartea/triste.png')
         feliz_fig = image.load('Assets/Kartea/feliz.png')
-        if self.current_pos[1] > 600:
+        if self.current_pos[1] > (SCREEN_HEIGHT-100):
             targets.remove(self)
             sounds["screaming"].play()
             image.draw(surface,triste_fig,(0,0))

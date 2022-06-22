@@ -25,21 +25,85 @@ class Obstacle(Target):
         ve = TARGETS_MOVE_SPEED
         vel = [0, ve]
         #print('Road: ', self.current_road, ', Pos:', self.current_pos)
-        if self.current_pos[1] % 10 == 0:
-            if self.current_road == 0:
-                vel = [-3, ve]
-            elif self.current_road == 2:
-                vel = [3, ve]
-        elif self.current_pos[1] % 5 == 0:
-            self.rect.inflate_ip(3, 3)
-            self.tam = (int(self.tam[0] + 3), int(self.tam[1] + 3))
-            self.images = [image.load("Assets/Kartea/Obstaculo.png", size=self.tam)]
-            if self.current_road == 0:
-                    vel = [-3,ve]
-            elif self.current_road == 2:
-                    vel = [3,ve]
+
+        if ve == 1:
+            if self.current_pos[1] % 10 == 0:
+                if self.current_road == 0:
+                    vel = [-3, ve]
+                elif self.current_road == 2:
+                    vel = [3, ve]
+            elif self.current_pos[1] % 5 == 0:
+                self.rect.inflate_ip(3, 3)
+                self.tam = (int(self.tam[0] + 3), int(self.tam[1] + 3))
+                self.images = [image.load("Assets/Kartea/Obstaculo.png", size=self.tam)]
+                if self.current_road == 0:
+                        vel = [-3,ve]
+                elif self.current_road == 2:
+                        vel = [3,ve]
+            else:
+                vel = [0,ve]
+        elif ve == 2:
+            if self.current_pos[1] % 8 == 0:
+                if self.current_road == 0:
+                    vel = [-2, ve]
+                elif self.current_road == 2:
+                    vel = [2, ve]
+            elif self.current_pos[1] % 4 == 0:
+                self.rect.inflate_ip(3, 3)
+                self.tam = (int(self.tam[0] + 3), int(self.tam[1] + 3))
+                self.images = [image.load("Assets/Kartea/Obstaculo.png", size=self.tam)]
+                if self.current_road == 0:
+                        vel = [-2,ve]
+                elif self.current_road == 2:
+                        vel = [2,ve]
+            else:
+                vel = [0,ve]
+        elif ve == 3:
+            if self.current_pos[1] % 12 == 0:
+                if self.current_road == 0:
+                    vel = [-1, ve]
+                elif self.current_road == 2:
+                    vel = [1, ve]
+            elif self.current_pos[1] % 6 == 0:
+                self.rect.inflate_ip(3, 3)
+                self.tam = (int(self.tam[0] + 3), int(self.tam[1] + 3))
+                self.images = [image.load("Assets/Kartea/Obstaculo.png", size=self.tam)]
+                if self.current_road == 0:
+                        vel = [-1,ve]
+                elif self.current_road == 2:
+                        vel = [1,ve]
+            else:
+                vel = [0,ve]
+        elif ve == 4:
+            if self.current_pos[1] % 16 == 0:
+                if self.current_road == 0:
+                    vel = [-1, ve]
+                elif self.current_road == 2:
+                    vel = [1, ve]
+            elif self.current_pos[1] % 8 == 0:
+                self.rect.inflate_ip(3, 3)
+                self.tam = (int(self.tam[0] + 3), int(self.tam[1] + 3))
+                self.images = [image.load("Assets/Kartea/Obstaculo.png", size=self.tam)]
+                if self.current_road == 0:
+                        vel = [-1,ve]
+                elif self.current_road == 2:
+                        vel = [1,ve]
+            else:
+                vel = [0,ve]
         else:
-            vel = [0,ve]
+            if self.current_pos[1] % 10 == 0:
+                if self.current_road == 0:
+                    vel = [-3, ve]
+                elif self.current_road == 2:
+                    vel = [3, ve]
+            else:
+                self.rect.inflate_ip(3, 3)
+                self.tam = (int(self.tam[0] + 3), int(self.tam[1] + 3))
+                self.images = [image.load("Assets/Kartea/Obstaculo.png", size=self.tam)]
+                if self.current_road == 0:
+                        vel = [-3,ve]
+                elif self.current_road == 2:
+                        vel = [3,ve]
         self.rect.move_ip(vel)
 
         self.current_pos = (self.current_pos[0] + vel[0], self.current_pos[1] + vel[1])
@@ -47,7 +111,7 @@ class Obstacle(Target):
     def kill(self, surface, objects, sounds): # remove the mosquito from the list
         triste_fig = image.load('Assets/Kartea/triste.png')
         feliz_fig = image.load('Assets/Kartea/feliz.png')
-        if self.current_pos[1] > 600:
+        if self.current_pos[1] > (SCREEN_HEIGHT-100):
             objects.remove(self)
             sounds["slap"].play()
             image.draw(surface, feliz_fig, (0, 0))

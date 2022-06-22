@@ -87,7 +87,14 @@ class Game:
                      shadow=True, shadow_color=(255,255,255))
         # draw the time left
         timer_text_color = (160, 40, 0) if self.time_left < 5 else COLORS["timer"] # change the text color if less than 5 s left
-        ui.draw_text(self.surface, f"Tempo : {self.time_left}", (5, 5), timer_text_color, font=FONTS["medium"],
+        ui.draw_text(self.surface, f"Tempo : {self.time_left}", (350, 5), timer_text_color, font=FONTS["medium"],
+                     shadow=True, shadow_color=(255,255,255))
+        # draw the fase e nivel
+        timer_text_color = (160, 40, 0) if self.time_left < 5 else COLORS["timer"] # change the text color if less than 5 s left
+        ui.draw_text(self.surface, f"Fase : {arquivo.get_Fase()}", (5, 5), timer_text_color, font=FONTS["medium"],
+                     shadow=True, shadow_color=(255,255,255))
+        timer_text_color = (160, 40, 0) if self.time_left < 5 else COLORS["timer"] # change the text color if less than 5 s left
+        ui.draw_text(self.surface, f"Nivel : {arquivo.get_Nivel()}", (5, 25), timer_text_color, font=FONTS["medium"],
                      shadow=True, shadow_color=(255,255,255))
 
 
@@ -113,7 +120,7 @@ class Game:
             self.score = self.car.kill_targets(self.surface, self.targets, self.score, self.sounds)
             for alvo in self.targets:
                 alvo.move()
-                if alvo.current_pos[1] > 600:
+                if alvo.current_pos[1] > (SCREEN_HEIGHT-100):
                     self.score += alvo.kill(self.surface, self.targets, self.sounds)
 
         else: # when the game is over
