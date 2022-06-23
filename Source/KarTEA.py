@@ -11,7 +11,7 @@ from menu import Menu
 
 # Setup pygame/window --------------------------------------------- #
 try:
-    os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (100, 32) # windows position
+    #os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (100, 32) # windows position
     pygame.init()
     pygame.display.set_caption(WINDOW_NAME)
     SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 0)
