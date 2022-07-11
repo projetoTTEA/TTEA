@@ -65,7 +65,7 @@ class PoseTracking:
             y = (y1+y2)/2
 
             #Usando o nariz
-            #x, y = self.results.pose_landmarks.landmark[30].x, self.results.pose_landmarks.landmark[0].y  # nose
+            x, y = self.results.pose_landmarks.landmark[30].x, self.results.pose_landmarks.landmark[0].y  # nose
 
             self.feet_x, self.feet_y  = posicao(x,y)
             print("x: ",x,", y: ",y,", feet_x: ",self.feet_x,", feet_y: ",self.feet_y)

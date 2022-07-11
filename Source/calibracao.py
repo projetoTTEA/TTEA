@@ -341,7 +341,7 @@ while not gameExit:
                     cv2.destroyWindow("TELA DE CONTROLE")
                     grava_calibracao()
                     print('P1: ', pontos_calibracao[0], ' P2: ', pontos_calibracao[1], ' P3: ', pontos_calibracao[2], ' P4: ', pontos_calibracao[3])
-                    pygame.quit()
+                    pygame.display.quit()
                     camera.release()
 
             # SAIR (ESC)
@@ -351,5 +351,5 @@ while not gameExit:
                         cv2.destroyWindow("TELA DE CONTROLE")
                         grava_calibracao()
                         print('P1: ', pontos_calibracao[0], ' P2: ', pontos_calibracao[1], ' P3: ', pontos_calibracao[2], ' P4: ', pontos_calibracao[3])
-                        pygame.quit()
+                        pygame.display.quit()
                         camera.release()
