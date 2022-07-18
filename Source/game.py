@@ -3,6 +3,7 @@ import time
 import random
 
 import arquivo
+import settings
 from settings import *
 from background import Background
 from car import Car
@@ -11,6 +12,7 @@ from target import Target
 from obstacle import Obstacle
 import cv2
 import ui
+from operator import xor
 
 class Game:
     def __init__(self, surface):
@@ -113,10 +115,39 @@ class Game:
 
         if self.time_left > 0:
             self.spawn_targets()
-            (x, y) = self.pose_tracking.get_feet_center()
+            x, y = self.pose_tracking.get_feet_center() #Obtem posição(x,y) central do jogador
+            feet1_x, feet1_y = self.pose_tracking.get_feet1() #Obtem posição(x,y) do pé esquerdo
+            feet2_x, feet2_y = self.pose_tracking.get_feet2() #Obtem posição(x,y) do pé direito
+
+            troca_pista = settings.pista #Armazena a pista que o jogador se encotra
+            """
+            if (feet1_x < div1_pista) and (feet2_x < div1_pista):  #Atualiza a pista do jogador, os 2 pés devem estar na pista
+                settings.pista = 0
+            elif (feet1_x < div2_pista) and (feet2_x < div2_pista):
+                settings.pista = 1
+            else:
+                settings.pista = 2
+            """
+            if div0_pista <= x < div1_pista: #Atualiza a pista do jogador de acordo com a posiçao central
+                settings.pista = 0
+            elif div1_pista <= x < div2_pista:
+                settings.pista = 1
+            elif div2_pista <= x < div3_pista:
+                settings.pista = 2
+            else:
+                settings.pista = -1 #fora da area de calibracao
+
+
+            if settings.pista != troca_pista: #Checa se houve troca de pista
+                print("Trocou da pista ", troca_pista, " para ", settings.pista)
+                if settings.pista != -1 and troca_pista != -1:
+                    self.score += 1
+                elif settings.pista == -1:
+                    print("Pedeu o Sinal")
+
+
             self.car.rect.center = (x, y)
             self.car.left_click = self.pose_tracking.feet_closed
-            #print(arquivo.get_Player()) #checando qual é o jogador selecionado
             self.score = self.car.kill_targets(self.surface, self.targets, self.score, self.sounds)
             for alvo in self.targets:
                 alvo.move()
@@ -127,6 +158,7 @@ class Game:
             if ui.button(self.surface, 540, "Continue", click_sound=self.sounds["slap"]):
                 return "menu"
 
+        #Desenha a borda da area de calibração
         cv2.line(self.frame, (pontos_calibracao[0]), (pontos_calibracao[1]), (verde), 2)
         cv2.line(self.frame, (pontos_calibracao[1]), (pontos_calibracao[3]), (verde), 2)
         cv2.line(self.frame, (pontos_calibracao[2]), (pontos_calibracao[0]), (verde), 2)

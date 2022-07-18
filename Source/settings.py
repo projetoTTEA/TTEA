@@ -10,6 +10,13 @@ SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
 
 CONTADOR = 0
 pontos_calibracao = np.zeros((4, 2), int)
+div0_pista = 0
+div1_pista = SCREEN_WIDTH // 3
+div2_pista = 2 * (SCREEN_WIDTH // 3)
+div3_pista = SCREEN_WIDTH
+
+pista = 1
+
 
 FPS = 60
 DRAW_FPS = True

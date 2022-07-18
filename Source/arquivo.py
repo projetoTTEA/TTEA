@@ -44,6 +44,7 @@ csv.register_dialect(
     quoting = csv.QUOTE_MINIMAL)
 
 def CadastrarJogador(Nome, Nasc, Obs):
+    #Kartea
     Config = ['Nome', 'Data de Nasc.', 'Observacoes', 'Fase Atual', 'Nivel Atual', 'Tempo de Nivel', 'Carro',
               'Ambiente', 'Paleta', 'Alvo', 'Obstaculo', 'Imagem Feedback Positivo', 'Imagem Feedback Neutro',
               'Imagem Feedback Negativo', 'Som Feedback Positivo', 'Som Feedback Neutro', 'Som Feedback Negativo',
@@ -61,7 +62,7 @@ def CadastrarJogador(Nome, Nasc, Obs):
     fields = ['Sessao', 'Data da Sessao', 'Hora Inicio', 'Fase Alcancada', 'Nivel Alcancado', 'Pontuacao Geral',
               'Q Movimentos', 'Q Alvos Colididos', 'Q Alvos Desviados', 'Q Obstaculos Colididos',
               'Q Obstaculos Desviados']
-    file = 'Jogadores/' + Nome + '_KarTEA.csv'
+    file = 'Jogadores/' + Nome + '_KarTEA_sessao.csv'
     with open(file, 'w') as csvfile:
         csvwriter = csv.writer(csvfile, dialect='mydialect')
         csvwriter.writerow(fields)
@@ -72,12 +73,51 @@ def CadastrarJogador(Nome, Nasc, Obs):
         csvwriter = csv.writer(csvfile, dialect='mydialect')
         csvwriter.writerow(fields)
 
+    #RepeTEA
+    Config = ['Nome', 'Data de Nasc.', 'Observacoes', 'Fase Atual', 'Nivel Atual', 'Tempo de Nivel']
+    Dados = [Nome, Nasc, Obs, '1', '1', '120']
+    file = 'Jogadores/' + Nome + '_RepeTEA_config.csv'
+
+    with open(file, 'w') as csvfile:
+        csvwriter = csv.writer(csvfile, dialect='mydialect')
+        csvwriter.writerow(Config)
+        csvwriter.writerow(Dados)
+
+    fields = ['Sessao', 'Data da Sessao', 'Hora Inicio', 'Fase Alcancada', 'Nivel Alcancado', 'Pontuacao Geral']
+    file = 'Jogadores/' + Nome + '_RepeTEA_sessao.csv'
+    with open(file, 'w') as csvfile:
+        csvwriter = csv.writer(csvfile, dialect='mydialect')
+        csvwriter.writerow(fields)
+
+    fields = ['ID', 'Sessao', 'Hora do Evento', 'Fase', 'Nivel', 'Posicao jogador', 'Posicao Evento', 'Tipo de Evento']
+    file = 'Jogadores/' + Nome + '_RepeTEA_detalhado.csv'
+    with open(file, 'w') as csvfile:
+        csvwriter = csv.writer(csvfile, dialect='mydialect')
+        csvwriter.writerow(fields)
+
+#----------------------------------------------------------------------------------------------------------------------#
 
 def gravaDados(filename, Dados):# Dados é um vetor com os dados para gravar no arquivo 'filename'
-    with open(filename, 'a') as csvfile:
+    with open(filename, 'a+', newline='') as csvfile:
         csvwriter = csv.writer(csvfile, dialect='mydialect')
         csvwriter.writerow(Dados)
 
+def grava_Sessao(jogador, id, data, hora, fase, nivel, pont, mov, alvos_c, alvos_d, obst_c, obst_d):
+    file = 'Jogadores/'+jogador+'_KarTEA_sessao.csv'
+    fields = [id, data, hora, fase, nivel, pont, mov, alvos_c, alvos_d, obst_c, obst_d]
+    with open(file,'a+', newline='') as csvfile:
+        csvwriter = csv.writer(csvfile, dialect='mydialect')
+        csvwriter.writerow(fields)
+
+def grava_Detalhado(jogador, id, sessao, hora, fase, nivel, pos_jog, pos_ev, tipo):
+    file = 'Jogadores/' + jogador + '_KarTEA_detalhado.csv'
+    fields = [id, sessao, hora, fase, nivel, pos_jog, pos_ev, tipo]
+    with open(file, 'a+', newline='') as csvfile:
+        csvwriter = csv.writer(csvfile, dialect='mydialect')
+        csvwriter.writerow(fields)
+
+
+#----------------------------------------------------------------------------------------------------------------------#
 
 def lerConfigs(filename): #Apenas para os arquivos gerais, nos detalhados retorna a primeira linha de dados
     """
@@ -101,6 +141,7 @@ def lerConfigs(filename): #Apenas para os arquivos gerais, nos detalhados retorn
         fields = next(csvreader)  # Configuracoes
         return fields
 
+#Le os pontos de calibração realizados antes do jogo
 def lerCalibracao():
     pontos_calibracao = np.zeros((4, 2), int)
     df = pd.read_csv('calibracao.csv')
@@ -118,6 +159,9 @@ def lerCalibracao():
     return pontos_calibracao
 
 
+#----------------------------------------------------------------------------------------------------------------------#
+
+#Manipulação de dados das Configs
 def get_K_NOME(filename):
     # reading the csv file
     df = pd.read_csv(filename)

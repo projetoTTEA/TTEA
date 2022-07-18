@@ -32,6 +32,10 @@ class PoseTracking:
         self.pose_tracking = mp_poses.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5)
         self.feet_x = 0
         self.feet_y = 0
+        self.feet1_x = 0
+        self.feet1_y = 0
+        self.feet2_x = 0
+        self.feet2_y = 0
         self.results = None
         self.pose_closed = False
 
@@ -42,8 +46,8 @@ class PoseTracking:
 
         # Flip the image horizontally for a later selfie-view display, and convert
         # the BGR image to RGB.
-        #image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
-        image = cv2.cvtColor(cv2.flip(image, -1), cv2.COLOR_BGR2RGB)
+        image = cv2.cvtColor(cv2.flip(image, 1), cv2.COLOR_BGR2RGB)
+        #image = cv2.cvtColor(cv2.flip(image, -1), cv2.COLOR_BGR2RGB)
         # To improve performance, optionally mark the image as not writeable to
         # pass by reference.
         image.flags.writeable = False
@@ -57,19 +61,19 @@ class PoseTracking:
 
         if self.results.pose_landmarks:
                         
-            x1, y1 = self.results.pose_landmarks.landmark[30].x, self.results.pose_landmarks.landmark[30].y # left_heel
-            x2, y2 = self.results.pose_landmarks.landmark[29].x, self.results.pose_landmarks.landmark[29].y # right_heel
+            self.feet1_x, self.feet1_y = self.results.pose_landmarks.landmark[30].x, self.results.pose_landmarks.landmark[30].y # left_heel
+            self.feet2_x, self.feet2_y = self.results.pose_landmarks.landmark[29].x, self.results.pose_landmarks.landmark[29].y # right_heel
 
             #Ponto medio entre os pes
-            x = (x1+x2)/2
-            y = (y1+y2)/2
+            x = (self.feet1_x+self.feet2_x)/2
+            y = (self.feet1_y+self.feet2_y)/2
 
             #Usando o nariz
-            x, y = self.results.pose_landmarks.landmark[30].x, self.results.pose_landmarks.landmark[0].y  # nose
+            x, y = self.results.pose_landmarks.landmark[0].x, self.results.pose_landmarks.landmark[0].y  # nose
 
             self.feet_x, self.feet_y  = posicao(x,y)
             print("x: ",x,", y: ",y,", feet_x: ",self.feet_x,", feet_y: ",self.feet_y)
-            self.feet_y = 550  # Jogador deve se mover apenas lateralmente
+            self.feet_y = SCREEN_HEIGHT - 50  # Jogador deve se mover apenas lateralmente
 
             mp_drawing.draw_landmarks(
                 image,
@@ -81,6 +85,11 @@ class PoseTracking:
     def get_feet_center(self):
         return (self.feet_x, self.feet_y)
 
+    def get_feet1(self):
+        return (self.feet1_x, self.feet1_y)
+
+    def get_feet2(self):
+        return (self.feet2_x, self.feet2_y)
 
     def display_feet(self):
         cv2.imshow("image", self.image)

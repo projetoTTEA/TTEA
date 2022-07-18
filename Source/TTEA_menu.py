@@ -252,7 +252,15 @@ def JogarCallback():
     arquivo.set_Nivel(arquivo.get_K_NIVEL(PLAYER_ARQ_CONFIG))
     print("Jogador: ", arquivo.get_Player(), " Fase: ", arquivo.get_Fase(), " Nivel: ", arquivo.get_Nivel())
     settings.pontos_calibracao = arquivo.lerCalibracao()
+    x1 = settings.pontos_calibracao[2][0]
+    x2 = settings.pontos_calibracao[3][0]
+    print("x1= ", x1, "x2= ", x2)
+    settings.div0_pista = x1
+    settings.div1_pista = ((x2-x1) // 3) + x1
+    settings.div2_pista = (2*((x2-x1)//3)) + x1
+    settings.div3_pista = x2
     print("Pontos de Calibracao: ", settings.pontos_calibracao)
+    print("Div0: ", settings.div0_pista, " Div1: ", settings.div1_pista,"Div2: ", settings.div2_pista, " Div3: ", settings.div3_pista)
 
     TARGETS_MOVE_SPEED = arquivo.get_Nivel()
 
