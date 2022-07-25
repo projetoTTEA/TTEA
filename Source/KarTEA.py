@@ -26,14 +26,18 @@ try:
     pygame.mixer.music.set_volume(MUSIC_VOLUME)
     pygame.mixer.music.play(-1)
     """
+
     # Variables ------------------------------------------------------- #
     state = "menu"
 
-    # Creation -------------------------------------------------------- #
-    game = Game(SCREEN)
-    menu = Menu(SCREEN)
 except:
     print("An exception occurred: Kartea.py")
+
+# Creation -------------------------------------------------------- #
+
+pygame.mixer.init()
+game = Game(SCREEN)
+menu = Menu(SCREEN)
 
 
 # Functions ------------------------------------------------------ #

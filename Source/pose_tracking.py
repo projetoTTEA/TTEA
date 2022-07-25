@@ -69,10 +69,9 @@ class PoseTracking:
             y = (self.feet1_y+self.feet2_y)/2
 
             #Usando o nariz
-            x, y = self.results.pose_landmarks.landmark[0].x, self.results.pose_landmarks.landmark[0].y  # nose
+            #x, y = self.results.pose_landmarks.landmark[0].x, self.results.pose_landmarks.landmark[0].y  # nose
 
-            self.feet_x, self.feet_y  = posicao(x,y)
-            print("x: ",x,", y: ",y,", feet_x: ",self.feet_x,", feet_y: ",self.feet_y)
+            self.feet_x, self.feet_y = posicao(x, y)
             self.feet_y = SCREEN_HEIGHT - 50  # Jogador deve se mover apenas lateralmente
 
             mp_drawing.draw_landmarks(
@@ -86,10 +85,10 @@ class PoseTracking:
         return (self.feet_x, self.feet_y)
 
     def get_feet1(self):
-        return (self.feet1_x, self.feet1_y)
+        return posicao(self.feet1_x, self.feet1_y)
 
     def get_feet2(self):
-        return (self.feet2_x, self.feet2_y)
+        return posicao(self.feet2_x, self.feet2_y)
 
     def display_feet(self):
         cv2.imshow("image", self.image)

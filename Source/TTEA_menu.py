@@ -255,10 +255,10 @@ def JogarCallback():
     x1 = settings.pontos_calibracao[2][0]
     x2 = settings.pontos_calibracao[3][0]
     print("x1= ", x1, "x2= ", x2)
-    settings.div0_pista = x1
-    settings.div1_pista = ((x2-x1) // 3) + x1
-    settings.div2_pista = (2*((x2-x1)//3)) + x1
-    settings.div3_pista = x2
+    settings.div0_pista = 0
+    settings.div1_pista = (SCREEN_WIDTH // 3)
+    settings.div2_pista = (2*(SCREEN_WIDTH//3))
+    settings.div3_pista = SCREEN_WIDTH
     print("Pontos de Calibracao: ", settings.pontos_calibracao)
     print("Div0: ", settings.div0_pista, " Div1: ", settings.div1_pista,"Div2: ", settings.div2_pista, " Div3: ", settings.div3_pista)
 

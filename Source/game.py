@@ -12,7 +12,6 @@ from target import Target
 from obstacle import Obstacle
 import cv2
 import ui
-from operator import xor
 
 class Game:
     def __init__(self, surface):
@@ -119,15 +118,20 @@ class Game:
             feet1_x, feet1_y = self.pose_tracking.get_feet1() #Obtem posição(x,y) do pé esquerdo
             feet2_x, feet2_y = self.pose_tracking.get_feet2() #Obtem posição(x,y) do pé direito
 
+            print("feet1_x: ", feet1_x, ", feet1_y: ", feet1_y, ", feet2_x: ", feet2_x, ", feet2_y: ", feet2_y)
+            #print("x: ", x, ", y: ", y, ", feet_x: ", self.feet_x, ", feet_y: ", self.feet_y)
+
             troca_pista = settings.pista #Armazena a pista que o jogador se encotra
-            """
-            if (feet1_x < div1_pista) and (feet2_x < div1_pista):  #Atualiza a pista do jogador, os 2 pés devem estar na pista
+            if (div0_pista <= feet1_x < div1_pista) and (div0_pista <= feet2_x < div1_pista):  #Atualiza a pista do jogador, os 2 pés devem estar na pista
                 settings.pista = 0
-            elif (feet1_x < div2_pista) and (feet2_x < div2_pista):
+            elif (div1_pista <= feet1_x < div2_pista) and (div1_pista <= feet2_x < div2_pista):
                 settings.pista = 1
-            else:
+            elif (div2_pista <= feet1_x < div3_pista) and (div2_pista <= feet2_x < div3_pista):
                 settings.pista = 2
-            """
+            elif ((feet1_x < div0_pista) and (feet2_x < div0_pista)) or ((feet1_x > div3_pista) and (feet2_x > div3_pista) ):
+                settings.pista = -1 #fora da area de calibracao
+
+            '''
             if div0_pista <= x < div1_pista: #Atualiza a pista do jogador de acordo com a posiçao central
                 settings.pista = 0
             elif div1_pista <= x < div2_pista:
@@ -136,7 +140,7 @@ class Game:
                 settings.pista = 2
             else:
                 settings.pista = -1 #fora da area de calibracao
-
+            '''
 
             if settings.pista != troca_pista: #Checa se houve troca de pista
                 print("Trocou da pista ", troca_pista, " para ", settings.pista)
