@@ -24,9 +24,9 @@ DRAW_FPS = True
 # sizes
 BUTTONS_SIZES = (150, 45)
 CAR_SIZE = 150
-CAR_HITBOX_SIZE = (100, 100)
-TARGETS_SIZES = (12, 12)
-OBSTACLE_SIZES = (12, 12)
+CAR_HITBOX_SIZE = (150, 200)
+TARGETS_SIZES = (100, 100)
+OBSTACLE_SIZES = (100, 100)
 
 OBJ_POS = [(368, 80), (393, 80),(419, 80)]
 """
@@ -92,3 +92,13 @@ tela_de_calibracao = np.zeros((altura_projetor, largura_projetor, 3),
                               np.uint8)  # Tela que será usada para o projetar o jogo.
 tela_de_controle = np.zeros((altura_tela_controle, largura_tela_controle, 3),
                             np.uint8)  # Tela que será usada para o projetar o jogo.
+
+
+#################################################################################
+########################## Variaveis de controle ################################
+#################################################################################
+
+SOM = True
+HUD = True
+PAUSE = False
+

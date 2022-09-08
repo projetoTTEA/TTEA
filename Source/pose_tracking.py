@@ -69,7 +69,7 @@ class PoseTracking:
             y = (self.feet1_y+self.feet2_y)/2
 
             #Usando o nariz
-            #x, y = self.results.pose_landmarks.landmark[0].x, self.results.pose_landmarks.landmark[0].y  # nose
+            x, y = self.results.pose_landmarks.landmark[0].x, self.results.pose_landmarks.landmark[0].y  # nose
 
             self.feet_x, self.feet_y = posicao(x, y)
             self.feet_y = SCREEN_HEIGHT - 50  # Jogador deve se mover apenas lateralmente

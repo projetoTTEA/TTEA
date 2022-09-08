@@ -4,27 +4,36 @@ import time
 import image
 from settings import *
 
+roadW = 400 #Tamanho pista
+segL = 200 # Tamanho segmento
+camD = 3 # camera depth
+
 class Target:
     def __init__(self):
         #size
         size = TARGETS_SIZES
         # moving
-        road ,start_pos = self.define_spawn_pos(size)
+        road ,start_pos = self.define_spawn_pos()
 
         # sprite
         self.tam = size
-        self.rect = pygame.Rect(start_pos[0], start_pos[1], size[0]//1.4, size[1]//1.4)
+        self.rect = pygame.Rect(start_pos[0], start_pos[1], size[0], size[1])
         self.images = [image.load("Assets/Kartea/Star.png", size=size)]
         self.current_frame = 0
         self.current_pos = start_pos
         self.current_road = road
         self.animation_timer = 0
+        self.line = None
 
-
-    def define_spawn_pos(self, size): # define the start pos and moving vel of the mosquito
+    def define_spawn_pos(self): # define the start pos and moving vel of the mosquito
         road = random.randint(0,2) # 0 esq, 1 meio, 2 dir
         start_pos = OBJ_POS[road]
         return road, start_pos
+
+    def define_pos(self, x, y): # define the start pos and moving vel of the mosquito
+        vx = x + self.images[0].get_width()
+        vy = y + self.images[0].get_height()
+        self.rect = pygame.Rect(x, y, self.rect.width, self.rect.height)
 
 
     def move(self):
@@ -114,7 +123,14 @@ class Target:
 
         self.current_pos = (self.current_pos[0] + vel[0], self.current_pos[1] + vel[1])
 
+    def move(self, x, y):
+        vel = [x - self.current_pos[0], y - self.current_pos[1]]
+        print("vel: ", vel)
+        self.rect.move_ip(vel)
+        self.current_pos = (x,y)
 
+    def att_current_pos(self, x, y):
+        self.current_pos = (x,y)
 
     def animate(self): # change the frame of the insect when needed
         t = time.time()
@@ -140,7 +156,8 @@ class Target:
     def kill(self, surface, targets, sounds): # remove the mosquito from the list
         triste_fig = image.load('Assets/Kartea/triste.png')
         feliz_fig = image.load('Assets/Kartea/feliz.png')
-        if self.current_pos[1] > (SCREEN_HEIGHT-100):
+        print(self.current_pos)
+        if self.current_pos[1] > (SCREEN_HEIGHT):
             targets.remove(self)
             sounds["screaming"].play()
             image.draw(surface,triste_fig,(0,0))

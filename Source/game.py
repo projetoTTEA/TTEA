@@ -27,6 +27,7 @@ class Game:
         self.sounds["screaming"] = pygame.mixer.Sound(f"Assets/Kartea/Sounds/miss.wav")
         self.sounds["screaming"].set_volume(SOUNDS_VOLUME)
         TARGETS_MOVE_SPEED = arquivo.get_Nivel()
+        self.targets = []
 
 
     def reset(self): # reset all the needed variables
@@ -37,7 +38,6 @@ class Game:
         self.score = 0
         self.game_start_time = time.time()
 
-
     def spawn_targets(self):
         t = time.time()
         if t > self.targets_spawn_timer:
@@ -47,15 +47,24 @@ class Game:
             nb = (GAME_DURATION-self.time_left)/GAME_DURATION * 100  / 2  # increase from 0 to 50 during all  the game (linear)
             fase = arquivo.get_K_FASE('Jogadores/' + arquivo.get_Player() + '_KarTEA_config.csv')
             #print(fase)
+            pos = self.background.get_startPos()
+
+            target = Target()
+            obstacle = Obstacle()
+
             if fase == 1:
-                self.targets.append(Target())
+                self.targets.append(target)
+                self.background.lines[pos].target = target
             elif fase == 2:
-                self.targets.append(Obstacle())
+                self.targets.append(obstacle)
+                self.background.lines[pos].target = obstacle
             else:
                 if random.randint(0, 100) < 50:
-                    self.targets.append(Obstacle())
+                    self.targets.append(obstacle)
+                    self.background.lines[pos].target = obstacle
                 else:
-                    self.targets.append(Target())
+                    self.targets.append(target)
+                    self.background.lines[pos].target = target
 
     def load_camera(self):
         _, self.frame = self.cap.read()
@@ -77,26 +86,38 @@ class Game:
 
     def draw(self):
         # draw the background
+
+        if not PAUSE:
+            if TARGETS_MOVE_SPEED % 3 == 1:
+                self.background.speed1()
+            elif TARGETS_MOVE_SPEED % 3 == 2:
+                self.background.speed2()
+            else :
+                self.background.speed3()
         self.background.draw(self.surface)
+
         # draw the targets
-        for insect in self.targets:
-            insect.draw(self.surface)
+        #for target in self.targets:
+        #    target.draw(self.surface)
+
         # draw the car
         self.car.draw(self.surface)
-        # draw the score
-        ui.draw_text(self.surface, f"Pontuação : {self.score}", (650, 5), COLORS["score"], font=FONTS["medium"],
-                     shadow=True, shadow_color=(255,255,255))
-        # draw the time left
-        timer_text_color = (160, 40, 0) if self.time_left < 5 else COLORS["timer"] # change the text color if less than 5 s left
-        ui.draw_text(self.surface, f"Tempo : {self.time_left}", (350, 5), timer_text_color, font=FONTS["medium"],
-                     shadow=True, shadow_color=(255,255,255))
-        # draw the fase e nivel
-        timer_text_color = (160, 40, 0) if self.time_left < 5 else COLORS["timer"] # change the text color if less than 5 s left
-        ui.draw_text(self.surface, f"Fase : {arquivo.get_Fase()}", (5, 5), timer_text_color, font=FONTS["medium"],
-                     shadow=True, shadow_color=(255,255,255))
-        timer_text_color = (160, 40, 0) if self.time_left < 5 else COLORS["timer"] # change the text color if less than 5 s left
-        ui.draw_text(self.surface, f"Nivel : {arquivo.get_Nivel()}", (5, 25), timer_text_color, font=FONTS["medium"],
-                     shadow=True, shadow_color=(255,255,255))
+
+        if HUD:
+            # draw the score
+            ui.draw_text(self.surface, f"Pontuação : {self.score}", (650, 5), COLORS["score"], font=FONTS["medium"],
+                         shadow=True, shadow_color=(255,255,255))
+            # draw the time left
+            timer_text_color = (160, 40, 0) if self.time_left < 5 else COLORS["timer"] # change the text color if less than 5 s left
+            ui.draw_text(self.surface, f"Tempo : {self.time_left}", (350, 5), timer_text_color, font=FONTS["medium"],
+                         shadow=True, shadow_color=(255,255,255))
+            # draw the fase e nivel
+            timer_text_color = (160, 40, 0) if self.time_left < 5 else COLORS["timer"] # change the text color if less than 5 s left
+            ui.draw_text(self.surface, f"Fase : {arquivo.get_Fase()}", (5, 5), timer_text_color, font=FONTS["medium"],
+                         shadow=True, shadow_color=(255,255,255))
+            timer_text_color = (160, 40, 0) if self.time_left < 5 else COLORS["timer"] # change the text color if less than 5 s left
+            ui.draw_text(self.surface, f"Nivel : {arquivo.get_Nivel()}", (5, 25), timer_text_color, font=FONTS["medium"],
+                         shadow=True, shadow_color=(255,255,255))
 
 
     def game_time_update(self):
@@ -118,7 +139,7 @@ class Game:
             feet1_x, feet1_y = self.pose_tracking.get_feet1() #Obtem posição(x,y) do pé esquerdo
             feet2_x, feet2_y = self.pose_tracking.get_feet2() #Obtem posição(x,y) do pé direito
 
-            print("feet1_x: ", feet1_x, ", feet1_y: ", feet1_y, ", feet2_x: ", feet2_x, ", feet2_y: ", feet2_y)
+            #print("feet1_x: ", feet1_x, ", feet1_y: ", feet1_y, ", feet2_x: ", feet2_x, ", feet2_y: ", feet2_y)
             #print("x: ", x, ", y: ", y, ", feet_x: ", self.feet_x, ", feet_y: ", self.feet_y)
 
             troca_pista = settings.pista #Armazena a pista que o jogador se encotra
@@ -149,13 +170,11 @@ class Game:
                 elif settings.pista == -1:
                     print("Pedeu o Sinal")
 
-
             self.car.rect.center = (x, y)
             self.car.left_click = self.pose_tracking.feet_closed
             self.score = self.car.kill_targets(self.surface, self.targets, self.score, self.sounds)
             for alvo in self.targets:
-                alvo.move()
-                if alvo.current_pos[1] > (SCREEN_HEIGHT-100):
+                if alvo.current_pos[1] > (SCREEN_HEIGHT+100):
                     self.score += alvo.kill(self.surface, self.targets, self.sounds)
 
         else: # when the game is over
@@ -174,4 +193,55 @@ class Game:
         cv2.circle(self.frame, (pontos_calibracao[3]), 5, azul, 3)
 
         cv2.imshow("Tela de Captura", self.frame)
+
+        # Teclas de Atalho
+        for event in pygame.event.get():
+            # SAIR
+            if event.type == pygame.QUIT:
+                gameExit = True
+                cv2.destroyWindow("Tela de Captura")
+                pygame.display.quit()
+
+
+            if event.type == pygame.KEYDOWN:
+                # SAIR (Q)
+                if event.key == pygame.K_q:
+                    gameExit = True
+                    cv2.destroyWindow("Tela de Captura")
+                    pygame.display.quit()
+                # Pausar (Space)
+                if event.key == pygame.K_SPACE:
+                    print("Space game.py")
+                    if self.background.speed == 0:
+                        PAUSE = False
+                        print("Unpause")
+                    else:
+                        PAUSE = True
+                        print("Pause")
+                        self.background.stop()
+                # H/D Som (S)
+                if event.key == pygame.K_s:
+                    if settings.SOM:
+                        settings.SOM = False
+                    else:
+                        settings.SOM = True
+                # H/D Som (1)
+                if event.key == pygame.K_1:
+                    if settings.SOM:
+                        settings.SOM = False
+                    else:
+                        settings.SOM = True
+                # H/D HUD (H)
+                if event.key == pygame.K_q:
+                    if settings.HUD:
+                        settings.HUD = False
+                    else:
+                        settings.HUD = True
+                # H/D HUD (2)
+                if event.key == pygame.K_2:
+                    if settings.HUD:
+                        settings.HUD = False
+                    else:
+                        settings.HUD = True
+
         cv2.waitKey(1)

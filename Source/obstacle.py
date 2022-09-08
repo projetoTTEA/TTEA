@@ -10,11 +10,11 @@ class Obstacle(Target):
         #size
         size = OBSTACLE_SIZES
         # moving
-        road, start_pos = self.define_spawn_pos(size)
+        road, start_pos = self.define_spawn_pos()
 
         # sprite
         self.tam = size
-        self.rect = pygame.Rect(start_pos[0], start_pos[1], size[0]//1.4, size[1]//1.4)
+        self.rect = pygame.Rect(start_pos[0], start_pos[1], size[0], size[1])
         self.images = [image.load("Assets/Kartea/Obstaculo.png", size=size)]
         self.current_frame = 0
         self.current_pos = start_pos
@@ -111,7 +111,8 @@ class Obstacle(Target):
     def kill(self, surface, objects, sounds): # remove the mosquito from the list
         triste_fig = image.load('Assets/Kartea/triste.png')
         feliz_fig = image.load('Assets/Kartea/feliz.png')
-        if self.current_pos[1] > (SCREEN_HEIGHT-100):
+        print(self.current_pos)
+        if self.current_pos[1] > (SCREEN_HEIGHT):
             objects.remove(self)
             sounds["slap"].play()
             image.draw(surface, feliz_fig, (0, 0))
