@@ -6,6 +6,11 @@ import cv2
 from settings import *
 from game import Game
 from menu import Menu
+from menu_pause import Pause
+from menu_feedback import Feedback
+from menu_retrocede import Retrocede
+from menu_reinicia import Reinicia
+from menu_avanca import Avanca
 
 # Setup pygame/window --------------------------------------------- #
 # os.environ['SDL_VIDEO_WINDOW_POS'] = "%d,%d" % (100, 32) # windows position
@@ -29,6 +34,11 @@ pygame.mixer.music.play(-1)
 pygame.mixer.init()
 game = Game(SCREEN)
 menu = Menu(SCREEN)
+pause = Pause(SCREEN)
+feedback = Feedback(SCREEN)
+retrocede = Retrocede(SCREEN)
+reinicia = Reinicia(SCREEN)
+avanca = Avanca(SCREEN)
 
 # Variables ------------------------------------------------------- #
 state = "menu"
@@ -43,42 +53,75 @@ def user_events():
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 pygame.display.quit()
-            if event.key == pygame.K_SPACE:
-                state = "menu"
 
 
 def update():
     global state
     if state == "menu":
         if menu.update() == "game":
-            game.reset() # reset the game to start a new game
             state = "game"
-        '''
-        elif game.update() == "next":
-            game.reset()  # reset the game to start a new game next level
-            state = "game"
-        elif game.update() == "restart":
-            game.reset()  # reset the game to start a new game
-            state = "game"
-        elif game.update() == "prev":
-            game.reset()  # reset the game to start a new game prev level
-            state = "game"
-        #'''
+
+
     elif state == "game":
         if game.update() == "menu":
             state = "menu"
-        '''
-        elif game.update() == "next":
-            game.reset()  # reset the game to start a new game
+        if game.update() == "pause":
+            state = "pause"
+        if game.update() == "retroceder":
+            # Gravar dados da sessao e retroceder nivel
+            state = "retroceder"
+        if game.update() == "reiniciar":
+            # Gravar dados da sessao e reiniciar nivel
+            state = "reiniciar"
+        if game.update() == "avancar":
+            # Gravar dados da sessao e avancar nivel
+            state = "avancar"
+
+
+    elif state == "pause":
+        if pause.update() == "game":
+            # Continua nivel atual
             state = "game"
-        elif game.update() == "restart":
-            game.reset()  # reset the game to start a new game
+        if pause.update() == "retroceder":
+            # Gravar dados da sessao e retroceder nivel
+            state = "retroceder"
+        if pause.update() == "reiniciar":
+            # Gravar dados da sessao e reiniciar nivel
+            state = "reiniciar"
+        if pause.update() == "avancar":
+            # Gravar dados da sessao e avancar nivel
+            state = "avancar"
+
+    elif state == "feedback":
+        if feedback.update() == "game":
+            # Continua nivel atual
             state = "game"
-        elif game.update() == "prev":
-            game.reset()  # reset the game to start a new game
+        if feedback.update() == "retroceder":
+            # Gravar dados da sessao e retroceder nivel
+            state = "retroceder"
+        if feedback.update() == "reiniciar":
+            # Gravar dados da sessao e reiniciar nivel
+            state = "reiniciar"
+        if feedback.update() == "avancar":
+            # Gravar dados da sessao e avancar nivel
+            state = "avancar"
+
+    elif state == "retroceder":
+        if retrocede.update() == "game":
+            # Continua nivel atual
             state = "game"
-        #'''
-    pygame.display.update()
+
+    elif state == "reiniciar":
+        if reinicia.update() == "game":
+            # Continua nivel atual
+            state = "game"
+
+    elif state == "avancar":
+        if avanca.update() == "game":
+            # Continua nivel atual
+            state = "game"
+
+    #pygame.display.update()
     mainClock.tick(FPS)
 
 
@@ -89,8 +132,7 @@ def main():
         print("Erro ao iniciar pygame")
 
     # Loop ------------------------------------------------------------ #
-    while True:
-
+    while 1:
         # Buttons ----------------------------------------------------- #
         user_events()
 

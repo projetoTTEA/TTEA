@@ -116,11 +116,13 @@ class Obstacle(Target):
             objects.remove(self)
             sounds["slap"].play()
             image.draw(surface, feliz_fig, (0, 0))
+            # gravar detalhado obst desviado
             return 10
         else:
             objects.remove(self)
             sounds["screaming"].play()
             image.draw(surface,triste_fig,(0,0))
+            # gravar detalhado obst colidido
             return 0
 
 

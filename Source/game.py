@@ -26,8 +26,18 @@ class Game:
         self.sounds["slap"].set_volume(SOUNDS_VOLUME)
         self.sounds["screaming"] = pygame.mixer.Sound(f"Assets/Kartea/Sounds/miss.wav")
         self.sounds["screaming"].set_volume(SOUNDS_VOLUME)
+
         TARGETS_MOVE_SPEED = arquivo.get_Nivel()
         self.targets = []
+
+        self.score = 0
+        self.movimento = 0
+        self.alvo = 0
+        self.alvo_c = 0
+        self.alvo_d = 0
+        self.obst = 0
+        self.obst_c = 0
+        self.obst_d = 0
 
 
     def reset(self): # reset all the needed variables
@@ -35,7 +45,16 @@ class Game:
         self.car = Car()
         self.targets = []
         self.targets_spawn_timer = 0
+
         self.score = 0
+        self.movimento = 0
+        self.alvo = 0
+        self.alvo_c = 0
+        self.alvo_d = 0
+        self.obst = 0
+        self.obst_c = 0
+        self.obst_d = 0
+
         self.game_start_time = time.time()
 
     def spawn_targets(self):
@@ -43,28 +62,34 @@ class Game:
         if t > self.targets_spawn_timer:
             self.targets_spawn_timer = t + TARGETS_SPAWN_TIME
 
-            # increase the probability that the insect will be a bee over time
-            nb = (GAME_DURATION-self.time_left)/GAME_DURATION * 100  / 2  # increase from 0 to 50 during all  the game (linear)
+            # Pega Fase atual do jogador
             fase = arquivo.get_K_FASE('Jogadores/' + arquivo.get_Player() + '_KarTEA_config.csv')
-            #print(fase)
+
+            # Pega posicao atual do jogo
             pos = self.background.get_startPos()
 
+            # Cria Target e Obstacle para ser utilizado
             target = Target()
             obstacle = Obstacle()
 
+            # Adiciona Target ou Obstacle de acordo com a fase
             if fase == 1:
                 self.targets.append(target)
                 self.background.lines[pos].target = target
+                self.alvo += 1
             elif fase == 2:
                 self.targets.append(obstacle)
                 self.background.lines[pos].target = obstacle
+                self.obst += 1
             else:
                 if random.randint(0, 100) < 50:
                     self.targets.append(obstacle)
                     self.background.lines[pos].target = obstacle
+                    self.obst += 1
                 else:
                     self.targets.append(target)
                     self.background.lines[pos].target = target
+                    self.alvo += 1
 
     def load_camera(self):
         _, self.frame = self.cap.read()
@@ -123,6 +148,8 @@ class Game:
     def game_time_update(self):
         self.time_left = max(round(GAME_DURATION - (time.time() - self.game_start_time), 1), 0)
 
+    def grava_sessao(self):
+        print("Gravando sessao:")
 
 
     def update(self):
@@ -134,7 +161,8 @@ class Game:
         self.draw()
 
         if self.time_left > 0:
-            self.spawn_targets()
+            if self.time_left > TARGETS_SPAWN_TIME:
+                self.spawn_targets()
             x, y = self.pose_tracking.get_feet_center() #Obtem posição(x,y) central do jogador
             feet1_x, feet1_y = self.pose_tracking.get_feet1() #Obtem posição(x,y) do pé esquerdo
             feet2_x, feet2_y = self.pose_tracking.get_feet2() #Obtem posição(x,y) do pé direito
@@ -166,9 +194,13 @@ class Game:
             if settings.pista != troca_pista: #Checa se houve troca de pista
                 print("Trocou da pista ", troca_pista, " para ", settings.pista)
                 if settings.pista != -1 and troca_pista != -1:
-                    self.score += 1
+                    self.score += 2
+                    self.movimento += 1
+                    # gravar detalhado troca de pista
                 elif settings.pista == -1:
                     print("Pedeu o Sinal")
+                    # gravar detalhado perda sinal
+                    return "pause"
 
             self.car.rect.center = (x, y)
             self.car.left_click = self.pose_tracking.feet_closed
@@ -178,8 +210,22 @@ class Game:
                     self.score += alvo.kill(self.surface, self.targets, self.sounds)
 
         else: # when the game is over
-            if ui.button(self.surface, 540, "Continue", click_sound=self.sounds["slap"]):
-                return "menu"
+            settings.PAUSE = True
+            print("Terminou o Nível!")
+            self.background.stop()
+
+            ponto_T = self.alvo * 12 + self.obst * 12
+            if self.score >= (3*ponto_T)/4:
+                settings.feedback = 3
+            elif self.score >= ponto_T/4:
+                settings.feedback = 2
+            else:
+                settings.feedback = 1
+
+            jogador = arquivo.get_Player()
+
+            #Gravar sessao
+            return "feedback"
 
         #Desenha a borda da area de calibração
         cv2.line(self.frame, (pontos_calibracao[0]), (pontos_calibracao[1]), (verde), 2)
@@ -194,7 +240,7 @@ class Game:
 
         cv2.imshow("Tela de Captura", self.frame)
 
-        # Teclas de Atalho
+        # Eventos Pygame
         for event in pygame.event.get():
             # SAIR
             if event.type == pygame.QUIT:
@@ -219,6 +265,7 @@ class Game:
                         PAUSE = True
                         print("Pause")
                         self.background.stop()
+                        return "pause"
                 # H/D Som (S)
                 if event.key == pygame.K_s:
                     if settings.SOM:

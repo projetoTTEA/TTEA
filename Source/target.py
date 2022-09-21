@@ -161,9 +161,11 @@ class Target:
             targets.remove(self)
             sounds["screaming"].play()
             image.draw(surface,triste_fig,(0,0))
+            # gravar detalhado alvo desviado
             return 0
         else:
             targets.remove(self)
             sounds["slap"].play()
             image.draw(surface, feliz_fig, (0, 0))
+            # gravar detalhado alvo colidido
             return 10

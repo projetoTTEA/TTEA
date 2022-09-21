@@ -75,18 +75,11 @@ class Background:
             line.road_color = road_color
             line.div_color = div_color
 
-            if i % 30 == 0:
+            if i % 70 == 0:
                 line.spriteX = -2.5
                 line.sprite = self.sprite_5
-            """
-            if i >= 200:
-                if i % 125 == 0:
-                    line.target = Target()
-            """
-            if i == 2000:
-                line.spriteX = 0
-                line.sprite = self. sprite_7
-
+                line.sprite2X = 0.5
+                line.sprite2 = self.sprite_4
 
             self.lines.append(line)
         self.N = len(self.lines)
@@ -109,8 +102,7 @@ class Background:
         self.speed = 0
 
     def background_menu(self):
-        self.image = image.load("Assets/Kartea/Background_Menu.png", size=(SCREEN_WIDTH, SCREEN_HEIGHT),
-                                convert="default")
+        self.image = image.load("Assets/Kartea/Background_Menu.png", size=(SCREEN_WIDTH, SCREEN_HEIGHT),convert="default")
 
     def get_startPos(self):
         return (self.pos // segL) + 200
@@ -161,6 +153,8 @@ class Background:
         for n in range(startPos + 300, startPos, -1):
             if self.lines[n % self.N].sprite != None:
                 self.lines[n % self.N].drawSprite(surface)
+            if self.lines[n % self.N].sprite2 != None:
+                self.lines[n % self.N].drawSprite2(surface)
             if self.lines[n % self.N].target != None:
                 self.lines[n % self.N].drawTarget(surface)
                 self.lines[n % self.N].target.att_current_pos(self.lines[n % self.N].target.current_pos[0], self.lines[n % self.N].Y)

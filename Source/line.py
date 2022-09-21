@@ -27,6 +27,10 @@ class Line:
         self.sprite: pygame.Surface = None
         self.sprite_rect: pygame.Rect = None
 
+        self.sprite2X = 0.0
+        self.sprite2: pygame.Surface = None
+        self.sprite2_rect: pygame.Rect = None
+
         self.targetX = 0.0
         self.target: Target() = None
         self.target_rect: pygame.Rect = None
@@ -67,6 +71,30 @@ class Line:
         scaled_sprite = pygame.transform.scale(self.sprite,(destW, destH))
         draw_surface.blit(scaled_sprite, (destX, destY))
 
+    def drawSprite2(self, draw_surface: pygame.Surface):
+        if self.sprite2 is None:
+            return
+        w = self.sprite2.get_width()
+        h = self.sprite2.get_height()
+        destX = self.X + self.scale * self.sprite2X * SCREEN_WIDTH / 2
+        destY = self.Y + 4
+        destW = w * self.W / 266
+        destH = h * self.W / 266
+
+        destX += destW * self.sprite2X
+        destY += destH * -1
+
+        clipH = destY * self.sprite2X
+        if clipH < 0:
+            clipH = 0
+        if clipH >= destH:
+            return
+
+        if destW > (2*w):
+            return
+
+        scaled_sprite = pygame.transform.scale(self.sprite2,(destW, destH))
+        draw_surface.blit(scaled_sprite, (destX, destY))
     def drawTarget(self, draw_surface: pygame.Surface):
         if self.target is None:
             return

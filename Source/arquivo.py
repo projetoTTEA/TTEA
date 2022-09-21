@@ -1,6 +1,7 @@
 import csv
 import pandas as pd
 import numpy as np
+from datetime import datetime
 
 """
 Funções que interagem com os arquivos csv
@@ -44,12 +45,12 @@ csv.register_dialect(
     quoting = csv.QUOTE_MINIMAL)
 
 def CadastrarJogador(Nome, Nasc, Obs):
-    #Kartea
-    Config = ['Nome', 'Data de Nasc.', 'Observacoes', 'Fase Atual', 'Nivel Atual', 'Tempo de Nivel', 'Carro',
+    #--------------------------------Kartea----------------------------------------------------------------------------#
+    Config = ['Nome', 'Data de Nasc.', 'Observacoes', 'Sessao Atual', 'Detalhe Atual', 'Fase Atual', 'Nivel Atual', 'Tempo de Nivel', 'Carro',
               'Ambiente', 'Paleta', 'Alvo', 'Obstaculo', 'Imagem Feedback Positivo', 'Imagem Feedback Neutro',
               'Imagem Feedback Negativo', 'Som Feedback Positivo', 'Som Feedback Neutro', 'Som Feedback Negativo',
               'HUD', 'Som']
-    Dados = [Nome, Nasc, Obs, '1', '1', '120', 'carro.png', 'ambiente.png', '0', 'alvo.png', 'obstaculo.png',
+    Dados = [Nome, Nasc, Obs, '0', '0', '1', '1', '120', 'carro.png', 'ambiente.png', '0', 'alvo.png', 'obstaculo.png',
                'feedPos.png', 'feedNeut.png' 'feedNeg.png', 'feedPos.mp3','feedNeut.mp3', 'feedNeg.mp3',
                True, True]
     file = 'Jogadores/' + Nome + '_KarTEA_config.csv'
@@ -59,7 +60,7 @@ def CadastrarJogador(Nome, Nasc, Obs):
         csvwriter.writerow(Config)
         csvwriter.writerow(Dados)
 
-    fields = ['Sessao', 'Data da Sessao', 'Hora Inicio', 'Fase Alcancada', 'Nivel Alcancado', 'Pontuacao Geral',
+    fields = ['Sessao', 'Data da Sessao', 'Hora Termino', 'Fase Jogada', 'Nivel Jogado', 'Pontuacao',
               'Q Movimentos', 'Q Alvos Colididos', 'Q Alvos Desviados', 'Q Obstaculos Colididos',
               'Q Obstaculos Desviados']
     file = 'Jogadores/' + Nome + '_KarTEA_sessao.csv'
@@ -73,7 +74,7 @@ def CadastrarJogador(Nome, Nasc, Obs):
         csvwriter = csv.writer(csvfile, dialect='mydialect')
         csvwriter.writerow(fields)
 
-    #RepeTEA
+    #----------------RepeTEA-------------------------------------------------------------------------------------------#
     Config = ['Nome', 'Data de Nasc.', 'Observacoes', 'Fase Atual', 'Nivel Atual', 'Tempo de Nivel']
     Dados = [Nome, Nasc, Obs, '1', '1', '120']
     file = 'Jogadores/' + Nome + '_RepeTEA_config.csv'
@@ -96,20 +97,48 @@ def CadastrarJogador(Nome, Nasc, Obs):
         csvwriter.writerow(fields)
 
 #----------------------------------------------------------------------------------------------------------------------#
+# Funcoes que geram dados de data e hora para gravar
+
+def gera_Data():
+    now = datetime.now()
+    data = now.strftime("%d/%m/%Y")
+    return data
+def gera_Hora():
+    now = datetime.now()
+    hora = now.strftime("%H:%M:%S")
+    return hora
+
+#----------------------------------------------------------------------------------------------------------------------#
 
 def gravaDados(filename, Dados):# Dados é um vetor com os dados para gravar no arquivo 'filename'
     with open(filename, 'a+', newline='') as csvfile:
         csvwriter = csv.writer(csvfile, dialect='mydialect')
         csvwriter.writerow(Dados)
 
-def grava_Sessao(jogador, id, data, hora, fase, nivel, pont, mov, alvos_c, alvos_d, obst_c, obst_d):
+def grava_Sessao(jogador, fase, nivel, pont, mov, alvos_c, alvos_d, obst_c, obst_d):
+    """
+    fields = ['Sessao', 'Data da Sessao', 'Hora Termino', 'Fase Jogada', 'Nivel Jogado', 'Pontuacao',
+              'Q Movimentos', 'Q Alvos Colididos', 'Q Alvos Desviados', 'Q Obstaculos Colididos',
+              'Q Obstaculos Desviados']
+    """
+
+    file = 'Jogadores/'+jogador+'_KarTEA_config.csv'
+
+    id = get_K_SESSAO(file) + 1 # Pego ultimo id sessao gravado e +1
+    set_K_SESSAO(file, id) # Atualiza id sessao atual no config
+
+    data = gera_Data()
+    hora = gera_Hora()
+
     file = 'Jogadores/'+jogador+'_KarTEA_sessao.csv'
+
     fields = [id, data, hora, fase, nivel, pont, mov, alvos_c, alvos_d, obst_c, obst_d]
-    with open(file,'a+', newline='') as csvfile:
+    with open(file,'a', newline='') as csvfile:
         csvwriter = csv.writer(csvfile, dialect='mydialect')
         csvwriter.writerow(fields)
 
-def grava_Detalhado(jogador, id, sessao, hora, fase, nivel, pos_jog, pos_ev, tipo):
+
+def grava_Detalhado(jogador, sessao, hora, fase, nivel, pos_jog, pos_ev, tipo):
     file = 'Jogadores/' + jogador + '_KarTEA_detalhado.csv'
     fields = [id, sessao, hora, fase, nivel, pos_jog, pos_ev, tipo]
     with open(file, 'a+', newline='') as csvfile:
@@ -159,6 +188,9 @@ def lerCalibracao():
     return pontos_calibracao
 
 
+
+
+
 #----------------------------------------------------------------------------------------------------------------------#
 
 #Manipulação de dados das Configs
@@ -202,6 +234,7 @@ def set_K_NASC(filename, a):
     # print(df)
 
 
+
 def get_K_OBS(filename):
     # reading the csv file
     df = pd.read_csv(filename)
@@ -220,6 +253,46 @@ def set_K_OBS(filename, a):
     # writing into the file
     df.to_csv(filename, index=False)
     # print(df)
+
+
+
+def get_K_SESSAO(filename):
+    # reading the csv file
+    df = pd.read_csv(filename)
+
+    # getting value/data
+    ret = df["Sessao Atual"].values[0]
+    return ret
+
+def set_K_SESSAO(filename, a):
+    # reading the csv file
+    df = pd.read_csv(filename)
+
+    # updating the column value/data
+    df.loc[0, 'Sessao Atual'] = a
+
+    # writing into the file
+    df.to_csv(filename, index=False)
+    #print(df)
+
+def get_K_DETALHE(filename):
+    # reading the csv file
+    df = pd.read_csv(filename)
+
+    # getting value/data
+    ret = df["Detalhe Atual"].values[0]
+    return ret
+
+def set_K_DETALHE(filename, a):
+    # reading the csv file
+    df = pd.read_csv(filename)
+
+    # updating the column value/data
+    df.loc[0, 'Detalhe Atual'] = a
+
+    # writing into the file
+    df.to_csv(filename, index=False)
+    #print(df)
 
 
 def get_K_FASE(filename):

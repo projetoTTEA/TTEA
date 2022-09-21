@@ -17,9 +17,10 @@ div3_pista = SCREEN_WIDTH
 
 pista = 1
 
+feedback = 0
 
-FPS = 60
-DRAW_FPS = True
+FPS = 30
+DRAW_FPS = False
 
 # sizes
 BUTTONS_SIZES = (150, 45)
@@ -43,10 +44,10 @@ DRAW_HITBOX = False  # will draw all the hitbox
 ANIMATION_SPEED = 0.01 # the frame of the insects will change every X sec
 
 # difficulty
-GAME_DURATION = 120  # the game will last X sec
+GAME_DURATION = 60  # the game will last X sec
 
 TARGETS_SPAWN_TIME = 8
-TARGETS_MOVE_SPEED = 2
+TARGETS_MOVE_SPEED = 1
 OBSTACLE_PENALITY = 0  # will remove X of the score of the player (if he colides with a obstacle)
 
 # colors
