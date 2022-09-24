@@ -50,13 +50,11 @@ def user_events():
         if event.type == pygame.QUIT:
             pygame.display.quit()
 
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE:
-                pygame.display.quit()
 
 
 def update():
     global state
+
     if state == "menu":
         if menu.update() == "game":
             state = "game"
@@ -144,19 +142,4 @@ def main():
             fps_label = fps_font.render(f"FPS: {int(mainClock.get_fps())}", 1, (255, 200, 20))
             SCREEN.blit(fps_label, (5, 5))
 
-        # Teclas de Atalho
-        for event in pygame.event.get():
-            # SAIR
-            if event.type == pygame.QUIT:
-                gameExit = True
-                pygame.display.quit()
-            if event.type == pygame.KEYDOWN:
-                # SAIR (Q)
-                if event.key == pygame.K_q:
-                    gameExit = True
-                    cv2.destroyWindow("Tela de Captura")
-                    pygame.display.quit()
-                # Pausar (Space)
-                if event.key == pygame.K_SPACE:
-                    print("Space KarTEA.py")
 

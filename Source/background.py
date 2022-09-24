@@ -2,8 +2,8 @@ import image
 import pygame, time, sys, math
 from typing import List
 from settings import *
-from target import Target
 from line import Line
+import image
 
 roadW = 400 #Tamanho pista
 segL = 200 # Tamanho segmento
@@ -38,17 +38,12 @@ class Background:
         self.dt = 0
 
         # sprites
-        self.sprite_1 = pygame.image.load("Assets/Kartea/1.png").convert_alpha()
-        self.sprite_2 = pygame.image.load("Assets/Kartea/2.png").convert_alpha()
-        self.sprite_3 = pygame.image.load("Assets/Kartea/3.png").convert_alpha()
-        self.sprite_4 = pygame.image.load("Assets/Kartea/4.1.png").convert_alpha()
-        self.sprite_5 = pygame.image.load("Assets/Kartea/5.png").convert_alpha()
-        self.sprite_6 = pygame.image.load("Assets/Kartea/6.png").convert_alpha()
-        self.sprite_7 = pygame.image.load("Assets/Kartea/7.png").convert_alpha()
-        self.sprite_star = pygame.image.load("Assets/Kartea/Star.png").convert_alpha()
+        self.sprite_arv_esq = image.load("Assets/Kartea/5.png")
+        self.sprite_arv_dir = image.load("Assets/Kartea/5,1.png")
+
 
         # background
-        self.background_image = pygame.image.load("Assets/Kartea/bg.png").convert_alpha()
+        self.background_image = image.load("Assets/Kartea/bg.png")
         self.background_surface = pygame.Surface(
             (self.background_image.get_width() * 2, self.background_image.get_height())
         )
@@ -77,9 +72,9 @@ class Background:
 
             if i % 70 == 0:
                 line.spriteX = -2.5
-                line.sprite = self.sprite_5
+                line.sprite = self.sprite_arv_esq
                 line.sprite2X = 0.5
-                line.sprite2 = self.sprite_4
+                line.sprite2 = self.sprite_arv_dir
 
             self.lines.append(line)
         self.N = len(self.lines)
