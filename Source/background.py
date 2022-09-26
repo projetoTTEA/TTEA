@@ -38,12 +38,12 @@ class Background:
         self.dt = 0
 
         # sprites
-        self.sprite_arv_esq = image.load("Assets/Kartea/5.png")
-        self.sprite_arv_dir = image.load("Assets/Kartea/5,1.png")
+        self.sprite_arv_esq = pygame.image.load("Assets/Kartea/5.png").convert_alpha()
+        self.sprite_arv_dir = pygame.image.load("Assets/Kartea/5,1.png").convert_alpha()
 
 
         # background
-        self.background_image = image.load("Assets/Kartea/bg.png")
+        self.background_image = pygame.image.load("Assets/Kartea/bg.png").convert()
         self.background_surface = pygame.Surface(
             (self.background_image.get_width() * 2, self.background_image.get_height())
         )

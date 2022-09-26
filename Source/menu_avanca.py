@@ -18,7 +18,7 @@ class Avanca(Menu):
 
     def draw(self):
         self.background.draw(self.surface)
-        fundo = image.load("Assets/Kartea/Fundo.png")
+        fundo = pygame.image.load("Assets/Kartea/Fundo.png")
         image.draw(self.surface, fundo, (0,0))
         # draw title
         ui.draw_text(self.surface, "Avançando Nível", (SCREEN_WIDTH // 2, 120), COLORS["title"], font=FONTS["big"], shadow=True, shadow_color=(255,255,255), pos_mode="center")

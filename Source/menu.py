@@ -17,7 +17,7 @@ class Menu:
 
     def draw(self):
         self.background.draw(self.surface)
-        fundo = image.load("Assets/Kartea/Fundo.png")
+        fundo = pygame.image.load("Assets/Kartea/Fundo.png").convert_alpha()
         image.draw(self.surface, fundo, (0,0))
         # draw title
         ui.draw_text(self.surface, GAME_TITLE, (SCREEN_WIDTH // 2, 120), COLORS["title"], font=FONTS["big"],
