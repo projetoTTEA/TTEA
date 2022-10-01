@@ -230,7 +230,7 @@ selected_nivel = tk.StringVar()
 nivel_cb = ttk.Combobox(menu_frame, textvariable=selected_nivel)
 
 # set combo values
-nivel_cb['values'] = ['1', '2', '3', '4', '5']
+nivel_cb['values'] = ['1', '2', '3', '4', '5', '6']
 
 # prevent typing a value
 nivel_cb['state'] = 'disabled'

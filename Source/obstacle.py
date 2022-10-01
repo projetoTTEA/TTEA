@@ -21,6 +21,20 @@ class Obstacle(Target):
         self.current_road = road
         self.animation_timer = 0
 
+    def __init__(self, r):
+        #size
+        size = OBSTACLE_SIZES
+        # moving
+        road, start_pos = self.define_spawn_pos(r)
+
+        # sprite
+        self.tam = size
+        self.rect = pygame.Rect(start_pos[0], start_pos[1], size[0], size[1])
+        self.images = [image.load("Assets/Kartea/Obstaculo.png", size=size)]
+        self.current_frame = 0
+        self.current_pos = start_pos
+        self.current_road = road
+        self.animation_timer = 0
     def move(self):
         ve = TARGETS_MOVE_SPEED
         vel = [0, ve]
@@ -116,13 +130,11 @@ class Obstacle(Target):
             objects.remove(self)
             sounds["slap"].play()
             image.draw(surface, feliz_fig, (0, 0))
-            # gravar detalhado obst desviado
             return 10
         else:
             objects.remove(self)
             sounds["screaming"].play()
             image.draw(surface,triste_fig,(0,0))
-            # gravar detalhado obst colidido
             return 0
 
 

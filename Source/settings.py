@@ -17,15 +17,14 @@ div3_pista = SCREEN_WIDTH
 
 pista = 1
 
-feedback = 0
 
-FPS = 30
-DRAW_FPS = False
+FPS = 60
+DRAW_FPS = True
 
 # sizes
 BUTTONS_SIZES = (150, 45)
 CAR_SIZE = 150
-CAR_HITBOX_SIZE = (150, 200)
+CAR_HITBOX_SIZE = (150, 250)
 TARGETS_SIZES = (100, 100)
 OBSTACLE_SIZES = (100, 100)
 
@@ -45,6 +44,7 @@ ANIMATION_SPEED = 0.01 # the frame of the insects will change every X sec
 
 # difficulty
 GAME_DURATION = 60  # the game will last X sec
+TIME_PAST = 0
 
 TARGETS_SPAWN_TIME = 8
 TARGETS_MOVE_SPEED = 1
@@ -64,6 +64,10 @@ FONTS = {}
 FONTS["small"] = pygame.font.Font(None, 10)
 FONTS["medium"] = pygame.font.Font(None, 25)
 FONTS["big"] = pygame.font.Font(None, 50)
+
+#
+
+MENU = 'Inicial'
 
 #################################################################################
 ################################## CORES & FONTES ###############################
@@ -93,13 +97,4 @@ tela_de_calibracao = np.zeros((altura_projetor, largura_projetor, 3),
                               np.uint8)  # Tela que será usada para o projetar o jogo.
 tela_de_controle = np.zeros((altura_tela_controle, largura_tela_controle, 3),
                             np.uint8)  # Tela que será usada para o projetar o jogo.
-
-
-#################################################################################
-########################## Variaveis de controle ################################
-#################################################################################
-
-SOM = True
-HUD = True
-PAUSE = False
 

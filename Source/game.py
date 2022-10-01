@@ -17,6 +17,8 @@ class Game:
     def __init__(self, surface):
         self.surface = surface
         self.background = Background()
+        self.pose_tracking = PoseTracking()
+        self.car = Car()
 
         # Load camera
         self.cap = cv2.VideoCapture(0)
@@ -27,8 +29,16 @@ class Game:
         self.sounds["screaming"] = pygame.mixer.Sound(f"Assets/Kartea/Sounds/miss.wav")
         self.sounds["screaming"].set_volume(SOUNDS_VOLUME)
 
-        TARGETS_MOVE_SPEED = arquivo.get_Nivel()
+        settings.TARGETS_MOVE_SPEED = arquivo.get_Nivel()
+        if arquivo.get_Nivel() < 3:
+            settings.TARGETS_SPAWN_TIME = 8
+        elif arquivo.get_Nivel() < 5:
+            settings.TARGETS_SPAWN_TIME = 4
+        else:
+            settings.TARGETS_SPAWN_TIME = 2
+
         self.targets = []
+        self.Last_Obj = -1
 
         self.score = 0
         self.movimento = 0
@@ -38,13 +48,37 @@ class Game:
         self.obst = 0
         self.obst_c = 0
         self.obst_d = 0
+
+        self.config = 'Jogadores/' + arquivo.get_Player() + '_KarTEA_config.csv'
+        self.SOM = arquivo.get_K_SOM(self.config)
+        self.HUD = arquivo.get_K_HUD(self.config)
+        self.PAUSE = False
+
+        self.targets_spawn_timer = 0
+        self.game_start_time = time.time()
+        self.time_left = GAME_DURATION
+        settings.TIME_PAST = 0
 
 
     def reset(self): # reset all the needed variables
+        self.background = Background()
         self.pose_tracking = PoseTracking()
         self.car = Car()
+
+        settings.TARGETS_MOVE_SPEED = arquivo.get_Nivel()
+        if arquivo.get_Nivel() < 3:
+            settings.TARGETS_SPAWN_TIME = 8
+        elif arquivo.get_Nivel() < 5:
+            settings.TARGETS_SPAWN_TIME = 4
+        else:
+            settings.TARGETS_SPAWN_TIME = 2
+
         self.targets = []
+        self.Last_Obj = -1
         self.targets_spawn_timer = 0
+        self.game_start_time = time.time()
+        self.time_left = GAME_DURATION
+        settings.TIME_PAST = 0
 
         self.score = 0
         self.movimento = 0
@@ -55,22 +89,41 @@ class Game:
         self.obst_c = 0
         self.obst_d = 0
 
-        self.game_start_time = time.time()
 
     def spawn_targets(self):
         t = time.time()
         if t > self.targets_spawn_timer:
-            self.targets_spawn_timer = t + TARGETS_SPAWN_TIME
+            self.targets_spawn_timer = t + settings.TARGETS_SPAWN_TIME
 
             # Pega Fase atual do jogador
-            fase = arquivo.get_K_FASE('Jogadores/' + arquivo.get_Player() + '_KarTEA_config.csv')
+            fase = arquivo.get_K_FASE(self.config)
 
             # Pega posicao atual do jogo
             pos = self.background.get_startPos()
 
             # Cria Target e Obstacle para ser utilizado
-            target = Target()
-            obstacle = Obstacle()
+            if self.Last_Obj == -1:
+                r = random.randint(0, 2)
+            else:
+                r = self.Last_Obj
+                if arquivo.get_Nivel() % 2 == 1:
+                    if r == 0:
+                        r = 1
+                    elif r == 1:
+                        while r == self.Last_Obj:
+                            r = random.randint(0, 2)
+                    else:
+                        r = 1
+                else:
+                    while r == self.Last_Obj:
+                        r = random.randint(0, 2)
+
+            self.Last_Obj = r
+
+            target = Target(r)
+            obstacle = Obstacle(r)
+
+            print("Last_Obj: ", self.Last_Obj, ", TSP: ", settings.TARGETS_SPAWN_TIME)
 
             # Adiciona Target ou Obstacle de acordo com a fase
             if fase == 1:
@@ -112,13 +165,15 @@ class Game:
     def draw(self):
         # draw the background
 
-        if not PAUSE:
-            if TARGETS_MOVE_SPEED % 3 == 1:
+        if not self.PAUSE:
+            if arquivo.get_Nivel() < 3:
                 self.background.speed1()
-            elif TARGETS_MOVE_SPEED % 3 == 2:
+            elif arquivo.get_Nivel() < 5:
                 self.background.speed2()
-            else :
+            else:
                 self.background.speed3()
+        else:
+            self.background.stop()
         self.background.draw(self.surface)
 
         # draw the targets
@@ -128,7 +183,7 @@ class Game:
         # draw the car
         self.car.draw(self.surface)
 
-        if HUD:
+        if self.HUD:
             # draw the score
             ui.draw_text(self.surface, f"Pontuação : {self.score}", (650, 5), COLORS["score"], font=FONTS["medium"],
                          shadow=True, shadow_color=(255,255,255))
@@ -146,149 +201,162 @@ class Game:
 
 
     def game_time_update(self):
-        self.time_left = max(round(GAME_DURATION - (time.time() - self.game_start_time), 1), 0)
+        #self.time_left = max(round(GAME_DURATION - (time.time() - self.game_start_time), 1), 0)
+        self.time_left = GAME_DURATION - int(settings.TIME_PAST/1000)
 
     def grava_sessao(self):
         print("Gravando sessao:")
 
 
     def update(self):
+        if self.PAUSE:
+            settings.MENU = 'Pause'
+            return "menu"
+        else:
+            self.load_camera()
+            self.set_feet_position()
 
-        self.load_camera()
-        self.set_feet_position()
-        self.game_time_update()
+            self.game_time_update()
 
-        self.draw()
+            self.draw()
 
-        if self.time_left > 0:
-            if self.time_left > TARGETS_SPAWN_TIME:
-                self.spawn_targets()
-            x, y = self.pose_tracking.get_feet_center() #Obtem posição(x,y) central do jogador
-            feet1_x, feet1_y = self.pose_tracking.get_feet1() #Obtem posição(x,y) do pé esquerdo
-            feet2_x, feet2_y = self.pose_tracking.get_feet2() #Obtem posição(x,y) do pé direito
+            if self.time_left > 0:
+                if self.time_left > settings.TARGETS_SPAWN_TIME:
+                    self.spawn_targets()
+                x, y = self.pose_tracking.get_feet_center() #Obtem posição(x,y) central do jogador
+                feet1_x, feet1_y = self.pose_tracking.get_feet1() #Obtem posição(x,y) do pé esquerdo
+                feet2_x, feet2_y = self.pose_tracking.get_feet2() #Obtem posição(x,y) do pé direito
 
-            #print("feet1_x: ", feet1_x, ", feet1_y: ", feet1_y, ", feet2_x: ", feet2_x, ", feet2_y: ", feet2_y)
-            #print("x: ", x, ", y: ", y, ", feet_x: ", self.feet_x, ", feet_y: ", self.feet_y)
+                #print("feet1_x: ", feet1_x, ", feet1_y: ", feet1_y, ", feet2_x: ", feet2_x, ", feet2_y: ", feet2_y)
+                #print("x: ", x, ", y: ", y, ", feet_x: ", self.feet_x, ", feet_y: ", self.feet_y)
 
-            troca_pista = settings.pista #Armazena a pista que o jogador se encotra
-            if (div0_pista <= feet1_x < div1_pista) and (div0_pista <= feet2_x < div1_pista):  #Atualiza a pista do jogador, os 2 pés devem estar na pista
-                settings.pista = 0
-            elif (div1_pista <= feet1_x < div2_pista) and (div1_pista <= feet2_x < div2_pista):
-                settings.pista = 1
-            elif (div2_pista <= feet1_x < div3_pista) and (div2_pista <= feet2_x < div3_pista):
-                settings.pista = 2
-            elif ((feet1_x < div0_pista) and (feet2_x < div0_pista)) or ((feet1_x > div3_pista) and (feet2_x > div3_pista) ):
-                settings.pista = -1 #fora da area de calibracao
+                troca_pista = settings.pista #Armazena a pista que o jogador se encotra
+                if (div0_pista <= feet1_x < div1_pista) and (div0_pista <= feet2_x < div1_pista):  #Atualiza a pista do jogador, os 2 pés devem estar na pista
+                    settings.pista = 0
+                elif (div1_pista <= feet1_x < div2_pista) and (div1_pista <= feet2_x < div2_pista):
+                    settings.pista = 1
+                elif (div2_pista <= feet1_x < div3_pista) and (div2_pista <= feet2_x < div3_pista):
+                    settings.pista = 2
+                elif ((feet1_x < div0_pista) and (feet2_x < div0_pista)) or ((feet1_x > div3_pista) and (feet2_x > div3_pista) ):
+                    settings.pista = -1 #fora da area de calibracao
 
-            '''
-            if div0_pista <= x < div1_pista: #Atualiza a pista do jogador de acordo com a posiçao central
-                settings.pista = 0
-            elif div1_pista <= x < div2_pista:
-                settings.pista = 1
-            elif div2_pista <= x < div3_pista:
-                settings.pista = 2
-            else:
-                settings.pista = -1 #fora da area de calibracao
-            '''
+                '''
+                if div0_pista <= x < div1_pista: #Atualiza a pista do jogador de acordo com a posiçao central
+                    settings.pista = 0
+                elif div1_pista <= x < div2_pista:
+                    settings.pista = 1
+                elif div2_pista <= x < div3_pista:
+                    settings.pista = 2
+                else:
+                    settings.pista = -1 #fora da area de calibracao
+                '''
 
-            if settings.pista != troca_pista: #Checa se houve troca de pista
-                print("Trocou da pista ", troca_pista, " para ", settings.pista)
-                if settings.pista != -1 and troca_pista != -1:
-                    self.score += 2
-                    self.movimento += 1
-                    # gravar detalhado troca de pista
-                elif settings.pista == -1:
-                    print("Pedeu o Sinal")
-                    # gravar detalhado perda sinal
-                    return "pause"
+                if settings.pista != troca_pista: #Checa se houve troca de pista
+                    print("Trocou da pista ", troca_pista, " para ", settings.pista)
+                    if settings.pista != -1 and troca_pista != -1:
+                        self.score += 2
+                        self.movimento += 1
+                        # gravar detalhado troca de pista
+                    elif settings.pista == -1:
+                        print("Pedeu o Sinal")
+                        # gravar detalhado perda sinal
+                        self.PAUSE = True
 
-            self.car.rect.center = (x, y)
-            self.car.left_click = self.pose_tracking.feet_closed
-            self.score = self.car.kill_targets(self.surface, self.targets, self.score, self.sounds)
-            for alvo in self.targets:
-                if alvo.current_pos[1] > (SCREEN_HEIGHT+100):
-                    self.score += alvo.kill(self.surface, self.targets, self.sounds)
+                self.car.rect.center = (x, y)
+                self.car.left_click = self.pose_tracking.feet_closed
+                self.score = self.car.kill_targets(self.surface, self.targets, self.score, self.sounds)
+                for alvo in self.targets:
+                    if alvo.current_pos[1] > (SCREEN_HEIGHT+100):
+                        self.score += alvo.kill(self.surface, self.targets, self.sounds)
 
-        else: # when the game is over
-            settings.PAUSE = True
-            print("Terminou o Nível!")
-            self.background.stop()
+            else: # when the game is over
+                print("Terminou o Nível!")
 
-            ponto_T = self.alvo * 12 + self.obst * 12
-            if self.score >= (3*ponto_T)/4:
-                settings.feedback = 3
-            elif self.score >= ponto_T/4:
-                settings.feedback = 2
-            else:
-                settings.feedback = 1
+                ponto_T = self.alvo * 12 + self.obst * 12
 
-            jogador = arquivo.get_Player()
+                if self.score >= (3*ponto_T)/4:
+                    settings.MENU = 'Feedback_3'
+                elif self.score >= ponto_T/4:
+                    settings.MENU = 'Feedback_2'
+                else:
+                    settings.MENU = 'Feedback_1'
 
-            #Gravar sessao
-            return "feedback"
+                jogador = arquivo.get_Player()
 
-        #Desenha a borda da area de calibração
-        cv2.line(self.frame, (pontos_calibracao[0]), (pontos_calibracao[1]), (verde), 2)
-        cv2.line(self.frame, (pontos_calibracao[1]), (pontos_calibracao[3]), (verde), 2)
-        cv2.line(self.frame, (pontos_calibracao[2]), (pontos_calibracao[0]), (verde), 2)
-        cv2.line(self.frame, (pontos_calibracao[2]), (pontos_calibracao[3]), (verde), 2)
+                #Gravar sessao
+                return "menu"
 
-        cv2.circle(self.frame, (pontos_calibracao[0]), 5, azul, 3)
-        cv2.circle(self.frame, (pontos_calibracao[1]), 5, azul, 3)
-        cv2.circle(self.frame, (pontos_calibracao[2]), 5, azul, 3)
-        cv2.circle(self.frame, (pontos_calibracao[3]), 5, azul, 3)
+            #Desenha a borda da area de calibração
+            cv2.line(self.frame, (pontos_calibracao[0]), (pontos_calibracao[1]), (verde), 2)
+            cv2.line(self.frame, (pontos_calibracao[1]), (pontos_calibracao[3]), (verde), 2)
+            cv2.line(self.frame, (pontos_calibracao[2]), (pontos_calibracao[0]), (verde), 2)
+            cv2.line(self.frame, (pontos_calibracao[2]), (pontos_calibracao[3]), (verde), 2)
 
-        cv2.imshow("Tela de Captura", self.frame)
+            cv2.circle(self.frame, (pontos_calibracao[0]), 5, azul, 3)
+            cv2.circle(self.frame, (pontos_calibracao[1]), 5, azul, 3)
+            cv2.circle(self.frame, (pontos_calibracao[2]), 5, azul, 3)
+            cv2.circle(self.frame, (pontos_calibracao[3]), 5, azul, 3)
 
-        # Eventos Pygame
-        for event in pygame.event.get():
-            # SAIR
-            if event.type == pygame.QUIT:
-                gameExit = True
-                cv2.destroyWindow("Tela de Captura")
-                pygame.display.quit()
+            cv2.imshow("Tela de Captura", self.frame)
 
-
-            if event.type == pygame.KEYDOWN:
-                # SAIR (Q)
-                if event.key == pygame.K_q:
+            # Eventos Pygame
+            for event in pygame.event.get():
+                # SAIR
+                if event.type == pygame.QUIT:
                     gameExit = True
                     cv2.destroyWindow("Tela de Captura")
                     pygame.display.quit()
-                # Pausar (Space)
-                if event.key == pygame.K_SPACE:
-                    print("Space game.py")
-                    if self.background.speed == 0:
-                        PAUSE = False
-                        print("Unpause")
-                    else:
-                        PAUSE = True
-                        print("Pause")
-                        self.background.stop()
-                        return "pause"
-                # H/D Som (S)
-                if event.key == pygame.K_s:
-                    if settings.SOM:
-                        settings.SOM = False
-                    else:
-                        settings.SOM = True
-                # H/D Som (1)
-                if event.key == pygame.K_1:
-                    if settings.SOM:
-                        settings.SOM = False
-                    else:
-                        settings.SOM = True
-                # H/D HUD (H)
-                if event.key == pygame.K_q:
-                    if settings.HUD:
-                        settings.HUD = False
-                    else:
-                        settings.HUD = True
-                # H/D HUD (2)
-                if event.key == pygame.K_2:
-                    if settings.HUD:
-                        settings.HUD = False
-                    else:
-                        settings.HUD = True
 
-        cv2.waitKey(1)
+
+                if event.type == pygame.KEYDOWN:
+                    # SAIR (Q)
+                    if event.key == pygame.K_q:
+                        gameExit = True
+                        cv2.destroyWindow("Tela de Captura")
+                        pygame.display.quit()
+                    # Pausar (Space)
+                    if event.key == pygame.K_SPACE:
+                        print("Space game.py")
+                        if self.background.speed == 0:
+                            PAUSE = False
+                            print("Unpause")
+                        else:
+                            PAUSE = True
+                            print("Pause")
+                            self.background.stop()
+                            settings.MENU = 'Pause'
+                            return "menu"
+                    # H/D Som (S)
+                    if event.key == pygame.K_s:
+                        if settings.SOM:
+                            settings.SOM = False
+                            arquivo.set_K_SOM(self.config, False)
+                        else:
+                            settings.SOM = True
+                            arquivo.set_K_SOM(self.config, True)
+                    # H/D Som (1)
+                    if event.key == pygame.K_1:
+                        if settings.SOM:
+                            settings.SOM = False
+                            arquivo.set_K_SOM(self.config, False)
+                        else:
+                            settings.SOM = True
+                            arquivo.set_K_SOM(self.config, True)
+                    # H/D HUD (H)
+                    if event.key == pygame.K_q:
+                        if self.HUD:
+                            self.HUD = False
+                            arquivo.set_K_HUD(self.config, False)
+                        else:
+                            self.HUD = True
+                            arquivo.set_K_HUD(self.config, True)
+                    # H/D HUD (2)
+                    if event.key == pygame.K_2:
+                        if self.HUD:
+                            self.HUD = False
+                            arquivo.set_K_HUD(self.config, False)
+                        else:
+                            self.HUD = True
+                            arquivo.set_K_HUD(self.config, True)
+
+            cv2.waitKey(1)

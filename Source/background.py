@@ -3,7 +3,6 @@ import pygame, time, sys, math
 from typing import List
 from settings import *
 from line import Line
-import image
 
 roadW = 400 #Tamanho pista
 segL = 200 # Tamanho segmento
@@ -43,7 +42,7 @@ class Background:
 
 
         # background
-        self.background_image = pygame.image.load("Assets/Kartea/bg.png").convert()
+        self.background_image = pygame.image.load("Assets/Kartea/bg.png").convert_alpha()
         self.background_surface = pygame.Surface(
             (self.background_image.get_width() * 2, self.background_image.get_height())
         )
@@ -56,7 +55,7 @@ class Background:
         self.distObj = (150, 100, 50)
 
         self.lines: List[Line] = []
-        for i in range(10000):
+        for i in range(5000):
             line = Line()
             line.z = i * segL + 0.00001
 
@@ -73,7 +72,7 @@ class Background:
             if i % 70 == 0:
                 line.spriteX = -2.5
                 line.sprite = self.sprite_arv_esq
-                line.sprite2X = 0.5
+                line.sprite2X = 1
                 line.sprite2 = self.sprite_arv_dir
 
             self.lines.append(line)

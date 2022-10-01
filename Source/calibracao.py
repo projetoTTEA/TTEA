@@ -253,7 +253,7 @@ while not gameWarning:
             if event.key == pygame.K_q:
                 gameExit = True
                 cv2.destroyWindow('tela_de_controle')
-                pygame.display.quit()
+                pygame.quit()
                 camera.release()
                 exit()
                 gameWarning = True
@@ -333,7 +333,7 @@ while not gameExit:
             cv2.imshow("TELA DE CONTROLE", tela_de_controle)
             cv2.setMouseCallback("TELA DE CONTROLE", mousePoints)
 
-            # Eventos pygame
+            # Teclas de Atalho
             for event in pygame.event.get():
                 # SAIR
                 if event.type == pygame.QUIT:
@@ -343,7 +343,7 @@ while not gameExit:
                     print('P1: ', pontos_calibracao[0], ' P2: ', pontos_calibracao[1], ' P3: ', pontos_calibracao[2], ' P4: ', pontos_calibracao[3])
                     pygame.display.quit()
                     camera.release()
-            # Teclas de Atalho
+
             # SAIR (ESC)
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:

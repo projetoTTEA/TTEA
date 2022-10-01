@@ -25,8 +25,32 @@ class Target:
         self.animation_timer = 0
         self.line = None
 
+    def __init__(self, r):
+        #size
+        size = TARGETS_SIZES
+        # moving
+        road ,start_pos = self.define_spawn_pos(r)
+
+        # sprite
+        self.tam = size
+        self.rect = pygame.Rect(start_pos[0], start_pos[1], size[0], size[1])
+        self.images = [image.load("Assets/Kartea/Star.png", size=size)]
+        self.current_frame = 0
+        self.current_pos = start_pos
+        self.current_road = road
+        self.animation_timer = 0
+        self.line = None
+
     def define_spawn_pos(self): # define the start pos and moving vel of the mosquito
         road = random.randint(0,2) # 0 esq, 1 meio, 2 dir
+        start_pos = OBJ_POS[road]
+        return road, start_pos
+
+    def define_spawn_pos(self, r): # define the start pos and moving vel of the mosquito
+        if r >= 0 and r <= 2:
+            road = r
+        else:
+            road = random.randint(0,2) # 0 esq, 1 meio, 2 dir
         start_pos = OBJ_POS[road]
         return road, start_pos
 
@@ -161,11 +185,9 @@ class Target:
             targets.remove(self)
             sounds["screaming"].play()
             image.draw(surface,triste_fig,(0,0))
-            # gravar detalhado alvo desviado
             return 0
         else:
             targets.remove(self)
             sounds["slap"].play()
             image.draw(surface, feliz_fig, (0, 0))
-            # gravar detalhado alvo colidido
             return 10
