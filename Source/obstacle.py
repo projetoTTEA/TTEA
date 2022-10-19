@@ -2,6 +2,8 @@ import pygame
 import random
 import image
 import time
+
+import settings
 from settings import *
 from target import Target
 
@@ -130,11 +132,17 @@ class Obstacle(Target):
             objects.remove(self)
             sounds["slap"].play()
             image.draw(surface, feliz_fig, (0, 0))
+            arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                    arquivo.get_Nivel(), pista, self.current_road, 'Desviou de Obstaculo')
+            settings.Obst_d += 1
             return 10
         else:
             objects.remove(self)
             sounds["screaming"].play()
             image.draw(surface,triste_fig,(0,0))
+            arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                    arquivo.get_Nivel(), pista, self.current_road, 'Colidiu com Obstaculo')
+            settings.Obst_c += 1
             return 0
 
 

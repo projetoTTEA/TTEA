@@ -10,6 +10,7 @@ from car import Car
 from pose_tracking import PoseTracking
 from target import Target
 from obstacle import Obstacle
+from camera import Camera
 import cv2
 import ui
 
@@ -19,15 +20,21 @@ class Game:
         self.background = Background()
         self.pose_tracking = PoseTracking()
         self.car = Car()
+        file = 'Jogadores/' + arquivo.get_Player() + '_KarTEA_config.csv'
 
         # Load camera
-        self.cap = cv2.VideoCapture(0)
+        self.cap = Camera()
 
         self.sounds = {}
         self.sounds["slap"] = pygame.mixer.Sound(f"Assets/Kartea/Sounds/point.wav")
-        self.sounds["slap"].set_volume(SOUNDS_VOLUME)
         self.sounds["screaming"] = pygame.mixer.Sound(f"Assets/Kartea/Sounds/miss.wav")
-        self.sounds["screaming"].set_volume(SOUNDS_VOLUME)
+        if(arquivo.get_K_SOM(file)):
+            self.sounds["slap"].set_volume(1)
+            self.sounds["screaming"].set_volume(1)
+        else:
+            self.sounds["slap"].set_volume(0)
+            self.sounds["screaming"].set_volume(0)
+
 
         settings.TARGETS_MOVE_SPEED = arquivo.get_Nivel()
         if arquivo.get_Nivel() < 3:
@@ -130,25 +137,37 @@ class Game:
                 self.targets.append(target)
                 self.background.lines[pos].target = target
                 self.alvo += 1
+                settings.Alvo += 1
+                arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                    arquivo.get_Nivel(), settings.pista, r, 'Criou Alvo')
             elif fase == 2:
                 self.targets.append(obstacle)
                 self.background.lines[pos].target = obstacle
                 self.obst += 1
+                settings.Obst += 1
+                arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                    arquivo.get_Nivel(), settings.pista, r, 'Criou Obstaculo')
             else:
                 if random.randint(0, 100) < 50:
                     self.targets.append(obstacle)
                     self.background.lines[pos].target = obstacle
                     self.obst += 1
+                    settings.Obst += 1
+                    arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                    arquivo.get_Nivel(), settings.pista, r, 'Criou Obstaculo')
                 else:
                     self.targets.append(target)
                     self.background.lines[pos].target = target
                     self.alvo += 1
+                    settings.Alvo += 1
+                    arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                    arquivo.get_Nivel(), settings.pista, r, 'Criou Alvo')
 
     def load_camera(self):
-        _, self.frame = self.cap.read()
+        self.cap.load_camera()
 
     def set_feet_position(self):
-        self.frame = self.pose_tracking.scan_feets(self.frame)
+        self.cap.frame = self.pose_tracking.scan_feets(self.cap.frame)
         (x, y) = self.pose_tracking.get_feet_center()
         Y = SCREEN_HEIGHT - CAR_SIZE/2
         self.car.rect.center = (x, Y)
@@ -204,17 +223,15 @@ class Game:
         #self.time_left = max(round(GAME_DURATION - (time.time() - self.game_start_time), 1), 0)
         self.time_left = GAME_DURATION - int(settings.TIME_PAST/1000)
 
-    def grava_sessao(self):
-        print("Gravando sessao:")
-
 
     def update(self):
+        self.load_camera()
+        self.set_feet_position()
         if self.PAUSE:
             settings.MENU = 'Pause'
+            self.PAUSE = False
             return "menu"
         else:
-            self.load_camera()
-            self.set_feet_position()
 
             self.game_time_update()
 
@@ -240,7 +257,6 @@ class Game:
                 elif ((feet1_x < div0_pista) and (feet2_x < div0_pista)) or ((feet1_x > div3_pista) and (feet2_x > div3_pista) ):
                     settings.pista = -1 #fora da area de calibracao
 
-                '''
                 if div0_pista <= x < div1_pista: #Atualiza a pista do jogador de acordo com a posiçao central
                     settings.pista = 0
                 elif div1_pista <= x < div2_pista:
@@ -249,18 +265,23 @@ class Game:
                     settings.pista = 2
                 else:
                     settings.pista = -1 #fora da area de calibracao
-                '''
 
                 if settings.pista != troca_pista: #Checa se houve troca de pista
                     print("Trocou da pista ", troca_pista, " para ", settings.pista)
                     if settings.pista != -1 and troca_pista != -1:
                         self.score += 2
                         self.movimento += 1
-                        # gravar detalhado troca de pista
+                        # grava detalhado troca de pista
+                        arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                    arquivo.get_Nivel(), settings.pista, troca_pista, 'Trocou de Pista')
+
                     elif settings.pista == -1:
                         print("Pedeu o Sinal")
                         # gravar detalhado perda sinal
+                        arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                                arquivo.get_Nivel(), settings.pista, troca_pista, 'Saiu da area do jogo')
                         self.PAUSE = True
+                        settings.pista = 0
 
                 self.car.rect.center = (x, y)
                 self.car.left_click = self.pose_tracking.feet_closed
@@ -275,88 +296,118 @@ class Game:
                 ponto_T = self.alvo * 12 + self.obst * 12
 
                 if self.score >= (3*ponto_T)/4:
+                    arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                            arquivo.get_Nivel(), pista, pista,
+                                            'Controle Jogo: Avanca Nivel')
                     settings.MENU = 'Feedback_3'
                 elif self.score >= ponto_T/4:
+                    arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                            arquivo.get_Nivel(), pista, pista,
+                                            'Controle Jogo: Permanece Nivel')
                     settings.MENU = 'Feedback_2'
                 else:
+                    arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                            arquivo.get_Nivel(), pista, pista,
+                                            'Controle Jogo: Retrocede Nivel')
                     settings.MENU = 'Feedback_1'
 
-                jogador = arquivo.get_Player()
-
-                #Gravar sessao
+                # Grava sessao
+                arquivo.grava_Sessao(arquivo.get_Player(), arquivo.get_Fase(), arquivo.get_Nivel(), self.score,
+                                     self.movimento, settings.Alvo_c, settings.Alvo_d, settings.Obst_c, settings.Obst_d)
                 return "menu"
-
-            #Desenha a borda da area de calibração
-            cv2.line(self.frame, (pontos_calibracao[0]), (pontos_calibracao[1]), (verde), 2)
-            cv2.line(self.frame, (pontos_calibracao[1]), (pontos_calibracao[3]), (verde), 2)
-            cv2.line(self.frame, (pontos_calibracao[2]), (pontos_calibracao[0]), (verde), 2)
-            cv2.line(self.frame, (pontos_calibracao[2]), (pontos_calibracao[3]), (verde), 2)
-
-            cv2.circle(self.frame, (pontos_calibracao[0]), 5, azul, 3)
-            cv2.circle(self.frame, (pontos_calibracao[1]), 5, azul, 3)
-            cv2.circle(self.frame, (pontos_calibracao[2]), 5, azul, 3)
-            cv2.circle(self.frame, (pontos_calibracao[3]), 5, azul, 3)
-
-            cv2.imshow("Tela de Captura", self.frame)
 
             # Eventos Pygame
             for event in pygame.event.get():
                 # SAIR
                 if event.type == pygame.QUIT:
                     gameExit = True
-                    cv2.destroyWindow("Tela de Captura")
+
                     pygame.display.quit()
 
 
                 if event.type == pygame.KEYDOWN:
-                    # SAIR (Q)
-                    if event.key == pygame.K_q:
-                        gameExit = True
-                        cv2.destroyWindow("Tela de Captura")
-                        pygame.display.quit()
                     # Pausar (Space)
                     if event.key == pygame.K_SPACE:
                         print("Space game.py")
                         if self.background.speed == 0:
-                            PAUSE = False
+                            self.PAUSE = False
                             print("Unpause")
+                            arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                                    arquivo.get_Nivel(), pista, pista,
+                                                    'Controle UFE: Unpause')
+
                         else:
-                            PAUSE = True
+                            self.PAUSE = True
                             print("Pause")
+                            arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                                    arquivo.get_Nivel(), pista, pista,
+                                                    'Controle UFE: Pause')
                             self.background.stop()
                             settings.MENU = 'Pause'
                             return "menu"
                     # H/D Som (S)
                     if event.key == pygame.K_s:
-                        if settings.SOM:
-                            settings.SOM = False
+                        if self.SOM:
+                            self.SOM = False
+                            self.sounds["slap"].set_volume(0)
+                            self.sounds["screaming"].set_volume(0)
                             arquivo.set_K_SOM(self.config, False)
+                            arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                                    arquivo.get_Nivel(), pista, pista,
+                                                    'Controle UFE: Desabilita Som')
                         else:
-                            settings.SOM = True
+                            self.SOM = True
+                            self.sounds["slap"].set_volume(1)
+                            self.sounds["screaming"].set_volume(1)
                             arquivo.set_K_SOM(self.config, True)
+                            arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                                    arquivo.get_Nivel(), pista, pista,
+                                                    'Controle UFE: Habilita Som')
                     # H/D Som (1)
                     if event.key == pygame.K_1:
-                        if settings.SOM:
-                            settings.SOM = False
+                        if self.SOM:
+                            self.SOM = False
+                            self.sounds["slap"].set_volume(0)
+                            self.sounds["screaming"].set_volume(0)
                             arquivo.set_K_SOM(self.config, False)
+                            arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                                    arquivo.get_Nivel(), pista, pista,
+                                                    'Controle UFE: Desabilita Som')
                         else:
-                            settings.SOM = True
+                            self.SOM = True
+                            self.sounds["slap"].set_volume(1)
+                            self.sounds["screaming"].set_volume(1)
                             arquivo.set_K_SOM(self.config, True)
+                            arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                                    arquivo.get_Nivel(), pista, pista,
+                                                    'Controle UFE: Habilita Som')
                     # H/D HUD (H)
-                    if event.key == pygame.K_q:
+                    if event.key == pygame.K_h:
                         if self.HUD:
                             self.HUD = False
                             arquivo.set_K_HUD(self.config, False)
+                            arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                                    arquivo.get_Nivel(), pista, pista,
+                                                    'Controle UFE: Desabilita HUD')
                         else:
                             self.HUD = True
                             arquivo.set_K_HUD(self.config, True)
+                            arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                                    arquivo.get_Nivel(), pista, pista,
+                                                    'Controle UFE: Habilita HUD')
                     # H/D HUD (2)
                     if event.key == pygame.K_2:
                         if self.HUD:
                             self.HUD = False
                             arquivo.set_K_HUD(self.config, False)
+                            arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                                    arquivo.get_Nivel(), pista, pista,
+                                                    'Controle UFE: Desabilita HUD')
                         else:
                             self.HUD = True
                             arquivo.set_K_HUD(self.config, True)
+                            arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                                    arquivo.get_Nivel(), pista, pista,
+                                                    'Controle UFE: Habilita HUD')
 
             cv2.waitKey(1)

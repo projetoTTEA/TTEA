@@ -1,1 +1,495 @@
 ID,Sessao,Hora do Evento,Fase,Nivel,Posicao jogador,Posicao Evento,Tipo de Evento
+0,1,15:06:46,1,1,1,2,Criou Alvo
+1,1,15:06:50,1,1,2,1,Trocou de Pista
+2,1,15:06:51,1,1,1,2,Trocou de Pista
+3,1,15:06:52,1,1,0,1,Trocou de Pista
+4,1,15:06:53,1,1,-1,0,Saiu da area do jogo
+5,1,15:10:59,1,1,1,2,Criou Alvo
+6,1,15:11:00,1,1,0,1,Trocou de Pista
+7,1,15:11:01,1,1,1,0,Trocou de Pista
+8,1,15:11:02,1,1,0,1,Trocou de Pista
+9,1,15:11:03,1,1,-1,0,Saiu da area do jogo
+10,1,15:18:02,1,1,1,0,Criou Alvo
+11,1,15:18:05,1,1,0,1,Trocou de Pista
+12,1,15:18:05,1,1,-1,0,Saiu da area do jogo
+13,1,15:30:11,1,1,1,0,Criou Alvo
+14,1,15:30:11,1,1,0,1,Trocou de Pista
+15,1,15:30:13,1,1,1,0,Trocou de Pista
+16,1,15:30:13,1,1,2,1,Trocou de Pista
+17,1,15:30:13,1,1,1,2,Trocou de Pista
+18,1,15:30:14,1,1,0,1,Trocou de Pista
+19,1,15:30:15,1,1,1,0,Trocou de Pista
+20,1,15:30:15,1,1,2,1,Trocou de Pista
+21,1,15:30:16,1,1,1,2,Trocou de Pista
+22,1,15:30:17,1,1,0,1,Trocou de Pista
+23,1,15:30:18,1,1,-1,0,Saiu da area do jogo
+24,1,15:32:52,1,1,1,0,Criou Alvo
+25,1,15:32:52,1,1,0,1,Trocou de Pista
+26,1,15:32:53,1,1,1,0,Trocou de Pista
+27,1,15:32:54,1,1,2,1,Trocou de Pista
+28,1,15:32:55,1,1,1,2,Trocou de Pista
+29,1,15:32:55,1,1,0,1,Trocou de Pista
+30,1,15:32:56,1,1,-1,0,Saiu da area do jogo
+31,1,15:35:15,1,1,1,1,Criou Alvo
+32,1,15:35:19,1,1,0,1,Trocou de Pista
+33,1,15:35:20,1,1,-1,0,Saiu da area do jogo
+34,1,15:38:07,1,1,1,1,Criou Alvo
+35,1,15:38:08,1,1,0,1,Trocou de Pista
+36,1,15:38:09,1,1,-1,0,Saiu da area do jogo
+37,1,15:45:15,1,1,1,1,Criou Alvo
+38,1,15:45:15,1,1,0,1,Trocou de Pista
+39,1,15:45:16,1,1,1,0,Trocou de Pista
+40,1,15:45:17,1,1,0,1,Trocou de Pista
+41,1,15:45:18,1,1,-1,0,Saiu da area do jogo
+42,1,15:45:19,1,1,1,0,Trocou de Pista
+43,1,15:45:20,1,1,0,1,Trocou de Pista
+44,1,15:45:21,1,1,1,0,Trocou de Pista
+45,1,15:45:21,1,1,0,1,Trocou de Pista
+46,1,15:45:22,1,1,1,0,Trocou de Pista
+47,1,15:45:22,1,1,2,1,Trocou de Pista
+48,1,15:45:22,1,1,1,2,Trocou de Pista
+49,1,15:45:23,1,1,0,1,Trocou de Pista
+50,1,15:45:23,1,1,0,0,Criou Alvo
+51,1,15:45:23,1,1,1,0,Trocou de Pista
+52,1,15:45:24,1,1,0,1,Trocou de Pista
+53,1,15:45:24,1,1,1,0,Trocou de Pista
+54,1,15:45:25,1,1,2,1,Trocou de Pista
+55,1,15:45:25,1,1,1,2,Trocou de Pista
+56,1,15:45:25,1,1,0,1,Trocou de Pista
+57,1,15:45:26,1,1,1,0,Trocou de Pista
+58,1,15:45:26,1,1,2,1,Trocou de Pista
+59,1,15:45:27,1,1,1,2,Trocou de Pista
+60,1,15:45:27,1,1,0,1,Trocou de Pista
+61,1,15:45:27,1,1,-1,0,Saiu da area do jogo
+62,1,15:45:30,1,1,1,0,Trocou de Pista
+63,1,15:45:30,1,1,2,1,Trocou de Pista
+64,1,15:45:30,1,1,1,2,Trocou de Pista
+65,1,15:45:30,1,1,0,1,Trocou de Pista
+66,1,15:45:31,1,1,1,0,Trocou de Pista
+67,1,15:45:31,1,1,2,1,Trocou de Pista
+68,1,15:45:31,1,1,2,1,Criou Alvo
+69,1,15:45:31,1,1,1,2,Trocou de Pista
+70,1,15:45:32,1,1,0,1,Trocou de Pista
+71,1,15:45:32,1,1,1,0,Trocou de Pista
+72,1,15:45:32,1,1,2,1,Trocou de Pista
+73,1,15:45:33,1,1,1,2,Trocou de Pista
+74,1,15:45:33,1,1,0,1,Trocou de Pista
+75,1,15:45:33,1,1,-1,0,Saiu da area do jogo
+76,1,15:45:34,1,1,1,0,Trocou de Pista
+77,1,15:45:34,1,1,1,1,Colidiu com Alvo
+78,1,15:45:39,1,1,1,2,Criou Alvo
+79,1,15:45:41,1,1,0,1,Trocou de Pista
+80,1,15:45:41,1,1,1,0,Colidiu com Alvo
+81,1,15:45:42,1,1,1,0,Trocou de Pista
+82,1,15:45:47,1,1,1,1,Criou Alvo
+83,1,15:45:48,1,1,1,1,Colidiu com Alvo
+84,1,15:45:48,1,1,1,1,Controle UFE: Desabilita HUD
+85,1,15:45:52,1,1,1,1,Controle UFE: Habilita HUD
+86,1,15:45:54,1,1,2,1,Trocou de Pista
+87,1,15:45:55,1,1,1,2,Colidiu com Alvo
+88,1,15:45:55,1,1,2,0,Criou Alvo
+89,1,15:45:56,1,1,1,2,Trocou de Pista
+90,1,15:47:48,1,1,1,0,Criou Alvo
+91,1,15:47:51,1,1,0,1,Trocou de Pista
+92,1,15:47:52,1,1,1,0,Trocou de Pista
+93,1,15:47:56,1,1,1,1,Criou Alvo
+94,1,15:47:56,1,1,0,1,Trocou de Pista
+95,1,15:47:56,1,1,-1,0,Saiu da area do jogo
+96,1,15:48:00,1,1,1,0,Trocou de Pista
+97,1,15:48:03,1,1,0,1,Trocou de Pista
+98,1,15:48:04,1,1,0,0,Criou Alvo
+99,1,15:48:05,1,1,1,0,Colidiu com Alvo
+100,1,15:48:05,1,1,1,1,Controle UFE: Desabilita Som
+101,1,15:48:06,1,1,1,1,Controle UFE: Habilita Som
+102,1,15:48:06,1,1,1,1,Controle UFE: Desabilita Som
+103,1,15:48:06,1,1,1,1,Controle UFE: Habilita Som
+104,1,15:48:07,1,1,1,1,Controle UFE: Desabilita Som
+105,1,15:48:08,1,1,1,0,Trocou de Pista
+106,1,15:48:12,1,1,1,1,Criou Alvo
+107,1,15:48:13,1,1,1,1,Colidiu com Alvo
+108,1,15:48:14,1,1,1,1,Controle UFE: Habilita Som
+109,1,15:48:16,1,1,0,1,Trocou de Pista
+110,1,15:48:19,1,1,1,0,Colidiu com Alvo
+111,1,15:48:20,1,1,0,2,Criou Alvo
+112,1,15:48:20,1,1,1,0,Trocou de Pista
+113,1,15:54:46,1,1,1,0,Criou Alvo
+114,1,15:54:46,1,1,0,1,Trocou de Pista
+115,1,15:54:46,1,1,1,0,Trocou de Pista
+116,1,15:54:46,1,1,0,1,Trocou de Pista
+117,1,15:54:48,1,1,1,0,Trocou de Pista
+118,1,15:54:54,1,1,1,1,Criou Alvo
+119,1,15:54:59,1,1,0,1,Trocou de Pista
+120,1,15:55:01,1,1,1,0,Colidiu com Alvo
+121,1,15:55:02,1,1,0,0,Criou Alvo
+122,1,15:55:04,1,1,1,0,Trocou de Pista
+123,1,15:55:09,1,1,1,1,Colidiu com Alvo
+124,1,15:55:10,1,1,1,1,Criou Alvo
+125,1,15:55:10,1,1,0,1,Trocou de Pista
+126,1,15:55:11,1,1,-1,0,Saiu da area do jogo
+127,1,15:55:18,1,1,0,0,Criou Alvo
+128,1,15:55:21,1,1,1,0,Colidiu com Alvo
+129,1,15:56:18,1,1,1,2,Criou Alvo
+130,1,15:56:18,1,1,0,1,Trocou de Pista
+131,1,15:56:19,1,1,1,0,Trocou de Pista
+132,1,15:56:19,1,1,0,1,Trocou de Pista
+133,1,15:56:20,1,1,1,0,Trocou de Pista
+134,1,15:56:22,1,1,1,1,Controle UFE: Desabilita Som
+135,1,15:56:23,1,1,2,1,Trocou de Pista
+136,1,15:56:26,1,1,2,1,Criou Alvo
+137,1,15:56:33,1,1,1,2,Colidiu com Alvo
+138,1,15:56:34,1,1,2,2,Criou Alvo
+139,1,15:56:35,1,1,1,1,Controle UFE: Habilita Som
+140,1,15:56:36,1,1,1,2,Trocou de Pista
+141,1,15:56:42,1,1,1,1,Colidiu com Alvo
+142,1,15:56:43,1,1,1,1,Criou Alvo
+143,1,16:41:09,1,1,1,2,Criou Alvo
+144,1,16:41:17,1,1,1,1,Criou Alvo
+145,1,16:41:25,1,1,1,2,Criou Alvo
+146,1,16:41:26,1,1,2,1,Trocou de Pista
+147,1,16:41:28,1,1,1,2,Colidiu com Alvo
+148,1,16:41:29,1,1,1,2,Trocou de Pista
+149,1,16:41:33,1,1,1,1,Criou Alvo
+150,1,16:41:36,1,1,1,1,Colidiu com Alvo
+151,1,16:41:41,1,1,1,0,Criou Alvo
+152,1,16:41:44,1,1,1,2,Desviou de Alvo
+153,1,16:41:47,1,1,0,1,Trocou de Pista
+154,1,16:41:48,1,1,1,0,Trocou de Pista
+155,1,16:41:49,1,1,0,1,Trocou de Pista
+156,1,16:41:49,1,1,0,1,Criou Alvo
+157,1,16:41:50,1,1,-1,0,Saiu da area do jogo
+158,1,16:41:56,1,1,1,0,Trocou de Pista
+159,1,16:41:58,1,1,1,2,Criou Alvo
+160,1,16:41:58,1,1,1,1,Colidiu com Alvo
+161,1,16:42:02,1,1,1,1,Controle UFE: Desabilita HUD
+162,1,16:42:05,1,1,0,1,Trocou de Pista
+163,1,16:42:06,1,1,0,1,Criou Alvo
+164,1,16:42:06,1,1,1,0,Colidiu com Alvo
+165,1,16:42:07,1,1,1,0,Trocou de Pista
+166,1,16:42:08,1,1,1,1,Controle UFE: Desabilita Som
+167,1,16:42:14,1,1,1,1,Colidiu com Alvo
+168,1,16:42:15,1,1,1,1,Controle Jogo: Permanece Nivel
+169,1,16:42:52,1,1,1,2,Criou Alvo
+170,1,16:42:57,1,1,1,1,Controle UFE: Habilita HUD
+171,1,16:43:00,1,1,1,1,Criou Alvo
+172,1,16:43:02,1,1,2,1,Trocou de Pista
+173,1,16:43:03,1,1,1,2,Trocou de Pista
+174,1,16:43:09,1,1,1,0,Criou Alvo
+175,1,16:43:10,1,1,2,1,Trocou de Pista
+176,1,16:43:11,1,1,1,2,Colidiu com Alvo
+177,1,16:43:12,1,1,1,2,Trocou de Pista
+178,1,16:43:17,1,1,1,1,Criou Alvo
+179,1,16:43:18,1,1,1,1,Colidiu com Alvo
+180,1,16:43:20,1,1,0,1,Trocou de Pista
+181,1,16:43:22,1,1,1,1,Controle UFE: Habilita Som
+182,1,16:43:25,1,1,0,2,Criou Alvo
+183,1,16:43:27,1,1,1,0,Colidiu com Alvo
+184,1,16:43:28,1,1,1,0,Trocou de Pista
+185,1,16:43:33,1,1,1,1,Criou Alvo
+186,1,16:43:35,1,1,1,1,Colidiu com Alvo
+187,1,16:43:36,1,1,2,1,Trocou de Pista
+188,1,16:43:38,1,1,1,2,Trocou de Pista
+189,1,16:43:38,1,1,0,1,Trocou de Pista
+190,1,16:43:39,1,1,1,0,Trocou de Pista
+191,1,16:43:40,1,1,2,1,Trocou de Pista
+192,1,16:43:41,1,1,2,2,Criou Alvo
+193,1,16:43:41,1,1,1,2,Trocou de Pista
+194,1,16:43:42,1,1,2,1,Trocou de Pista
+195,1,16:43:43,1,1,1,2,Colidiu com Alvo
+196,1,16:43:44,1,1,1,2,Trocou de Pista
+197,1,16:43:51,1,1,1,1,Colidiu com Alvo
+198,1,16:43:52,1,1,1,1,Controle Jogo: Avanca Nivel
+199,2,16:44:53,1,2,1,2,Criou Alvo
+200,1,17:12:48,1,6,1,0,Criou Alvo
+201,1,17:12:49,1,6,2,1,Trocou de Pista
+202,1,17:12:50,1,6,2,2,Criou Alvo
+203,1,17:12:50,1,6,1,2,Trocou de Pista
+204,1,17:12:51,1,6,0,1,Trocou de Pista
+205,1,17:12:52,1,6,0,0,Criou Alvo
+206,1,17:12:54,1,6,0,1,Criou Alvo
+207,1,17:12:56,1,6,0,0,Criou Alvo
+208,1,17:12:58,1,6,0,2,Criou Alvo
+209,1,17:13:00,1,6,1,0,Desviou de Alvo
+210,1,17:13:00,1,6,0,0,Criou Alvo
+211,1,17:13:01,1,6,1,0,Trocou de Pista
+212,1,17:13:01,1,6,2,1,Trocou de Pista
+213,1,17:13:02,1,6,1,2,Desviou de Alvo
+214,1,17:13:02,1,6,2,2,Criou Alvo
+215,1,17:13:02,1,6,1,2,Trocou de Pista
+216,1,17:13:03,1,6,0,1,Trocou de Pista
+217,1,17:13:04,1,6,1,0,Desviou de Alvo
+218,1,17:13:04,1,6,0,1,Criou Alvo
+219,1,17:13:04,1,6,1,0,Trocou de Pista
+220,1,17:13:06,1,6,1,1,Desviou de Alvo
+221,1,17:13:06,1,6,1,0,Criou Alvo
+222,1,17:13:07,1,6,2,1,Trocou de Pista
+223,1,17:13:08,1,6,1,0,Desviou de Alvo
+224,1,17:13:08,1,6,2,2,Criou Alvo
+225,1,17:13:10,1,6,1,2,Desviou de Alvo
+226,1,17:13:10,1,6,2,1,Criou Alvo
+227,1,17:13:12,1,6,1,0,Desviou de Alvo
+228,1,17:13:12,1,6,2,2,Criou Alvo
+229,1,17:13:14,1,6,1,2,Desviou de Alvo
+230,1,17:13:14,1,6,2,0,Criou Alvo
+231,1,17:13:15,1,6,1,2,Trocou de Pista
+232,1,17:13:16,1,6,1,1,Desviou de Alvo
+233,1,17:13:16,1,6,1,1,Criou Alvo
+234,1,17:13:18,1,6,1,0,Desviou de Alvo
+235,1,17:13:18,1,6,1,2,Criou Alvo
+236,1,17:13:20,1,6,1,2,Desviou de Alvo
+237,1,17:13:20,1,6,1,0,Criou Alvo
+238,1,17:13:22,1,6,1,1,Desviou de Alvo
+239,1,17:13:22,1,6,1,1,Criou Alvo
+240,1,17:13:24,1,6,1,2,Desviou de Alvo
+241,1,17:13:24,1,6,1,2,Criou Alvo
+242,1,17:13:26,1,6,1,0,Desviou de Alvo
+243,1,17:13:26,1,6,1,1,Criou Alvo
+244,1,17:13:26,1,6,1,1,Controle UFE: Desabilita Som
+245,1,17:13:28,1,6,1,1,Desviou de Alvo
+246,1,17:13:28,1,6,1,2,Criou Alvo
+247,1,17:13:30,1,6,1,2,Desviou de Alvo
+248,1,17:13:30,1,6,1,0,Criou Alvo
+249,1,17:13:32,1,6,1,0,Desviou de Alvo
+250,1,17:13:32,1,6,1,1,Criou Alvo
+251,1,17:13:34,1,6,1,1,Desviou de Alvo
+252,1,17:13:34,1,6,1,2,Criou Alvo
+253,1,17:15:57,1,6,1,1,Criou Alvo
+254,1,17:15:59,1,6,1,2,Criou Alvo
+255,1,17:16:01,1,6,1,0,Criou Alvo
+256,1,17:16:02,1,6,1,1,Colidiu com Alvo
+257,1,17:16:03,1,6,1,2,Criou Alvo
+258,1,17:16:04,1,6,2,1,Trocou de Pista
+259,1,17:16:04,1,6,1,2,Colidiu com Alvo
+260,1,17:16:05,1,6,2,1,Criou Alvo
+261,1,17:16:05,1,6,1,2,Trocou de Pista
+262,1,17:16:06,1,6,0,1,Trocou de Pista
+263,1,17:16:06,1,6,1,0,Colidiu com Alvo
+264,1,17:16:07,1,6,1,1,Controle UFE: Habilita Som
+265,1,17:16:07,1,6,0,2,Criou Alvo
+266,1,17:16:08,1,6,1,0,Trocou de Pista
+267,1,17:16:08,1,6,2,1,Trocou de Pista
+268,1,17:16:08,1,6,1,2,Colidiu com Alvo
+269,1,17:16:09,1,6,2,0,Criou Alvo
+270,1,17:16:10,1,6,1,2,Trocou de Pista
+271,1,17:16:11,1,6,1,1,Colidiu com Alvo
+272,1,17:16:11,1,6,1,1,Criou Alvo
+273,1,17:16:11,1,6,2,1,Trocou de Pista
+274,1,17:16:13,1,6,1,2,Colidiu com Alvo
+275,1,17:16:13,1,6,2,2,Criou Alvo
+276,1,17:16:13,1,6,1,2,Trocou de Pista
+277,1,17:16:14,1,6,0,1,Trocou de Pista
+278,1,17:16:15,1,6,1,0,Colidiu com Alvo
+279,1,17:16:15,1,6,0,0,Criou Alvo
+280,1,17:16:15,1,6,1,0,Trocou de Pista
+281,1,17:16:17,1,6,1,1,Colidiu com Alvo
+282,1,17:16:17,1,6,1,1,Criou Alvo
+283,1,17:16:17,1,6,2,1,Trocou de Pista
+284,1,17:16:19,1,6,1,2,Colidiu com Alvo
+285,1,17:16:19,1,6,2,2,Criou Alvo
+286,1,17:16:19,1,6,1,2,Trocou de Pista
+287,1,17:16:21,1,6,0,1,Trocou de Pista
+288,1,17:16:21,1,6,1,0,Colidiu com Alvo
+289,1,17:16:21,1,6,0,0,Criou Alvo
+290,1,17:16:21,1,6,1,0,Trocou de Pista
+291,1,17:16:23,1,6,1,1,Colidiu com Alvo
+292,1,17:16:23,1,6,1,1,Criou Alvo
+293,1,17:16:25,1,6,1,2,Colidiu com Alvo
+294,1,17:16:25,1,6,1,2,Criou Alvo
+295,1,17:16:27,1,6,1,0,Desviou de Alvo
+296,1,17:16:28,1,6,1,1,Criou Alvo
+297,1,17:16:29,1,6,1,1,Colidiu com Alvo
+298,1,17:16:30,1,6,1,0,Criou Alvo
+299,1,17:16:31,1,6,2,1,Trocou de Pista
+300,1,17:16:31,1,6,1,2,Colidiu com Alvo
+301,1,17:16:32,1,6,2,1,Criou Alvo
+302,1,17:16:33,1,6,1,1,Desviou de Alvo
+303,1,17:16:34,1,6,2,2,Criou Alvo
+304,1,17:16:34,1,6,1,2,Trocou de Pista
+305,1,17:16:35,1,6,1,0,Desviou de Alvo
+306,1,17:16:35,1,6,2,1,Trocou de Pista
+307,1,17:16:36,1,6,2,1,Criou Alvo
+308,1,17:16:37,1,6,1,1,Desviou de Alvo
+309,1,17:16:38,1,6,2,0,Criou Alvo
+310,1,17:16:38,1,6,1,2,Trocou de Pista
+311,1,17:16:39,1,6,0,1,Trocou de Pista
+312,1,17:16:39,1,6,1,0,Trocou de Pista
+313,1,17:16:39,1,6,1,2,Desviou de Alvo
+314,1,17:16:40,1,6,1,1,Criou Alvo
+315,1,17:16:41,1,6,1,1,Colidiu com Alvo
+316,1,17:16:42,1,6,1,2,Criou Alvo
+317,1,17:16:42,1,6,0,1,Trocou de Pista
+318,1,17:16:43,1,6,1,0,Colidiu com Alvo
+319,1,17:16:44,1,6,0,0,Criou Alvo
+320,1,17:16:44,1,6,1,0,Trocou de Pista
+321,1,17:16:45,1,6,1,1,Colidiu com Alvo
+322,1,17:16:46,1,6,1,1,Criou Alvo
+323,1,17:16:46,1,6,2,1,Trocou de Pista
+324,1,17:16:47,1,6,1,2,Colidiu com Alvo
+325,1,17:16:48,1,6,2,0,Criou Alvo
+326,1,17:16:48,1,6,1,2,Trocou de Pista
+327,1,17:16:49,1,6,0,1,Trocou de Pista
+328,1,17:16:49,1,6,1,0,Colidiu com Alvo
+329,1,17:16:50,1,6,0,1,Criou Alvo
+330,1,17:16:51,1,6,1,0,Trocou de Pista
+331,1,17:16:51,1,6,1,1,Colidiu com Alvo
+332,1,17:16:52,1,6,1,0,Criou Alvo
+333,1,17:16:54,1,6,1,0,Desviou de Alvo
+334,1,17:17:36,1,6,1,2,Criou Alvo
+335,1,17:17:38,1,6,1,0,Criou Alvo
+336,1,17:17:39,1,6,2,1,Trocou de Pista
+337,1,17:17:40,1,6,2,1,Criou Alvo
+338,1,17:17:41,1,6,1,2,Colidiu com Alvo
+339,1,17:17:42,1,6,2,2,Criou Alvo
+340,1,17:17:43,1,6,1,2,Trocou de Pista
+341,1,17:17:44,1,6,1,0,Colidiu com Alvo
+342,1,17:17:44,1,6,0,1,Trocou de Pista
+343,1,17:17:44,1,6,0,1,Criou Alvo
+344,1,17:17:45,1,6,1,0,Trocou de Pista
+345,1,17:17:46,1,6,1,1,Colidiu com Alvo
+346,1,17:17:46,1,6,1,0,Criou Alvo
+347,1,17:17:48,1,6,1,2,Desviou de Alvo
+348,1,17:17:48,1,6,1,1,Criou Alvo
+349,1,17:17:50,1,6,1,1,Colidiu com Alvo
+350,1,17:17:50,1,6,1,2,Criou Alvo
+351,1,17:17:52,1,6,1,0,Desviou de Alvo
+352,1,17:17:52,1,6,1,1,Criou Alvo
+353,1,17:17:54,1,6,1,1,Colidiu com Alvo
+354,1,17:17:54,1,6,1,0,Criou Alvo
+355,1,17:17:56,1,6,1,2,Desviou de Alvo
+356,1,17:17:56,1,6,1,2,Criou Alvo
+357,1,17:17:58,1,6,1,1,Colidiu com Alvo
+358,1,17:17:58,1,6,1,1,Criou Alvo
+359,1,17:18:00,1,6,1,0,Desviou de Alvo
+360,1,17:18:01,1,6,1,0,Criou Alvo
+361,1,17:18:02,1,6,1,2,Desviou de Alvo
+362,1,17:18:03,1,6,1,2,Criou Alvo
+363,1,17:18:04,1,6,1,1,Colidiu com Alvo
+364,1,17:18:05,1,6,1,0,Criou Alvo
+365,1,17:18:06,1,6,1,0,Desviou de Alvo
+366,1,17:18:07,1,6,1,2,Criou Alvo
+367,1,17:18:08,1,6,1,2,Desviou de Alvo
+368,1,17:18:09,1,6,1,1,Criou Alvo
+369,1,17:18:10,1,6,1,0,Desviou de Alvo
+370,1,17:18:11,1,6,1,0,Criou Alvo
+371,1,17:18:12,1,6,1,2,Desviou de Alvo
+372,1,17:18:13,1,6,1,1,Criou Alvo
+373,1,17:18:51,1,6,1,1,Criou Alvo
+374,1,17:18:53,1,6,1,2,Criou Alvo
+375,1,17:18:55,1,6,1,1,Criou Alvo
+376,1,17:18:57,1,6,1,2,Criou Alvo
+377,1,17:18:59,1,6,1,1,Criou Alvo
+378,1,17:24:29,1,6,1,2,Criou Alvo
+379,1,17:24:31,1,6,1,0,Criou Alvo
+380,1,17:24:33,1,6,1,1,Criou Alvo
+381,1,17:24:35,1,6,2,1,Trocou de Pista
+382,1,17:24:35,1,6,2,0,Criou Alvo
+383,1,17:24:37,1,6,2,1,Criou Alvo
+384,1,17:24:39,1,6,2,0,Criou Alvo
+385,1,17:24:41,1,6,1,2,Desviou de Alvo
+386,1,17:24:41,1,6,2,2,Criou Alvo
+387,1,17:24:41,1,6,1,2,Trocou de Pista
+388,1,17:24:42,1,6,0,1,Trocou de Pista
+389,1,17:24:43,1,6,1,0,Desviou de Alvo
+390,1,17:24:43,1,6,0,1,Criou Alvo
+391,1,17:24:44,1,6,1,0,Trocou de Pista
+392,1,17:24:45,1,6,1,1,Desviou de Alvo
+393,1,17:24:45,1,6,1,0,Criou Alvo
+394,1,17:24:47,1,6,1,0,Desviou de Alvo
+395,1,17:24:47,1,6,1,2,Criou Alvo
+396,1,17:24:49,1,6,1,0,Criou Alvo
+397,1,17:24:49,1,6,1,1,Desviou de Alvo
+398,1,17:24:52,1,6,1,2,Criou Alvo
+399,1,17:24:52,1,6,1,0,Desviou de Alvo
+400,1,17:25:54,1,6,1,2,Criou Alvo
+401,1,17:25:56,1,6,1,0,Criou Alvo
+402,1,17:25:58,1,6,2,1,Trocou de Pista
+403,1,17:25:58,1,6,2,2,Criou Alvo
+404,1,17:25:59,1,6,1,2,Colidiu com Alvo
+405,1,17:26:00,1,6,1,2,Trocou de Pista
+406,1,17:26:00,1,6,1,1,Criou Alvo
+407,1,17:26:00,1,6,0,1,Trocou de Pista
+408,1,17:26:01,1,6,1,0,Desviou de Alvo
+409,1,17:26:02,1,6,0,2,Criou Alvo
+410,1,17:26:02,1,6,1,0,Trocou de Pista
+411,1,17:26:02,1,6,2,1,Trocou de Pista
+412,1,17:26:03,1,6,1,2,Colidiu com Alvo
+413,1,17:26:04,1,6,2,1,Criou Alvo
+414,1,17:26:04,1,6,1,2,Trocou de Pista
+415,1,17:26:05,1,6,1,1,Colidiu com Alvo
+416,1,17:26:06,1,6,1,0,Criou Alvo
+417,1,17:26:06,1,6,2,1,Trocou de Pista
+418,1,17:26:07,1,6,1,2,Colidiu com Alvo
+419,1,17:26:08,1,6,2,1,Criou Alvo
+420,1,17:26:08,1,6,1,2,Trocou de Pista
+421,1,17:26:09,1,6,1,1,Colidiu com Alvo
+422,1,17:26:10,1,6,0,1,Trocou de Pista
+423,1,17:26:10,1,6,0,2,Criou Alvo
+424,1,17:26:11,1,6,1,0,Colidiu com Alvo
+425,1,17:26:12,1,6,1,0,Trocou de Pista
+426,1,17:26:12,1,6,1,0,Criou Alvo
+427,1,17:26:13,1,6,1,1,Colidiu com Alvo
+428,1,17:26:14,1,6,2,1,Trocou de Pista
+429,1,17:26:14,1,6,2,2,Criou Alvo
+430,1,17:26:15,1,6,1,2,Colidiu com Alvo
+431,1,17:26:16,1,6,1,2,Trocou de Pista
+432,1,17:26:16,1,6,1,0,Criou Alvo
+433,1,17:26:16,1,6,0,1,Trocou de Pista
+434,1,17:26:17,1,6,1,0,Colidiu com Alvo
+435,1,17:26:18,1,6,1,0,Trocou de Pista
+436,1,17:26:18,1,6,1,1,Criou Alvo
+437,1,17:26:18,1,6,2,1,Trocou de Pista
+438,1,17:26:19,1,6,1,2,Colidiu com Alvo
+439,1,17:26:20,1,6,1,2,Trocou de Pista
+440,1,17:26:20,1,6,1,0,Criou Alvo
+441,1,17:26:20,1,6,0,1,Trocou de Pista
+442,1,17:26:21,1,6,1,0,Colidiu com Alvo
+443,1,17:26:22,1,6,1,0,Trocou de Pista
+444,1,17:26:22,1,6,1,1,Criou Alvo
+445,1,17:26:23,1,6,1,1,Colidiu com Alvo
+446,1,17:26:24,1,6,1,0,Criou Alvo
+447,1,17:26:24,1,6,0,1,Trocou de Pista
+448,1,17:26:25,1,6,1,0,Colidiu com Alvo
+449,1,17:26:26,1,6,0,1,Criou Alvo
+450,1,17:26:27,1,6,1,0,Trocou de Pista
+451,1,17:26:27,1,6,1,1,Colidiu com Alvo
+452,1,17:26:28,1,6,1,0,Criou Alvo
+453,1,17:26:31,1,6,1,2,Criou Alvo
+454,1,17:26:31,1,6,1,0,Colidiu com Alvo
+455,1,17:26:33,1,6,1,0,Criou Alvo
+456,1,17:26:34,1,6,1,1,Colidiu com Alvo
+457,1,17:26:35,1,6,1,1,Criou Alvo
+458,1,17:26:35,1,6,0,1,Trocou de Pista
+459,1,17:26:36,1,6,1,0,Colidiu com Alvo
+460,1,17:26:36,1,6,1,0,Trocou de Pista
+461,1,17:26:36,1,6,1,2,Desviou de Alvo
+462,1,17:26:37,1,6,1,0,Criou Alvo
+463,1,17:26:37,1,6,2,1,Trocou de Pista
+464,1,17:26:38,1,6,-1,2,Saiu da area do jogo
+465,1,17:26:41,1,6,0,2,Criou Alvo
+466,1,17:26:41,1,6,1,0,Trocou de Pista
+467,1,17:26:41,1,6,1,0,Colidiu com Alvo
+468,1,17:26:43,1,6,1,1,Criou Alvo
+469,1,17:26:43,1,6,1,1,Colidiu com Alvo
+470,1,17:26:44,1,6,0,1,Trocou de Pista
+471,1,17:26:45,1,6,0,0,Criou Alvo
+472,1,17:26:45,1,6,1,0,Colidiu com Alvo
+473,1,17:26:45,1,6,1,0,Trocou de Pista
+474,1,17:26:46,1,6,2,1,Trocou de Pista
+475,1,17:26:46,1,6,1,2,Colidiu com Alvo
+476,1,17:26:47,1,6,1,2,Trocou de Pista
+477,1,17:26:47,1,6,1,2,Criou Alvo
+478,1,17:26:48,1,6,1,1,Colidiu com Alvo
+479,1,17:26:49,1,6,0,1,Trocou de Pista
+480,1,17:26:49,1,6,0,1,Criou Alvo
+481,1,17:26:50,1,6,1,0,Trocou de Pista
+482,1,17:26:50,1,6,0,1,Trocou de Pista
+483,1,17:26:50,1,6,1,0,Colidiu com Alvo
+484,1,17:26:51,1,6,1,0,Trocou de Pista
+485,1,17:26:51,1,6,1,2,Criou Alvo
+486,1,17:26:51,1,6,2,1,Trocou de Pista
+487,1,17:26:52,1,6,1,2,Colidiu com Alvo
+488,1,17:26:53,1,6,1,2,Trocou de Pista
+489,1,17:26:53,1,6,1,0,Criou Alvo
+490,1,17:26:54,1,6,1,1,Colidiu com Alvo
+491,1,17:26:55,1,6,2,1,Trocou de Pista
+492,1,17:26:56,1,6,1,2,Colidiu com Alvo
+493,1,17:26:56,1,6,1,1,Controle Jogo: Avanca Nivel

@@ -2,6 +2,7 @@ import pygame
 import random
 import time
 import image
+import settings
 from settings import *
 
 roadW = 400 #Tamanho pista
@@ -185,9 +186,15 @@ class Target:
             targets.remove(self)
             sounds["screaming"].play()
             image.draw(surface,triste_fig,(0,0))
+            arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                    arquivo.get_Nivel(), pista, self.current_road, 'Desviou de Alvo')
+            settings.Alvo_d += 1
             return 0
         else:
             targets.remove(self)
             sounds["slap"].play()
             image.draw(surface, feliz_fig, (0, 0))
+            arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
+                                    arquivo.get_Nivel(), pista, self.current_road, 'Colidiu com Alvo')
+            settings.Alvo_c += 1
             return 10

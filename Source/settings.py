@@ -3,10 +3,12 @@ import numpy as np
 import cv2
 import arquivo
 
+#Variáveis do Pygame
 WINDOW_NAME = "KarTEA"
 GAME_TITLE = WINDOW_NAME
 CAMERA_FLIP = 0
 SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
+
 
 CONTADOR = 0
 pontos_calibracao = np.zeros((4, 2), int)
@@ -16,15 +18,21 @@ div2_pista = 2 * (SCREEN_WIDTH // 3)
 div3_pista = SCREEN_WIDTH
 
 pista = 1
+Alvo = 0
+Alvo_c = 0
+Alvo_d = 0
+Obst = 0
+Obst_c = 0
+Obst_d = 0
 
 
 FPS = 60
-DRAW_FPS = True
+DRAW_FPS = False
 
 # sizes
 BUTTONS_SIZES = (150, 45)
-CAR_SIZE = 150
-CAR_HITBOX_SIZE = (150, 250)
+CAR_SIZE = int(SCREEN_WIDTH/5)
+CAR_HITBOX_SIZE = (CAR_SIZE+50, CAR_SIZE+50)
 TARGETS_SIZES = (100, 100)
 OBSTACLE_SIZES = (100, 100)
 

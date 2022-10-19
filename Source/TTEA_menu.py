@@ -133,10 +133,10 @@ def ler_nome_jogadores():
     b = ''
 
     for a in Jogadores:
-        a = a.replace('_KarTEA.csv','')
+        a = a.replace('_KarTEA_sessao.csv','')
         a = a.replace('_KarTEA_config.csv','')
         a = a.replace('_KarTEA_detalhado.csv','')
-        a = a.replace('_RepeTEA.csv','')
+        a = a.replace('_RepeTEA_sessao.csv','')
         a = a.replace('_RepeTEA_config.csv','')
         a = a.replace('_RepeTEA_detalhado.csv','')
         if a != b:
@@ -168,11 +168,11 @@ def jogador_changed(event):
     global PLAYER_ARQ_CONFIG
     PLAYER = "Jogadores/" + jogador
     if game == 'KARTEA':
-        PLAYER_ARQ = PLAYER + "_KarTEA.csv"
+        PLAYER_ARQ = PLAYER + "_KarTEA_sessao.csv"
         PLAYER_ARQ_CONFIG = PLAYER + "_KarTEA_config.csv"
-        PLAYER_ARQ_DET = PLAYER + "_KarTEA_detalhadocsv"
+        PLAYER_ARQ_DET = PLAYER + "_KarTEA_detalhado.csv"
     elif game == 'REPETEA':
-        PLAYER_ARQ = PLAYER + "_RepeTEA.csv"
+        PLAYER_ARQ = PLAYER + "_RepeTEA_sessao.csv"
         PLAYER_ARQ_CONFIG = PLAYER + "_RepeTEA_config.csv"
         PLAYER_ARQ_DET = PLAYER + "_RepeTEA_detalhado.csv"
 

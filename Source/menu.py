@@ -18,7 +18,7 @@ class Menu:
 
     def draw(self):
         self.background.draw(self.surface)
-        fundo = pygame.image.load("Assets/Kartea/Fundo.png").convert_alpha()
+        fundo = image.load("Assets/Kartea/Fundo.png", size=(SCREEN_WIDTH,SCREEN_HEIGHT))
         image.draw(self.surface, fundo, (0,0))
 
 
@@ -34,7 +34,7 @@ class Menu:
                 return "game"
 
             if ui.button(self.surface, 0, 300 + BUTTONS_SIZES[1] * 4, "Sair", click_sound=self.click_sound):
-                pygame.quit()
+                pygame.display.quit()
                 sys.exit()
 
         elif settings.MENU == 'Pause':
@@ -55,7 +55,7 @@ class Menu:
                 return "next"
 
             if ui.button(self.surface, 0, 300 + BUTTONS_SIZES[1] * 4, "Sair", click_sound=self.click_sound):
-                pygame.quit()
+                pygame.display.quit()
                 sys.exit()
 
         elif settings.MENU == 'Feedback_1':
@@ -67,7 +67,7 @@ class Menu:
                 return "prev"
 
             if ui.button(self.surface, 1, 300 + BUTTONS_SIZES[1] * 4, "Sair", click_sound=self.click_sound):
-                pygame.quit()
+                pygame.display.quit()
                 sys.exit()
 
         elif settings.MENU == 'Feedback_2':
@@ -79,7 +79,7 @@ class Menu:
                 return "rest"
 
             if ui.button(self.surface, 1, 300 + BUTTONS_SIZES[1] * 4, "Sair", click_sound=self.click_sound):
-                pygame.quit()
+                pygame.display.quit()
                 sys.exit()
 
         elif settings.MENU == 'Feedback_3':
@@ -91,5 +91,5 @@ class Menu:
                 return "next"
 
             if ui.button(self.surface, 1, 300 + BUTTONS_SIZES[1] * 4, "Sair", click_sound=self.click_sound):
-                pygame.quit()
+                pygame.display.quit()
                 sys.exit()

@@ -1,6 +1,8 @@
 import csv
 import pandas as pd
 import numpy as np
+import datetime as dt
+
 
 """
 Funções que interagem com os arquivos csv
@@ -9,6 +11,7 @@ Funções que interagem com os arquivos csv
 Player = ''
 Fase = 1
 Nivel = 1
+Sessao = 1
 
 def set_Player(A):
     global Player
@@ -34,6 +37,14 @@ def get_Nivel():
     global Nivel
     return Nivel
 
+def set_Sessao(A):
+    global Sessao
+    Sessao = A
+
+def get_Sessao():
+    global Sessao
+    return Sessao
+
 csv.register_dialect(
     'mydialect',
     delimiter = ',',
@@ -45,11 +56,11 @@ csv.register_dialect(
 
 def CadastrarJogador(Nome, Nasc, Obs):
     #Kartea
-    Config = ['Nome', 'Data de Nasc.', 'Observacoes', 'Fase Atual', 'Nivel Atual', 'Tempo de Nivel', 'Carro',
+    Config = ['Nome', 'Data de Nasc.', 'Observacoes', 'Fase Atual', 'Nivel Atual', 'Sessao', 'Tempo de Nivel', 'Carro',
               'Ambiente', 'Paleta', 'Alvo', 'Obstaculo', 'Imagem Feedback Positivo', 'Imagem Feedback Neutro',
               'Imagem Feedback Negativo', 'Som Feedback Positivo', 'Som Feedback Neutro', 'Som Feedback Negativo',
               'HUD', 'Som']
-    Dados = [Nome, Nasc, Obs, '1', '1', '120', 'carro.png', 'ambiente.png', '0', 'alvo.png', 'obstaculo.png',
+    Dados = [Nome, Nasc, Obs, '1', '1', '1', '120', 'carro.png', 'ambiente.png', '0', 'alvo.png', 'obstaculo.png',
                'feedPos.png', 'feedNeut.png' 'feedNeg.png', 'feedPos.mp3','feedNeut.mp3', 'feedNeg.mp3',
                True, True]
     file = 'Jogadores/' + Nome + '_KarTEA_config.csv'
@@ -97,20 +108,32 @@ def CadastrarJogador(Nome, Nasc, Obs):
 
 #----------------------------------------------------------------------------------------------------------------------#
 
+def get_Date():
+    date = dt.datetime.now()
+    return date
+
 def gravaDados(filename, Dados):# Dados é um vetor com os dados para gravar no arquivo 'filename'
     with open(filename, 'a+', newline='') as csvfile:
         csvwriter = csv.writer(csvfile, dialect='mydialect')
         csvwriter.writerow(Dados)
 
-def grava_Sessao(jogador, id, data, hora, fase, nivel, pont, mov, alvos_c, alvos_d, obst_c, obst_d):
+def grava_Sessao(jogador, fase, nivel, pont, mov, alvos_c, alvos_d, obst_c, obst_d):
     file = 'Jogadores/'+jogador+'_KarTEA_sessao.csv'
+    results = pd.read_csv(file)
+    id = len(results)
+    data = get_Date().strftime("%x")
+    hora = get_Date().strftime("%X")
     fields = [id, data, hora, fase, nivel, pont, mov, alvos_c, alvos_d, obst_c, obst_d]
     with open(file,'a+', newline='') as csvfile:
         csvwriter = csv.writer(csvfile, dialect='mydialect')
         csvwriter.writerow(fields)
+    set_Sessao(id + 1)
 
-def grava_Detalhado(jogador, id, sessao, hora, fase, nivel, pos_jog, pos_ev, tipo):
+def grava_Detalhado(jogador, sessao, fase, nivel, pos_jog, pos_ev, tipo):
     file = 'Jogadores/' + jogador + '_KarTEA_detalhado.csv'
+    results = pd.read_csv(file)
+    id = len(results)
+    hora = get_Date().strftime("%X")
     fields = [id, sessao, hora, fase, nivel, pos_jog, pos_ev, tipo]
     with open(file, 'a+', newline='') as csvfile:
         csvwriter = csv.writer(csvfile, dialect='mydialect')
@@ -121,14 +144,14 @@ def grava_Detalhado(jogador, id, sessao, hora, fase, nivel, pos_jog, pos_ev, tip
 
 def lerConfigs(filename): #Apenas para os arquivos gerais, nos detalhados retorna a primeira linha de dados
     """
+    Player_Kartea_config.csv = ['Nome', 'Data de Nasc.', 'Observacoes', 'Fase Atual', 'Nivel Atual', 'Sessao', 'Tempo de Nivel', 'Carro',
+                              'Ambiente', 'Paleta', 'Alvo', 'Obstaculo', 'Imagem Feedback Positivo', 'Imagem Feedback Neutro',
+                              'Imagem Feedback Negativo', 'Som Feedback Positivo', 'Som Feedback Neutro', 'Som Feedback Negativo',
+                              'HUD', 'Som']
+
     Player_Kartea.csv = ['Sessao', 'Data da Sessao', 'Hora Inicio', 'Fase Alcancada', 'Nivel Alcancado', 'Pontuacao Geral', 
                          'Q Movimentos', 'Q Alvos Colididos', 'Q Alvos Desviados', 'Q Obstaculos Colididos', 
                          'Q Obstaculos Desviados']
-
-    Player_Kartea_config.csv = ['Nome', 'Data de Nasc.', 'Observacoes', 'Fase Atual', 'Nivel Atual', 'Tempo de Nivel', 'Carro',
-                                  'Ambiente', 'Paleta', 'Alvo', 'Obstaculo', 'Imagem Feedback Positivo', 'Imagem Feedback Neutro',
-                                  'Imagem Feedback Negativo', 'Som Feedback Positivo', 'Som Feedback Neutro', 'Som Feedback Negativo',
-                                  'HUD', 'Som']
 
     Player_Kartea_detalhado = ['ID', 'Sessao', 'Hora do Evento', 'Fase', 'Nivel', 'Posicao jogador', 'Posicao Evento', 'Tipo de Evento']
 
@@ -139,6 +162,10 @@ def lerConfigs(filename): #Apenas para os arquivos gerais, nos detalhados retorn
         csvreader = csv.reader(csvfile, dialect='mydialect')
         fields = next(csvreader)  # Dados do jogador
         fields = next(csvreader)  # Configuracoes
+        set_Player(fields[0])
+        set_Fase(fields[3])
+        set_Nivel(fields[4])
+        set_Sessao(fields[5])
         return fields
 
 #Le os pontos de calibração realizados antes do jogo
