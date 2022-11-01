@@ -493,3 +493,436 @@ ID,Sessao,Hora do Evento,Fase,Nivel,Posicao jogador,Posicao Evento,Tipo de Event
 491,1,17:26:55,1,6,2,1,Trocou de Pista
 492,1,17:26:56,1,6,1,2,Colidiu com Alvo
 493,1,17:26:56,1,6,1,1,Controle Jogo: Avanca Nivel
+494,1,18:34:39,1,6,1,2,Criou Alvo
+495,1,18:34:41,1,6,1,1,Criou Alvo
+496,1,18:34:41,1,6,2,1,Trocou de Pista
+497,1,18:34:42,1,6,1,2,Trocou de Pista
+498,1,18:34:43,1,6,0,1,Trocou de Pista
+499,1,18:34:43,1,6,0,2,Criou Alvo
+500,1,18:34:43,1,6,1,0,Trocou de Pista
+501,1,18:34:44,1,6,2,1,Trocou de Pista
+502,1,18:34:44,1,6,1,2,Colidiu com Alvo
+503,1,18:34:45,1,6,2,1,Criou Alvo
+504,1,18:34:45,1,6,1,2,Trocou de Pista
+505,1,18:34:46,1,6,1,1,Colidiu com Alvo
+506,1,18:34:47,1,6,1,2,Criou Alvo
+507,1,18:34:47,1,6,2,1,Trocou de Pista
+508,1,18:34:48,1,6,1,2,Colidiu com Alvo
+509,1,18:34:49,1,6,2,0,Criou Alvo
+510,1,18:34:49,1,6,1,2,Trocou de Pista
+511,1,18:34:50,1,6,1,1,Colidiu com Alvo
+512,1,18:34:51,1,6,1,2,Criou Alvo
+513,1,18:34:51,1,6,2,1,Trocou de Pista
+514,1,18:34:52,1,6,1,2,Colidiu com Alvo
+515,1,18:34:53,1,6,1,2,Trocou de Pista
+516,1,18:34:53,1,6,1,0,Criou Alvo
+517,1,18:34:53,1,6,0,1,Trocou de Pista
+518,1,18:34:54,1,6,1,0,Colidiu com Alvo
+519,1,18:34:55,1,6,0,2,Criou Alvo
+520,1,18:34:55,1,6,1,0,Trocou de Pista
+521,1,18:34:55,1,6,2,1,Trocou de Pista
+522,1,18:34:56,1,6,1,2,Colidiu com Alvo
+523,1,18:34:57,1,6,2,0,Criou Alvo
+524,1,18:34:57,1,6,1,2,Trocou de Pista
+525,1,18:34:58,1,6,0,1,Trocou de Pista
+526,1,18:34:58,1,6,1,0,Colidiu com Alvo
+527,1,18:34:59,1,6,1,0,Trocou de Pista
+528,1,18:34:59,1,6,1,1,Criou Alvo
+529,1,18:35:00,1,6,2,1,Trocou de Pista
+530,1,18:35:00,1,6,1,2,Colidiu com Alvo
+531,1,18:35:01,1,6,1,2,Trocou de Pista
+532,1,18:35:01,1,6,1,2,Criou Alvo
+533,1,18:35:02,1,6,0,1,Trocou de Pista
+534,1,18:35:02,1,6,1,0,Colidiu com Alvo
+535,1,18:35:03,1,6,1,0,Trocou de Pista
+536,1,18:35:03,1,6,1,1,Criou Alvo
+537,1,18:35:04,1,6,1,1,Colidiu com Alvo
+538,1,18:35:05,1,6,1,0,Criou Alvo
+539,1,18:35:05,1,6,2,1,Trocou de Pista
+540,1,18:35:06,1,6,1,2,Colidiu com Alvo
+541,1,18:35:07,1,6,1,2,Trocou de Pista
+542,1,18:35:07,1,6,1,1,Criou Alvo
+543,1,18:35:08,1,6,1,1,Colidiu com Alvo
+544,1,18:35:09,1,6,1,2,Criou Alvo
+545,1,18:35:09,1,6,0,1,Trocou de Pista
+546,1,18:35:10,1,6,1,0,Colidiu com Alvo
+547,1,18:35:11,1,6,0,1,Criou Alvo
+548,1,18:35:11,1,6,1,0,Trocou de Pista
+549,1,18:35:12,1,6,1,1,Colidiu com Alvo
+550,1,18:35:13,1,6,1,0,Criou Alvo
+551,1,18:35:13,1,6,2,1,Trocou de Pista
+552,1,18:35:14,1,6,1,2,Colidiu com Alvo
+553,1,18:35:15,1,6,1,2,Trocou de Pista
+554,1,18:35:15,1,6,1,2,Criou Alvo
+555,1,18:35:16,1,6,1,1,Colidiu com Alvo
+556,1,18:35:17,1,6,1,1,Criou Alvo
+557,1,18:35:17,1,6,0,1,Trocou de Pista
+558,1,18:35:18,1,6,1,0,Colidiu com Alvo
+559,1,18:35:19,1,6,1,0,Trocou de Pista
+560,1,18:35:19,1,6,1,2,Criou Alvo
+561,1,18:35:20,1,6,2,1,Trocou de Pista
+562,1,18:35:20,1,6,1,2,Colidiu com Alvo
+563,1,18:35:21,1,6,1,2,Trocou de Pista
+564,1,18:35:21,1,6,1,0,Criou Alvo
+565,1,18:35:22,1,6,1,1,Colidiu com Alvo
+566,1,18:35:23,1,6,2,1,Trocou de Pista
+567,1,18:35:23,1,6,2,2,Criou Alvo
+568,1,18:35:24,1,6,1,2,Colidiu com Alvo
+569,1,18:35:25,1,6,1,2,Trocou de Pista
+570,1,18:35:25,1,6,1,0,Criou Alvo
+571,1,18:35:26,1,6,0,1,Trocou de Pista
+572,1,18:35:27,1,6,1,0,Colidiu com Alvo
+573,1,18:35:27,1,6,1,0,Trocou de Pista
+574,1,18:35:27,1,6,1,1,Criou Alvo
+575,1,18:35:28,1,6,2,1,Trocou de Pista
+576,1,18:35:29,1,6,1,2,Colidiu com Alvo
+577,1,18:35:29,1,6,1,2,Trocou de Pista
+578,1,18:35:29,1,6,1,2,Criou Alvo
+579,1,18:35:30,1,6,0,1,Trocou de Pista
+580,1,18:35:31,1,6,1,0,Colidiu com Alvo
+581,1,18:35:31,1,6,1,0,Trocou de Pista
+582,1,18:35:31,1,6,1,0,Criou Alvo
+583,1,18:35:33,1,6,1,1,Colidiu com Alvo
+584,1,18:35:33,1,6,2,1,Trocou de Pista
+585,1,18:35:34,1,6,2,1,Criou Alvo
+586,1,18:35:35,1,6,1,2,Colidiu com Alvo
+587,1,18:35:35,1,6,1,2,Trocou de Pista
+588,1,18:35:36,1,6,1,2,Criou Alvo
+589,1,18:35:36,1,6,0,1,Trocou de Pista
+590,1,18:35:37,1,6,1,0,Colidiu com Alvo
+591,1,18:35:37,1,6,1,0,Trocou de Pista
+592,1,18:35:38,1,6,1,1,Controle Jogo: Avanca Nivel
+593,1,18:39:01,1,6,1,1,Criou Alvo
+594,1,18:39:03,1,6,1,0,Criou Alvo
+595,1,18:39:03,1,6,2,1,Trocou de Pista
+596,1,18:39:04,1,6,1,2,Trocou de Pista
+597,1,18:39:05,1,6,1,2,Criou Alvo
+598,1,18:39:06,1,6,1,1,Colidiu com Alvo
+599,1,18:39:07,1,6,0,1,Trocou de Pista
+600,1,18:39:07,1,6,0,0,Criou Alvo
+601,1,18:39:08,1,6,1,0,Colidiu com Alvo
+602,1,18:39:09,1,6,1,0,Trocou de Pista
+603,1,18:39:09,1,6,1,1,Criou Alvo
+604,1,18:39:09,1,6,2,1,Trocou de Pista
+605,1,18:39:10,1,6,1,2,Colidiu com Alvo
+606,1,18:39:11,1,6,1,2,Trocou de Pista
+607,1,18:39:11,1,6,1,0,Criou Alvo
+608,1,18:39:11,1,6,0,1,Trocou de Pista
+609,1,18:39:12,1,6,1,0,Colidiu com Alvo
+610,1,18:39:13,1,6,1,0,Trocou de Pista
+611,1,18:39:13,1,6,1,2,Criou Alvo
+612,1,18:39:14,1,6,1,1,Colidiu com Alvo
+613,1,18:39:15,1,6,1,1,Criou Alvo
+614,1,18:39:15,1,6,0,1,Trocou de Pista
+615,1,18:39:16,1,6,1,0,Colidiu com Alvo
+616,1,18:39:17,1,6,1,0,Trocou de Pista
+617,1,18:39:17,1,6,1,2,Criou Alvo
+618,1,18:39:17,1,6,2,1,Trocou de Pista
+619,1,18:39:18,1,6,1,2,Colidiu com Alvo
+620,1,18:39:19,1,6,2,1,Criou Alvo
+621,1,18:39:19,1,6,1,2,Trocou de Pista
+622,1,18:39:20,1,6,1,1,Colidiu com Alvo
+623,1,18:39:21,1,6,1,0,Criou Alvo
+624,1,18:39:21,1,6,2,1,Trocou de Pista
+625,1,18:39:22,1,6,1,2,Colidiu com Alvo
+626,1,18:39:23,1,6,1,2,Trocou de Pista
+627,1,18:39:23,1,6,1,2,Criou Alvo
+628,1,18:39:24,1,6,1,1,Colidiu com Alvo
+629,1,18:39:25,1,6,1,0,Criou Alvo
+630,1,18:39:25,1,6,0,1,Trocou de Pista
+631,1,18:39:26,1,6,1,0,Colidiu com Alvo
+632,1,18:39:27,1,6,1,0,Trocou de Pista
+633,1,18:39:27,1,6,1,2,Criou Alvo
+634,1,18:39:28,1,6,2,1,Trocou de Pista
+635,1,18:39:28,1,6,1,2,Colidiu com Alvo
+636,1,18:39:29,1,6,1,2,Trocou de Pista
+637,1,18:39:30,1,6,0,1,Trocou de Pista
+638,1,18:39:30,1,6,1,0,Colidiu com Alvo
+639,1,18:39:31,1,6,1,1,Controle Jogo: Avanca Nivel
+640,1,18:42:34,1,6,1,2,Criou Alvo
+641,1,18:42:36,1,6,1,0,Criou Alvo
+642,1,18:42:36,1,6,2,1,Trocou de Pista
+643,1,18:42:38,1,6,2,2,Criou Alvo
+644,1,18:42:39,1,6,1,2,Colidiu com Alvo
+645,1,18:42:39,1,6,1,2,Trocou de Pista
+646,1,18:42:40,1,6,0,1,Trocou de Pista
+647,1,18:42:40,1,6,0,1,Criou Alvo
+648,1,18:42:41,1,6,1,0,Colidiu com Alvo
+649,1,18:42:41,1,6,1,0,Trocou de Pista
+650,1,18:42:42,1,6,1,0,Criou Alvo
+651,1,18:42:42,1,6,2,1,Trocou de Pista
+652,1,18:42:43,1,6,1,2,Colidiu com Alvo
+653,1,18:42:44,1,6,1,2,Trocou de Pista
+654,1,18:42:44,1,6,1,1,Criou Alvo
+655,1,18:42:45,1,6,1,1,Colidiu com Alvo
+656,1,18:42:46,1,6,1,0,Criou Alvo
+657,1,18:42:46,1,6,0,1,Trocou de Pista
+658,1,18:42:47,1,6,1,0,Colidiu com Alvo
+659,1,18:42:48,1,6,1,0,Trocou de Pista
+660,1,18:42:48,1,6,1,1,Criou Alvo
+661,1,18:42:49,1,6,1,1,Colidiu com Alvo
+662,1,18:42:50,1,6,0,1,Trocou de Pista
+663,1,18:42:50,1,6,0,2,Criou Alvo
+664,1,18:42:51,1,6,1,0,Colidiu com Alvo
+665,1,18:42:52,1,6,1,0,Trocou de Pista
+666,1,18:42:52,1,6,1,1,Criou Alvo
+667,1,18:42:53,1,6,1,1,Colidiu com Alvo
+668,1,18:42:54,1,6,2,1,Trocou de Pista
+669,1,18:42:54,1,6,2,2,Criou Alvo
+670,1,18:42:55,1,6,1,2,Colidiu com Alvo
+671,1,18:42:56,1,6,1,2,Trocou de Pista
+672,1,18:42:56,1,6,1,1,Criou Alvo
+673,1,18:42:57,1,6,1,1,Colidiu com Alvo
+674,1,18:42:58,1,6,1,2,Criou Alvo
+675,1,18:42:58,1,6,2,1,Trocou de Pista
+676,1,18:42:59,1,6,1,2,Colidiu com Alvo
+677,1,18:43:00,1,6,1,2,Trocou de Pista
+678,1,18:43:00,1,6,1,0,Criou Alvo
+679,1,18:43:01,1,6,1,1,Colidiu com Alvo
+680,1,18:43:02,1,6,2,1,Trocou de Pista
+681,1,18:43:03,1,6,1,2,Colidiu com Alvo
+682,1,18:43:04,1,6,1,1,Controle Jogo: Avanca Nivel
+683,1,18:48:04,1,6,1,1,Criou Alvo
+684,1,18:48:06,1,6,1,0,Criou Alvo
+685,1,18:48:08,1,6,1,2,Criou Alvo
+686,1,18:48:09,1,6,1,1,Colidiu com Alvo
+687,1,18:48:10,1,6,1,1,Criou Alvo
+688,1,18:48:10,1,6,0,1,Trocou de Pista
+689,1,18:48:11,1,6,1,0,Colidiu com Alvo
+690,1,18:48:12,1,6,1,0,Trocou de Pista
+691,1,18:48:12,1,6,1,0,Criou Alvo
+692,1,18:48:12,1,6,2,1,Trocou de Pista
+693,1,18:48:14,1,6,1,2,Colidiu com Alvo
+694,1,18:48:14,1,6,1,2,Trocou de Pista
+695,1,18:48:14,1,6,1,2,Criou Alvo
+696,1,18:48:16,1,6,1,1,Colidiu com Alvo
+697,1,18:48:16,1,6,1,0,Criou Alvo
+698,1,18:48:17,1,6,0,1,Trocou de Pista
+699,1,18:48:18,1,6,1,0,Colidiu com Alvo
+700,1,18:48:18,1,6,1,0,Trocou de Pista
+701,1,18:48:18,1,6,1,1,Criou Alvo
+702,1,18:48:19,1,6,2,1,Trocou de Pista
+703,1,18:48:20,1,6,1,2,Colidiu com Alvo
+704,1,18:48:20,1,6,2,0,Criou Alvo
+705,1,18:48:20,1,6,1,2,Trocou de Pista
+706,1,18:48:21,1,6,0,1,Trocou de Pista
+707,1,18:48:22,1,6,1,0,Colidiu com Alvo
+708,1,18:48:22,1,6,1,0,Trocou de Pista
+709,1,18:48:23,1,6,1,2,Criou Alvo
+710,1,18:48:24,1,6,1,1,Colidiu com Alvo
+711,1,18:48:25,1,6,1,0,Criou Alvo
+712,1,18:48:25,1,6,0,1,Trocou de Pista
+713,1,18:48:26,1,6,1,0,Colidiu com Alvo
+714,1,18:48:26,1,6,1,0,Trocou de Pista
+715,1,18:48:27,1,6,1,1,Criou Alvo
+716,1,18:48:27,1,6,2,1,Trocou de Pista
+717,1,18:48:28,1,6,1,2,Colidiu com Alvo
+718,1,18:48:28,1,6,1,2,Trocou de Pista
+719,1,18:48:29,1,6,1,0,Criou Alvo
+720,1,18:48:29,1,6,0,1,Trocou de Pista
+721,1,18:48:30,1,6,1,0,Colidiu com Alvo
+722,1,18:48:31,1,6,1,0,Trocou de Pista
+723,1,18:48:31,1,6,1,1,Criou Alvo
+724,1,18:48:32,1,6,1,1,Colidiu com Alvo
+725,1,18:48:33,1,6,0,1,Trocou de Pista
+726,1,18:48:34,1,6,1,0,Colidiu com Alvo
+727,1,18:48:34,1,6,1,1,Controle Jogo: Avanca Nivel
+728,1,18:55:35,1,6,1,0,Criou Alvo
+729,1,18:55:36,1,6,2,1,Trocou de Pista
+730,1,18:55:37,1,6,2,2,Criou Alvo
+731,1,18:55:37,1,6,1,2,Trocou de Pista
+732,1,18:55:37,1,6,0,1,Trocou de Pista
+733,1,18:55:39,1,6,0,0,Criou Alvo
+734,1,18:55:40,1,6,1,0,Colidiu com Alvo
+735,1,18:55:41,1,6,1,0,Trocou de Pista
+736,1,18:55:41,1,6,1,1,Criou Alvo
+737,1,18:55:41,1,6,2,1,Trocou de Pista
+738,1,18:55:42,1,6,1,2,Colidiu com Alvo
+739,1,18:55:42,1,6,1,2,Trocou de Pista
+740,1,18:55:43,1,6,1,2,Criou Alvo
+741,1,18:55:43,1,6,0,1,Trocou de Pista
+742,1,18:55:44,1,6,1,0,Colidiu com Alvo
+743,1,18:55:45,1,6,1,0,Trocou de Pista
+744,1,18:55:45,1,6,1,1,Criou Alvo
+745,1,18:55:46,1,6,1,1,Colidiu com Alvo
+746,1,18:55:47,1,6,1,0,Criou Alvo
+747,1,18:55:47,1,6,2,1,Trocou de Pista
+748,1,18:55:48,1,6,1,2,Colidiu com Alvo
+749,1,18:55:49,1,6,1,2,Trocou de Pista
+750,1,18:55:49,1,6,1,1,Criou Alvo
+751,1,18:55:50,1,6,1,1,Colidiu com Alvo
+752,1,18:55:51,1,6,1,0,Criou Alvo
+753,1,18:55:51,1,6,0,1,Trocou de Pista
+754,1,18:55:52,1,6,1,0,Colidiu com Alvo
+755,1,18:55:53,1,6,1,0,Trocou de Pista
+756,1,18:55:53,1,6,1,2,Criou Alvo
+757,1,18:55:54,1,6,1,1,Colidiu com Alvo
+758,1,18:55:55,1,6,1,0,Criou Alvo
+759,1,18:55:55,1,6,0,1,Trocou de Pista
+760,1,18:55:56,1,6,1,0,Colidiu com Alvo
+761,1,18:55:57,1,6,1,0,Trocou de Pista
+762,1,18:55:57,1,6,1,1,Criou Alvo
+763,1,18:55:57,1,6,2,1,Trocou de Pista
+764,1,18:55:58,1,6,1,2,Colidiu com Alvo
+765,1,18:55:59,1,6,1,2,Trocou de Pista
+766,1,18:55:59,1,6,1,2,Criou Alvo
+767,1,18:55:59,1,6,0,1,Trocou de Pista
+768,1,18:56:00,1,6,1,0,Colidiu com Alvo
+769,1,18:56:01,1,6,0,1,Criou Alvo
+770,1,18:56:01,1,6,1,0,Trocou de Pista
+771,1,18:56:02,1,6,1,1,Colidiu com Alvo
+772,1,18:56:03,1,6,2,1,Trocou de Pista
+773,1,18:56:04,1,6,1,2,Colidiu com Alvo
+774,1,18:56:05,1,6,1,1,Controle Jogo: Avanca Nivel
+775,1,15:25:38,1,6,1,0,Criou Alvo
+776,1,15:25:40,1,6,1,2,Criou Alvo
+777,1,15:25:42,1,6,1,1,Criou Alvo
+778,1,15:25:43,1,6,1,0,Desviou de Alvo
+779,1,15:25:44,1,6,1,0,Criou Alvo
+780,1,15:25:44,1,6,2,1,Trocou de Pista
+781,1,15:25:45,1,6,1,2,Colidiu com Alvo
+782,1,15:25:46,1,6,1,2,Trocou de Pista
+783,1,15:25:46,1,6,1,2,Criou Alvo
+784,1,15:25:47,1,6,1,1,Colidiu com Alvo
+785,1,15:25:48,1,6,1,1,Criou Alvo
+786,1,15:25:48,1,6,0,1,Trocou de Pista
+787,1,15:25:49,1,6,1,0,Colidiu com Alvo
+788,1,15:25:50,1,6,1,0,Trocou de Pista
+789,1,15:25:50,1,6,1,2,Criou Alvo
+790,1,15:25:50,1,6,2,1,Trocou de Pista
+791,1,15:25:51,1,6,1,2,Colidiu com Alvo
+792,1,15:25:52,1,6,2,0,Criou Alvo
+793,1,15:25:53,1,6,1,1,Desviou de Alvo
+794,1,15:25:54,1,6,2,1,Criou Alvo
+795,1,15:25:55,1,6,1,2,Colidiu com Alvo
+796,1,15:25:56,1,6,1,2,Trocou de Pista
+797,1,15:25:56,1,6,1,0,Criou Alvo
+798,1,15:25:56,1,6,0,1,Trocou de Pista
+799,1,15:25:57,1,6,1,0,Colidiu com Alvo
+800,1,15:25:58,1,6,1,0,Trocou de Pista
+801,1,15:25:58,1,6,1,2,Criou Alvo
+802,1,15:25:59,1,6,1,1,Colidiu com Alvo
+803,1,15:26:00,1,6,1,1,Criou Alvo
+804,1,15:26:00,1,6,0,1,Trocou de Pista
+805,1,15:26:02,1,6,1,0,Colidiu com Alvo
+806,1,15:26:02,1,6,0,2,Criou Alvo
+807,1,15:26:02,1,6,1,0,Trocou de Pista
+808,1,15:26:03,1,6,2,1,Trocou de Pista
+809,1,15:26:04,1,6,1,2,Colidiu com Alvo
+810,1,15:26:04,1,6,2,0,Criou Alvo
+811,1,15:26:05,1,6,1,2,Trocou de Pista
+812,1,15:26:06,1,6,1,1,Colidiu com Alvo
+813,1,15:26:08,1,6,1,1,Controle Jogo: Permanece Nivel
+814,1,14:49:47,1,6,1,0,Criou Alvo
+815,1,14:49:49,1,6,2,1,Trocou de Pista
+816,1,14:49:49,1,6,2,2,Criou Alvo
+817,1,14:49:50,1,6,1,2,Trocou de Pista
+818,1,14:49:50,1,6,0,1,Trocou de Pista
+819,1,14:49:51,1,6,0,1,Criou Alvo
+820,1,14:49:53,1,6,1,0,Colidiu com Alvo
+821,1,14:49:53,1,6,0,0,Criou Alvo
+822,1,14:49:54,1,6,1,0,Trocou de Pista
+823,1,14:49:54,1,6,2,1,Trocou de Pista
+824,1,14:49:55,1,6,1,2,Colidiu com Alvo
+825,1,14:49:55,1,6,2,2,Criou Alvo
+826,1,14:49:56,1,6,1,2,Trocou de Pista
+827,1,14:49:57,1,6,1,1,Colidiu com Alvo
+828,1,14:49:57,1,6,1,1,Criou Alvo
+829,1,14:49:58,1,6,0,1,Trocou de Pista
+830,1,14:49:59,1,6,1,0,Colidiu com Alvo
+831,1,14:49:59,1,6,0,0,Criou Alvo
+832,1,14:49:59,1,6,1,0,Trocou de Pista
+833,1,14:50:00,1,6,2,1,Trocou de Pista
+834,1,14:50:01,1,6,1,2,Colidiu com Alvo
+835,1,14:50:01,1,6,2,1,Criou Alvo
+836,1,14:50:02,1,6,1,2,Trocou de Pista
+837,1,14:50:03,1,6,1,1,Colidiu com Alvo
+838,1,14:50:03,1,6,1,2,Criou Alvo
+839,1,14:50:04,1,6,0,1,Trocou de Pista
+840,1,14:50:05,1,6,1,0,Colidiu com Alvo
+841,1,14:50:06,1,6,0,0,Criou Alvo
+842,1,14:50:06,1,6,1,0,Trocou de Pista
+843,1,14:50:07,1,6,1,1,Colidiu com Alvo
+844,1,14:50:08,1,6,1,2,Criou Alvo
+845,1,14:50:08,1,6,2,1,Trocou de Pista
+846,1,14:50:09,1,6,1,2,Colidiu com Alvo
+847,1,14:50:10,1,6,1,2,Trocou de Pista
+848,1,14:50:10,1,6,1,0,Criou Alvo
+849,1,14:50:10,1,6,0,1,Trocou de Pista
+850,1,14:50:11,1,6,1,0,Colidiu com Alvo
+851,1,14:50:12,1,6,0,2,Criou Alvo
+852,1,14:50:12,1,6,1,0,Trocou de Pista
+853,1,14:50:12,1,6,2,1,Trocou de Pista
+854,1,14:50:13,1,6,1,2,Colidiu com Alvo
+855,1,14:50:14,1,6,2,1,Criou Alvo
+856,1,14:50:14,1,6,1,2,Trocou de Pista
+857,1,14:50:14,1,6,0,1,Trocou de Pista
+858,1,14:50:15,1,6,1,0,Colidiu com Alvo
+859,1,14:50:16,1,6,1,0,Trocou de Pista
+860,1,14:50:16,1,6,2,1,Trocou de Pista
+861,1,14:50:17,1,6,1,1,Controle Jogo: Avanca Nivel
+862,10,14:51:20,2,1,2,1,Criou Alvo
+863,10,14:51:20,2,1,1,2,Trocou de Pista
+864,10,14:51:28,2,1,1,0,Criou Alvo
+865,10,14:51:36,2,1,1,1,Criou Alvo
+866,10,14:51:36,2,1,1,1,Colidiu com Alvo
+867,10,14:51:38,2,1,0,1,Trocou de Pista
+868,10,14:51:44,2,1,1,0,Colidiu com Alvo
+869,10,14:51:47,2,1,1,0,Trocou de Pista
+870,10,14:51:50,2,1,1,1,Controle Jogo: Permanece Nivel
+871,1,14:57:07,1,1,1,1,Criou Alvo
+872,1,14:57:07,1,1,0,1,Trocou de Pista
+873,1,14:57:08,1,1,1,0,Trocou de Pista
+874,1,14:57:09,1,1,2,1,Trocou de Pista
+875,1,14:57:10,1,1,1,2,Trocou de Pista
+876,1,14:57:10,1,1,0,1,Trocou de Pista
+877,1,14:57:10,1,1,-1,0,Saiu da area do jogo
+878,1,14:57:14,1,1,1,0,Trocou de Pista
+879,1,14:57:15,1,1,1,0,Criou Alvo
+880,1,14:57:23,1,1,1,1,Criou Alvo
+881,1,14:57:27,1,1,1,1,Colidiu com Alvo
+882,1,14:57:28,1,1,0,1,Trocou de Pista
+883,1,14:57:31,1,1,0,2,Criou Alvo
+884,1,14:57:31,1,1,1,0,Colidiu com Alvo
+885,1,14:57:33,1,1,1,0,Trocou de Pista
+886,1,14:57:39,1,1,1,1,Colidiu com Alvo
+887,1,14:57:41,1,1,1,1,Controle Jogo: Avanca Nivel
+888,1,15:04:15,1,1,1,0,Criou Alvo
+889,1,15:04:15,1,1,0,1,Trocou de Pista
+890,1,15:04:15,1,1,1,0,Trocou de Pista
+891,1,15:04:23,1,1,1,1,Criou Alvo
+892,1,15:04:28,1,1,0,1,Trocou de Pista
+893,1,15:04:31,1,1,0,0,Criou Alvo
+894,1,15:04:31,1,1,1,0,Colidiu com Alvo
+895,1,15:04:32,1,1,1,0,Trocou de Pista
+896,1,15:04:39,1,1,1,1,Colidiu com Alvo
+897,1,15:04:42,1,1,0,1,Trocou de Pista
+898,1,15:04:45,1,1,1,1,Controle Jogo: Avanca Nivel
+899,1,15:12:30,1,1,1,0,Criou Alvo
+900,1,15:12:30,1,1,0,1,Trocou de Pista
+901,1,15:12:31,1,1,1,0,Trocou de Pista
+902,1,15:12:38,1,1,1,1,Criou Alvo
+903,1,15:12:41,1,1,0,1,Trocou de Pista
+904,1,15:12:42,1,1,1,0,Trocou de Pista
+905,1,15:12:44,1,1,0,1,Trocou de Pista
+906,1,15:12:46,1,1,1,0,Colidiu com Alvo
+907,1,15:12:46,1,1,0,2,Criou Alvo
+908,1,15:12:47,1,1,1,0,Trocou de Pista
+909,1,15:12:54,1,1,1,1,Colidiu com Alvo
+910,1,15:12:57,1,1,2,1,Trocou de Pista
+911,1,15:13:00,1,1,1,1,Controle Jogo: Avanca Nivel
+912,1,15:15:27,1,1,1,2,Criou Alvo
+913,1,15:15:35,1,1,1,1,Criou Alvo
+914,1,15:15:37,1,1,2,1,Trocou de Pista
+915,1,15:15:43,1,1,1,2,Colidiu com Alvo
+916,1,15:15:43,1,1,2,0,Criou Alvo
+917,1,15:15:45,1,1,1,2,Trocou de Pista
+918,1,15:15:51,1,1,1,1,Colidiu com Alvo
+919,1,15:15:57,1,1,1,1,Controle Jogo: Permanece Nivel
+920,15,15:16:37,1,1,1,2,Criou Alvo
+921,15,15:16:45,1,1,1,1,Criou Alvo
+922,15,15:16:51,1,1,0,1,Trocou de Pista
+923,15,15:16:53,1,1,0,0,Criou Alvo
+924,15,15:16:53,1,1,1,2,Desviou de Alvo
+925,15,15:17:01,1,1,1,1,Desviou de Alvo
+926,15,15:17:06,1,1,1,1,Controle Jogo: Retrocede Nivel

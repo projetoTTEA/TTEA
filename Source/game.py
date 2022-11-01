@@ -56,6 +56,16 @@ class Game:
         self.obst_c = 0
         self.obst_d = 0
 
+        settings.score = 0
+        settings.movimento = 0
+        settings.alvo = 0
+        settings.alvo_c = 0
+        settings.alvo_d = 0
+        settings.obst = 0
+        settings.obst_c = 0
+        settings.obst_d = 0
+
+
         self.config = 'Jogadores/' + arquivo.get_Player() + '_KarTEA_config.csv'
         self.SOM = arquivo.get_K_SOM(self.config)
         self.HUD = arquivo.get_K_HUD(self.config)
@@ -96,6 +106,14 @@ class Game:
         self.obst_c = 0
         self.obst_d = 0
 
+        settings.score = 0
+        settings.movimento = 0
+        settings.alvo = 0
+        settings.alvo_c = 0
+        settings.alvo_d = 0
+        settings.obst = 0
+        settings.obst_c = 0
+        settings.obst_d = 0
 
     def spawn_targets(self):
         t = time.time()
@@ -130,7 +148,7 @@ class Game:
             target = Target(r)
             obstacle = Obstacle(r)
 
-            print("Last_Obj: ", self.Last_Obj, ", TSP: ", settings.TARGETS_SPAWN_TIME)
+            print("Last_Obj: ", self.Last_Obj, "time: ", t)
 
             # Adiciona Target ou Obstacle de acordo com a fase
             if fase == 1:
@@ -238,7 +256,7 @@ class Game:
             self.draw()
 
             if self.time_left > 0:
-                if self.time_left > settings.TARGETS_SPAWN_TIME:
+                if self.time_left > (1.5*settings.TARGETS_SPAWN_TIME):
                     self.spawn_targets()
                 x, y = self.pose_tracking.get_feet_center() #Obtem posição(x,y) central do jogador
                 feet1_x, feet1_y = self.pose_tracking.get_feet1() #Obtem posição(x,y) do pé esquerdo
@@ -311,6 +329,8 @@ class Game:
                                             'Controle Jogo: Retrocede Nivel')
                     settings.MENU = 'Feedback_1'
 
+                settings.score = self.score
+                settings.movimento = self.movimento
                 # Grava sessao
                 arquivo.grava_Sessao(arquivo.get_Player(), arquivo.get_Fase(), arquivo.get_Nivel(), self.score,
                                      self.movimento, settings.Alvo_c, settings.Alvo_d, settings.Obst_c, settings.Obst_d)

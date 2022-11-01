@@ -18,6 +18,8 @@ div2_pista = 2 * (SCREEN_WIDTH // 3)
 div3_pista = SCREEN_WIDTH
 
 pista = 1
+score = 0
+movimento = 0
 Alvo = 0
 Alvo_c = 0
 Alvo_d = 0
@@ -51,7 +53,7 @@ DRAW_HITBOX = False  # will draw all the hitbox
 ANIMATION_SPEED = 0.01 # the frame of the insects will change every X sec
 
 # difficulty
-GAME_DURATION = 60  # the game will last X sec
+GAME_DURATION = 30  # the game will last X sec
 TIME_PAST = 0
 
 TARGETS_SPAWN_TIME = 8
