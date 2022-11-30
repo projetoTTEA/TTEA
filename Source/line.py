@@ -35,11 +35,6 @@ class Line:
         self.target: Target() = None
         self.target_rect: pygame.Rect = None
 
-        self.grass_color: pygame.Color = "black"
-        self.rumble_color: pygame.Color = "black"
-        self.road_color: pygame.Color = "black"
-        self.div_color: pygame.Color = "black"
-
     def project(self, camX: int, camY: int, camZ: int):
         self.scale = camD / (self.z - camZ)
         self.X = (1 + self.scale * (self.x - camX)) * SCREEN_WIDTH / 2
@@ -95,6 +90,8 @@ class Line:
 
         scaled_sprite = pygame.transform.scale(self.sprite2,(destW, destH))
         draw_surface.blit(scaled_sprite, (destX, destY))
+
+
     def drawTarget(self, draw_surface: pygame.Surface):
         if self.target is None:
             return

@@ -55,7 +55,11 @@ csv.register_dialect(
     quoting = csv.QUOTE_MINIMAL)
 
 def CadastrarJogador(Nome, Nasc, Obs):
-    #Kartea
+
+
+    ########################################################################################################
+    ############################################## KARTEA ##################################################
+    ########################################################################################################
     Config = ['Nome', 'Data de Nasc.', 'Observacoes', 'Fase Atual', 'Nivel Atual', 'Sessao', 'Tempo de Nivel', 'Carro',
               'Ambiente', 'Paleta', 'Alvo', 'Obstaculo', 'Imagem Feedback Positivo', 'Imagem Feedback Neutro',
               'Imagem Feedback Negativo', 'Som Feedback Positivo', 'Som Feedback Neutro', 'Som Feedback Negativo',
@@ -84,9 +88,15 @@ def CadastrarJogador(Nome, Nasc, Obs):
         csvwriter = csv.writer(csvfile, dialect='mydialect')
         csvwriter.writerow(fields)
 
-    #RepeTEA
-    Config = ['Nome', 'Data de Nasc.', 'Observacoes', 'Fase Atual', 'Nivel Atual', 'Tempo de Nivel']
-    Dados = [Nome, Nasc, Obs, '1', '1', '120']
+    ########################################################################################################
+    ############################################## REPETEA #################################################
+    ########################################################################################################
+    Config = ['Sessao', 'Nome', 'Data de Nasc.', 'Observacoes', 'Fase Atual', 'Nivel Atual', 'Tempo de Ajuda',
+              'Tempo Total',
+              'Tempo de Exposicao', 'Tempo Vez do Jogador', 'HUD', 'Som', 'Camera', 'Largura de Projecao',
+              'Altura de Projecao',
+              'Largura Tela de Controle', 'Altura Tela de Controle', 'Cores', 'Sons']
+    Dados = [0, Nome, Nasc, Obs, 1, 1, 5, 10, 0.5, 0.5, True, True, 0, 800, 600, 640, 480, 'padrao', 'padrao']
     file = 'Jogadores/' + Nome + '_RepeTEA_config.csv'
 
     with open(file, 'w') as csvfile:
@@ -94,13 +104,14 @@ def CadastrarJogador(Nome, Nasc, Obs):
         csvwriter.writerow(Config)
         csvwriter.writerow(Dados)
 
-    fields = ['Sessao', 'Data da Sessao', 'Hora Inicio', 'Fase Alcancada', 'Nivel Alcancado', 'Pontuacao Geral']
-    file = 'Jogadores/' + Nome + '_RepeTEA_sessao.csv'
+    fields = ['Sessao', 'Data', 'Hora Inicio', 'Hora Fim', 'Fase Alcancada', 'Nivel Alcancado',
+              'Qt Acertos sem Ajuda', 'Qt Acertos com Ajuda', 'Qt Ajudas', 'Qt Erros', 'Qt Omissões']
+    file = 'Jogadores/' + Nome + '_RepeTEA.csv'
     with open(file, 'w') as csvfile:
         csvwriter = csv.writer(csvfile, dialect='mydialect')
         csvwriter.writerow(fields)
 
-    fields = ['ID', 'Sessao', 'Hora do Evento', 'Fase', 'Nivel', 'Posicao jogador', 'Posicao Evento', 'Tipo de Evento']
+    fields = ['Sessao', 'Data', 'Hora', 'Fase', 'Nivel', 'Posicao jogador', 'Tipo de Evento']
     file = 'Jogadores/' + Nome + '_RepeTEA_detalhado.csv'
     with open(file, 'w') as csvfile:
         csvwriter = csv.writer(csvfile, dialect='mydialect')
@@ -568,3 +579,119 @@ def set_K_SOM(filename, a):
     df.to_csv(filename, index=False)
     # print(df)
 
+############################################################################################################
+################################################ REPETEA ###################################################
+############################################################################################################
+def get_R_SESSAO(filename):
+    # reading the csv file
+    df = pd.read_csv(filename)
+
+    # getting value/data
+    ret = df["Sessao"].values[0]
+    return ret
+
+
+def set_R_SESSAO(filename, a):
+    # reading the csv file
+    df = pd.read_csv(filename)
+
+    # updating the column value/data
+    df.loc[0, 'Sessao'] = a
+
+    # writing into the file
+    df.to_csv(filename, index=False)
+    # print(df)
+
+
+
+def get_R_FASE(filename):
+    # reading the csv file
+    df = pd.read_csv(filename)
+
+    # getting value/data
+    ret = df["Fase Atual"].values[0]
+    return ret
+
+
+def set_R_FASE(filename, a):
+    # reading the csv file
+    df = pd.read_csv(filename)
+
+    # updating the column value/data
+    df.loc[0, 'Fase Atual'] = a
+
+    # writing into the file
+    df.to_csv(filename, index=False)
+    # print(df)
+
+def set_R_FASE_detalhado(filename, a):
+    # reading the csv file
+    df = pd.read_csv(filename)
+
+    # updating the column value/data
+    df.loc[0, 'Fase'] = a
+
+    # writing into the file
+    df.to_csv(filename, index=False)
+    # print(df)
+
+
+def get_R_NIVEL(filename):
+    # reading the csv file
+    df = pd.read_csv(filename)
+
+    # getting value/data
+    ret = df["Nivel Atual"].values[0]
+    return ret
+
+
+def set_R_NIVEL(filename, a):
+    # reading the csv file
+    df = pd.read_csv(filename)
+
+    # updating the column value/data
+    df.loc[0, 'Nivel Atual'] = a
+
+    # writing into the file
+    df.to_csv(filename, index=False)
+    # print(df)
+
+def get_R_HUD(filename):
+    # reading the csv file
+    df = pd.read_csv(filename)
+
+    # getting value/data
+    ret = df["HUD"].values[0]
+    return ret
+
+
+def set_R_HUD(filename, a):
+    # reading the csv file
+    df = pd.read_csv(filename)
+
+    # updating the column value/data
+    df.loc[0, 'HUD'] = a
+
+    # writing into the file
+    df.to_csv(filename, index=False)
+    # print(df)
+
+def get_R_SOM(filename):
+    # reading the csv file
+    df = pd.read_csv(filename)
+
+    # getting value/data
+    ret = df["Som"].values[0]
+    return ret
+
+
+def set_R_SOM(filename, a):
+    # reading the csv file
+    df = pd.read_csv(filename)
+
+    # updating the column value/data
+    df.loc[0, 'Som'] = a
+
+    # writing into the file
+    df.to_csv(filename, index=False)
+    # print(df)

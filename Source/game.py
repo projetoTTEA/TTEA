@@ -20,7 +20,8 @@ class Game:
         self.background = Background()
         self.pose_tracking = PoseTracking()
         self.car = Car()
-        file = 'Jogadores/' + arquivo.get_Player() + '_KarTEA_config.csv'
+        self.config = 'Jogadores/' + arquivo.get_Player() + '_KarTEA_config.csv'
+
 
         # Load camera
         self.cap = Camera()
@@ -28,7 +29,7 @@ class Game:
         self.sounds = {}
         self.sounds["slap"] = pygame.mixer.Sound(f"Assets/Kartea/Sounds/point.wav")
         self.sounds["screaming"] = pygame.mixer.Sound(f"Assets/Kartea/Sounds/miss.wav")
-        if(arquivo.get_K_SOM(file)):
+        if(arquivo.get_K_SOM(self.config)):
             self.sounds["slap"].set_volume(1)
             self.sounds["screaming"].set_volume(1)
         else:
@@ -55,6 +56,7 @@ class Game:
         self.obst = 0
         self.obst_c = 0
         self.obst_d = 0
+        self.finish = 0
 
         settings.score = 0
         settings.movimento = 0
@@ -66,14 +68,14 @@ class Game:
         settings.obst_d = 0
 
 
-        self.config = 'Jogadores/' + arquivo.get_Player() + '_KarTEA_config.csv'
         self.SOM = arquivo.get_K_SOM(self.config)
         self.HUD = arquivo.get_K_HUD(self.config)
+        settings.GAME_DURATION = arquivo.get_K_TEMPO_NIVEL(self.config)
         self.PAUSE = False
 
         self.targets_spawn_timer = 0
         self.game_start_time = time.time()
-        self.time_left = GAME_DURATION
+        self.time_left = settings.GAME_DURATION
         settings.TIME_PAST = 0
 
 
@@ -94,7 +96,7 @@ class Game:
         self.Last_Obj = -1
         self.targets_spawn_timer = 0
         self.game_start_time = time.time()
-        self.time_left = GAME_DURATION
+        self.time_left = settings.GAME_DURATION
         settings.TIME_PAST = 0
 
         self.score = 0
@@ -105,6 +107,7 @@ class Game:
         self.obst = 0
         self.obst_c = 0
         self.obst_d = 0
+        self.finish = 0
 
         settings.score = 0
         settings.movimento = 0
@@ -181,6 +184,11 @@ class Game:
                     arquivo.grava_Detalhado(arquivo.get_Player(), arquivo.get_Sessao(), arquivo.get_Fase(),
                                     arquivo.get_Nivel(), settings.pista, r, 'Criou Alvo')
 
+    def spawn_finish(self):
+        pos = self.background.get_startPos()
+        self.background.lines[pos].sprite = pygame.image.load("Assets/Kartea/Finish.png").convert_alpha()
+        self.background.lines[pos].spriteX = -0.5
+
     def load_camera(self):
         self.cap.load_camera()
 
@@ -239,7 +247,7 @@ class Game:
 
     def game_time_update(self):
         #self.time_left = max(round(GAME_DURATION - (time.time() - self.game_start_time), 1), 0)
-        self.time_left = GAME_DURATION - int(settings.TIME_PAST/1000)
+        self.time_left = settings.GAME_DURATION - int(settings.TIME_PAST/1000)
 
 
     def update(self):
@@ -256,8 +264,12 @@ class Game:
             self.draw()
 
             if self.time_left > 0:
-                if self.time_left > (1.5*settings.TARGETS_SPAWN_TIME):
+                if self.time_left > (2*settings.TARGETS_SPAWN_TIME):
                     self.spawn_targets()
+                else:
+                    if self.finish == 0:
+                        self.spawn_finish()
+                        self.finish += 1
                 x, y = self.pose_tracking.get_feet_center() #Obtem posição(x,y) central do jogador
                 feet1_x, feet1_y = self.pose_tracking.get_feet1() #Obtem posição(x,y) do pé esquerdo
                 feet2_x, feet2_y = self.pose_tracking.get_feet2() #Obtem posição(x,y) do pé direito

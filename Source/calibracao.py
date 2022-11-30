@@ -282,10 +282,12 @@ while not gameExit:
             # Extração de coordenadas de pontos de referência.
             try:
                 landmarks = results.pose_landmarks.landmark
-                x_pose = landmarks[
-                    mp_pose.PoseLandmark.NOSE.value].x  # 33 Pontos de referência do MediaPipe. Ex: RIGHT_FOOT_INDEX; NOSE; RIGHT_INDEX
-                y_pose = landmarks[
-                    mp_pose.PoseLandmark.NOSE.value].y  # 33 Pontos de referência do MediaPipe. Ex: RIGHT_FOOT_INDEX; NOSE; RIGHT_INDEX
+                #x_pose = landmarks[mp_pose.PoseLandmark.NOSE.value].x  # 33 Pontos de referência do MediaPipe. Ex: RIGHT_FOOT_INDEX; NOSE; RIGHT_INDEX
+                #y_pose = landmarks[mp_pose.PoseLandmark.NOSE.value].y  # 33 Pontos de referência do MediaPipe. Ex: RIGHT_FOOT_INDEX; NOSE; RIGHT_INDEX
+                x_pose = (landmarks[mp_pose.PoseLandmark.RIGHT_FOOT_INDEX.value].x + landmarks[
+                    mp_pose.PoseLandmark.LEFT_FOOT_INDEX.value].x) / 2
+                y_pose = (landmarks[mp_pose.PoseLandmark.RIGHT_FOOT_INDEX.value].y + landmarks[
+                    mp_pose.PoseLandmark.LEFT_FOOT_INDEX.value].y) / 2
 
                 # Desenho dos pontos de referência
                 mp_drawing.draw_landmarks(tela_de_controle, results.pose_landmarks, mp_pose.POSE_CONNECTIONS,
@@ -347,6 +349,15 @@ while not gameExit:
             # SAIR (ESC)
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_q:
+                        gameExit = True
+                        cv2.destroyWindow("TELA DE CONTROLE")
+                        grava_calibracao()
+                        print('P1: ', pontos_calibracao[0], ' P2: ', pontos_calibracao[1], ' P3: ', pontos_calibracao[2], ' P4: ', pontos_calibracao[3])
+                        pygame.display.quit()
+                        camera.release()
+
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
                         gameExit = True
                         cv2.destroyWindow("TELA DE CONTROLE")
                         grava_calibracao()

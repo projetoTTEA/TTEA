@@ -105,6 +105,13 @@ def game_changed(event):
     game = selected_game.get()
     jogador_cb['state'] = 'readonly'
     jogador_cb.set('')
+    if game == 'KARTEA':
+        fase_cb['values'] = ['1', '2', '3']
+        nivel_cb['values'] = ['1', '2', '3', '4', '5', '6']
+    else:
+        fase_cb['values'] = ['1', '2', '3','4','5','6','7','8','9','10']
+        nivel_cb['values'] = ['1', '2', '3', '4', '5']
+
     fase_cb['state'] = 'disabled'
     fase_cb.set('')
     nivel_cb['state'] = 'disabled'
@@ -136,7 +143,7 @@ def ler_nome_jogadores():
         a = a.replace('_KarTEA_sessao.csv','')
         a = a.replace('_KarTEA_config.csv','')
         a = a.replace('_KarTEA_detalhado.csv','')
-        a = a.replace('_RepeTEA_sessao.csv','')
+        a = a.replace('_RepeTEA.csv','')
         a = a.replace('_RepeTEA_config.csv','')
         a = a.replace('_RepeTEA_detalhado.csv','')
         if a != b:
@@ -206,7 +213,7 @@ selected_fase = tk.StringVar()
 fase_cb = ttk.Combobox(menu_frame, textvariable=selected_fase)
 
 # set combo values
-fase_cb['values'] = ['1', '2', '3']
+#fase_cb['values'] = ['1', '2', '3']
 
 # prevent typing a value
 fase_cb['state'] = 'disabled'
@@ -268,7 +275,8 @@ def JogarCallback():
         import KarTEA
         KarTEA.main()
     else:
-        print('REPETEA')
+        import RepeTEA
+        # RepeTEA().main
 
 B = tk.Button(menu_frame, text ="Jogar", command = JogarCallback)
 

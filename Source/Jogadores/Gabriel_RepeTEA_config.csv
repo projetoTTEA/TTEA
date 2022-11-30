@@ -1,2 +1,2 @@
-Nome,Data de Nasc.,Observacoes,Fase Atual,Nivel Atual,Tempo de Nivel
-Gabriel,20/01/1997,Teste,1,1,120
+Sessao,Nome,Data de Nasc.,Observacoes,Fase Atual,Nivel Atual,Tempo de Ajuda,Tempo Total,Tempo de Exposicao,Tempo Vez do Jogador,HUD,Som,Camera,Largura de Projecao,Altura de Projecao,Largura Tela de Controle,Altura Tela de Controle,Cores,Sons
+0,Gabriel,20/01/1997,Teste,1,1,5,10,0.5,0.5,True,True,0,800,600,640,480,padrao,padrao

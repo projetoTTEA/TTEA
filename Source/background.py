@@ -14,6 +14,8 @@ dark_rumble = pygame.Color(255,0,0)
 light_rumble = pygame.Color(255,255,255)
 dark_road = pygame.Color(75,75,75)
 light_road = pygame.Color(107,107,107)
+finish_light = pygame.Color(255,255,255)
+finish_dark = pygame.Color(0,0,0)
 
 def drawQuad(
         surface: pygame.Surface,
@@ -100,6 +102,7 @@ class Background:
 
     def get_startPos(self):
         return (self.pos // segL) + 200
+
 
     def draw(self, surface):
         surface.blit(self.background_surface, self.background_rect)
