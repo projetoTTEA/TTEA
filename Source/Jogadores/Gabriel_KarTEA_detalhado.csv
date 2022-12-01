@@ -50,3 +50,22 @@ ID,Sessao,Hora do Evento,Fase,Nivel,Posicao jogador,Posicao Evento,Tipo de Event
 48,1,09:25:25,1,1,1,0,Trocou de Pista
 49,1,09:25:33,1,1,1,1,Controle Jogo: Avanca Nivel
 50,1,09:25:47,1,2,1,2,Criou Alvo
+51,1,20:11:23,1,1,1,0,Criou Alvo
+52,1,20:11:23,1,1,-1,1,Saiu da area do jogo
+53,1,20:11:33,1,1,0,1,Criou Alvo
+54,1,20:11:33,1,1,1,0,Trocou de Pista
+55,1,20:11:41,1,1,1,0,Criou Alvo
+56,1,20:11:49,1,1,1,1,Criou Alvo
+57,1,20:11:51,1,1,2,1,Trocou de Pista
+58,1,20:11:55,1,1,1,2,Trocou de Pista
+59,1,20:11:57,1,1,1,0,Criou Alvo
+60,1,20:12:00,1,1,0,1,Trocou de Pista
+61,1,20:12:04,1,1,1,0,Colidiu com Alvo
+62,1,20:12:05,1,1,0,1,Criou Alvo
+63,1,20:12:05,1,1,1,1,Desviou de Alvo
+64,1,20:12:06,1,1,1,0,Trocou de Pista
+65,1,20:12:13,1,1,1,0,Criou Alvo
+66,1,20:12:13,1,1,1,0,Desviou de Alvo
+67,1,20:12:19,1,1,1,1,Colidiu com Alvo
+68,1,20:12:19,1,1,0,1,Trocou de Pista
+69,1,20:12:21,1,1,-1,0,Saiu da area do jogo
