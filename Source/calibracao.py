@@ -10,8 +10,7 @@ import numpy as np
 import pygame
 import time
 import random
-import pandas as pd
-from pygame import mixer
+import settings
 
 pygame.init()
 #################################################################################
@@ -36,7 +35,7 @@ tela_de_calibracao = np.zeros((altura_projetor, largura_projetor, 3),
 tela_de_controle = np.zeros((altura_tela_controle, largura_tela_controle, 3),
                             np.uint8)  # Tela que será usada para o projetar o jogo.
 
-camera = cv2.VideoCapture(0, cv2.CAP_DSHOW)  # O valor entre parênteses indica qual câmera será utilizada. 0=default; 1,2,3...= câmeras externas.
+camera = cv2.VideoCapture(settings.CAMERA, cv2.CAP_DSHOW)  # O valor entre parênteses indica qual câmera será utilizada. 0=default; 1,2,3...= câmeras externas.
 csv.register_dialect(
     'mydialect',
     delimiter = ',',
@@ -165,31 +164,12 @@ def mousePoints(event, x, y, flags, params):
 
 def calibracao():
     # Função com os passos para determinar a área de projeçao capturada pela câmera:
-    tela_de_calibracao = np.zeros((altura_projetor, largura_projetor, 3), np.uint8)
-    cv2.putText(tela_de_calibracao, ' CLIQUE', (int(largura_projetor / 4), (int(altura_projetor / 2) - 20)), fonte, 3,
-                verde, 2, cv2.LINE_AA)
+
     cv2.circle(tela_de_controle, (pontos_calibracao[0]), 5, azul, 3)
     cv2.circle(tela_de_controle, (pontos_calibracao[1]), 5, azul, 3)
     cv2.circle(tela_de_controle, (pontos_calibracao[2]), 5, azul, 3)
     cv2.circle(tela_de_controle, (pontos_calibracao[3]), 5, azul, 3)
 
-    if contador == 0:
-        cv2.arrowedLine(tela_de_calibracao, (int(largura_projetor / 2), int(altura_projetor / 3)), (0, 0), azul, 20)
-
-    if contador == 1:
-        cv2.arrowedLine(tela_de_calibracao, (int(largura_projetor / 2), int(altura_projetor / 3)),
-                        (largura_projetor, 0), azul, 20)
-
-    if contador == 2:
-        cv2.arrowedLine(tela_de_calibracao, (int(largura_projetor / 2), int(altura_projetor / 2)), (0, altura_projetor),
-                        azul, 20)
-
-    if contador == 3:
-        cv2.arrowedLine(tela_de_calibracao, (int(largura_projetor / 2), int(altura_projetor / 2)),
-                        (largura_projetor, altura_projetor), azul, 20)
-
-
-    cv2.imshow("TELA DE CALIBRACAO", tela_de_calibracao)
 
 def posicao():
     # Função para determinar a posição do jogador na área de projeçao:
@@ -279,6 +259,31 @@ while not gameExit:
             tela_de_controle.flags.writeable = True
             tela_de_controle = cv2.cvtColor(tela_de_controle, cv2.COLOR_RGB2BGR)
 
+            # Antes da Calibração.
+            if contador <= 3:
+                calibracao()
+
+            # Depois da Calibração.
+            elif contador == 4:
+                cv2.line(tela_de_controle, (pontos_calibracao[0]), (pontos_calibracao[1]), (verde), 2)
+                cv2.line(tela_de_controle, (pontos_calibracao[1]), (pontos_calibracao[3]), (verde), 2)
+                cv2.line(tela_de_controle, (pontos_calibracao[2]), (pontos_calibracao[0]), (verde), 2)
+                cv2.line(tela_de_controle, (pontos_calibracao[2]), (pontos_calibracao[3]), (verde), 2)
+
+                cv2.circle(tela_de_controle, (pontos_calibracao[0]), 5, azul, 3)
+                cv2.circle(tela_de_controle, (pontos_calibracao[1]), 5, azul, 3)
+                cv2.circle(tela_de_controle, (pontos_calibracao[2]), 5, azul, 3)
+                cv2.circle(tela_de_controle, (pontos_calibracao[3]), 5, azul, 3)
+                gameDisplay = pygame.display.set_mode((largura_projetor, altura_projetor))
+                pygame.display.set_caption('Calibracao')
+                pygame.display.set_icon(icone_fig)
+
+                if contador <= 3:
+                    pass
+                if contador>3:
+                    calibracao_ok()
+                    tela_update()
+                    pass
             # Extração de coordenadas de pontos de referência.
             try:
                 landmarks = results.pose_landmarks.landmark
@@ -294,42 +299,9 @@ while not gameExit:
                                           mp_drawing.DrawingSpec(color=(0, 255, 0), thickness=2, circle_radius=2),
                                           mp_drawing.DrawingSpec(color=(0, 0, 255), thickness=2, circle_radius=2)
                                           )
-                # Antes da Calibração.
-                if contador <= 3:
-                    calibracao()
-
-                # Depois da Calibração.
-                elif contador == 4:
-                    cv2.line(tela_de_controle, (pontos_calibracao[0]), (pontos_calibracao[1]), (verde), 2)
-                    cv2.line(tela_de_controle, (pontos_calibracao[1]), (pontos_calibracao[3]), (verde), 2)
-                    cv2.line(tela_de_controle, (pontos_calibracao[2]), (pontos_calibracao[0]), (verde), 2)
-                    cv2.line(tela_de_controle, (pontos_calibracao[2]), (pontos_calibracao[3]), (verde), 2)
-
-                    cv2.circle(tela_de_controle, (pontos_calibracao[0]), 5, azul, 3)
-                    cv2.circle(tela_de_controle, (pontos_calibracao[1]), 5, azul, 3)
-                    cv2.circle(tela_de_controle, (pontos_calibracao[2]), 5, azul, 3)
-                    cv2.circle(tela_de_controle, (pontos_calibracao[3]), 5, azul, 3)
-                    cv2.destroyWindow("TELA DE CALIBRACAO")
-                    gameDisplay = pygame.display.set_mode((largura_projetor, altura_projetor))
-                    pygame.display.set_caption('Calibracao')
-                    pygame.display.set_icon(icone_fig)
-                    jogador=posicao()
-
-                    if jogador[0] > 350 and jogador[0] < 450 and jogador[1] > 400 and game_start==False:
-                        game_start=True
-
-                    else:
-                        pygame.draw.circle(gameDisplay, (vermelho), jogador, 15)
-                        pygame.display.update()
-
 
             except:
-                if contador <= 3:
-                    pass
-                if contador>3:
-                    calibracao_ok()
-                    tela_update()
-                    pass
+                pass
 
             # Atualização das telas
             cv2.imshow("TELA DE CONTROLE", tela_de_controle)

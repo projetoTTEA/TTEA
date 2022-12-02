@@ -69,3 +69,85 @@ ID,Sessao,Hora do Evento,Fase,Nivel,Posicao jogador,Posicao Evento,Tipo de Event
 67,1,20:12:19,1,1,1,1,Colidiu com Alvo
 68,1,20:12:19,1,1,0,1,Trocou de Pista
 69,1,20:12:21,1,1,-1,0,Saiu da area do jogo
+70,1,20:49:48,1,1,1,0,Criou Alvo
+71,1,20:49:48,1,1,0,1,Trocou de Pista
+72,1,20:49:56,1,1,0,1,Criou Alvo
+73,1,20:49:57,1,1,-1,0,Saiu da area do jogo
+74,1,20:54:47,1,1,1,2,Criou Alvo
+75,1,20:54:47,1,1,0,1,Trocou de Pista
+76,1,20:54:48,1,1,1,0,Trocou de Pista
+77,1,20:54:49,1,1,0,1,Trocou de Pista
+78,1,20:54:50,1,1,1,0,Trocou de Pista
+79,1,20:54:51,1,1,2,1,Trocou de Pista
+80,1,20:54:53,1,1,1,2,Trocou de Pista
+81,1,20:54:55,1,1,1,1,Criou Alvo
+82,1,20:54:56,1,1,2,1,Trocou de Pista
+83,1,20:54:57,1,1,1,2,Trocou de Pista
+84,1,20:54:58,1,1,0,1,Trocou de Pista
+85,1,20:54:59,1,1,1,0,Trocou de Pista
+86,1,20:54:59,1,1,2,1,Trocou de Pista
+87,1,20:55:01,1,1,1,2,Trocou de Pista
+88,1,20:55:02,1,1,2,1,Trocou de Pista
+89,1,20:55:03,1,1,2,0,Criou Alvo
+90,1,20:55:03,1,1,1,2,Colidiu com Alvo
+91,1,20:57:21,1,1,1,2,Criou Alvo
+92,1,20:57:21,1,1,0,1,Trocou de Pista
+93,1,20:57:22,1,1,1,0,Trocou de Pista
+94,1,20:57:24,1,1,0,1,Trocou de Pista
+95,1,20:57:26,1,1,1,0,Trocou de Pista
+96,1,20:57:27,1,1,2,1,Trocou de Pista
+97,1,20:57:29,1,1,2,1,Criou Alvo
+98,1,20:57:29,1,1,1,2,Trocou de Pista
+99,1,21:08:55,1,1,1,0,Criou Alvo
+100,1,21:08:57,1,1,0,1,Trocou de Pista
+101,1,21:08:59,1,1,1,0,Trocou de Pista
+102,1,21:08:59,1,1,2,1,Trocou de Pista
+103,1,21:09:00,1,1,1,2,Trocou de Pista
+104,1,21:09:03,1,1,1,1,Criou Alvo
+105,1,21:09:04,1,1,2,1,Trocou de Pista
+106,1,21:09:05,1,1,1,2,Trocou de Pista
+107,1,21:09:05,1,1,0,1,Trocou de Pista
+108,1,21:09:06,1,1,1,0,Trocou de Pista
+109,1,21:09:06,1,1,2,1,Trocou de Pista
+110,1,21:09:07,1,1,1,2,Trocou de Pista
+111,1,21:09:07,1,1,0,1,Trocou de Pista
+112,1,21:09:09,1,1,1,0,Trocou de Pista
+113,1,21:09:10,1,1,1,0,Colidiu com Alvo
+114,1,21:09:11,1,1,1,2,Criou Alvo
+115,1,21:42:18,1,1,1,0,Criou Alvo
+116,1,21:42:19,1,1,2,1,Trocou de Pista
+117,1,21:42:20,1,1,1,2,Trocou de Pista
+118,1,21:42:20,1,1,0,1,Trocou de Pista
+119,1,21:42:21,1,1,1,0,Trocou de Pista
+120,1,21:42:21,1,1,2,1,Trocou de Pista
+121,1,21:42:22,1,1,1,2,Trocou de Pista
+122,1,21:42:22,1,1,0,1,Trocou de Pista
+123,1,21:42:23,1,1,1,0,Trocou de Pista
+124,1,21:42:26,1,1,1,1,Criou Alvo
+125,1,21:42:29,1,1,1,1,Controle UFE: Pause
+126,1,21:42:37,1,1,1,0,Criou Alvo
+127,1,21:42:39,1,1,0,1,Trocou de Pista
+128,1,21:42:41,1,1,1,0,Colidiu com Alvo
+129,1,21:42:42,1,1,1,0,Trocou de Pista
+130,1,21:42:42,1,1,2,1,Trocou de Pista
+131,1,21:42:43,1,1,1,2,Trocou de Pista
+132,1,21:42:46,1,1,1,1,Criou Alvo
+133,1,21:42:49,1,1,1,1,Colidiu com Alvo
+134,1,21:42:50,1,1,0,1,Trocou de Pista
+135,1,21:42:52,1,1,1,0,Colidiu com Alvo
+136,1,21:42:53,1,1,1,0,Trocou de Pista
+137,1,21:42:54,1,1,1,2,Criou Alvo
+138,1,21:43:01,1,1,1,1,Colidiu com Alvo
+139,1,21:43:02,1,1,1,1,Criou Alvo
+140,1,21:43:02,1,1,1,1,Controle UFE: Pause
+141,1,21:43:16,1,1,1,0,Criou Alvo
+142,1,21:43:20,1,1,2,1,Trocou de Pista
+143,1,21:43:23,1,1,1,2,Colidiu com Alvo
+144,1,21:43:24,1,1,2,1,Criou Alvo
+145,1,21:43:27,1,1,1,2,Trocou de Pista
+146,1,21:43:30,1,1,1,1,Colidiu com Alvo
+147,1,21:43:31,1,1,1,0,Colidiu com Alvo
+148,1,21:43:31,1,1,0,1,Trocou de Pista
+149,1,21:43:32,1,1,0,2,Criou Alvo
+150,1,21:43:33,1,1,1,0,Trocou de Pista
+151,1,21:43:39,1,1,1,1,Colidiu com Alvo

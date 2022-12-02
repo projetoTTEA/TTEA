@@ -6,6 +6,7 @@ import arquivo
 #Variáveis do Pygame
 WINDOW_NAME = "KarTEA"
 GAME_TITLE = WINDOW_NAME
+CAMERA = 0
 CAMERA_FLIP = 0
 SCREEN_WIDTH, SCREEN_HEIGHT = 800, 600
 
